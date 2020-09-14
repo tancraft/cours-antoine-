@@ -3,7 +3,7 @@
 premiere page en php*/
 $bonjour = "Bonjour a tous"; //variable
 
-  echo "Bonjour tout le monde\n";
+  echo "Bonjour tout le monde"."\n";
 
   echo "<b>$bonjour</b>";
 
