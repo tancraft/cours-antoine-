@@ -1,5 +1,6 @@
 <?php
 
+// algorithme d echange de valeur n°1
 
 // les valeurs initiales
 $a = 5;
