@@ -7,4 +7,9 @@ $bonjour = "Bonjour a tous"; //variable
 
   echo "<b>$bonjour</b>";
 
+// test tableau pour le moment on a pas vu pour l afficher.
+
+$tableau1[] = "bleu";
+$tableau1[] = "vert";
+
   ?>
