@@ -17,6 +17,15 @@
     
 // on test les prerequis afin de savoir si on paye ou pas un impot
 
-    if()
+    if($age>20 && $sexe ="m" OR ($age>18 && $age<35) && $sexe = "f")
+    {
 
+        echo "vous payer un impot";
+    }
+    
+    else
+    {
+        echo "vous ne payer pas d'impot";
+
+    }
 ?>
