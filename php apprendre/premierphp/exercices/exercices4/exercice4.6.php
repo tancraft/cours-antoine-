@@ -15,16 +15,47 @@ $score2 = 100 * $nbvoix2 / $voixtot;
 $score3 = 100 * $nbvoix3 / $voixtot;
 $score4 = 100 * $nbvoix4 / $voixtot;
 
-echo "le candidat 1 a obtenu " . $score1 . " % des voix";
+echo "le candidat 1 a obtenu " . $score1 . " % des voix\n";
 
 // on test si le candidat 1  a gagner en obtenant + 50% des voix
 
-if ($score1 > 50) {
+switch($score1) 
+{
+  case $score1>50:
 
-    echo "le candidat est élu president";
+    echo "le candidat est élu president\n";
+  break;
 
-} else if ($score1 > 12.5 && $score1 < 50) {
+  case $score1 > 12.5 && $score1 < 50:
 
-    echo "le candidat est selectionner pour le second tour";
+    echo "le candidat est selectionner pour le second tour\n";
+  break;
+
+  case $score1 == 12.5:
+
+    echo "le candidat 1 est selectionner de justesse\n";
+  break;
+
+default : 
+   
+    echo "le candidat 1 n'est pas retenu pour le second tour, il a perdu\n";    
+}
+
+if ($score1<50)
+
+{
+
+     if ($score1>$score2 && $score1>$score3 && $score1>$score4)
+     {
+
+         echo "le candidat 1 est favori pour gagner";
+
+     }
+     else 
+     {
+
+         echo"le candidat n'est pas favori pour gagner";
+
+     }   
 
 }
