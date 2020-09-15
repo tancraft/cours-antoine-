@@ -7,23 +7,21 @@
 
   $nb2 = readline("merci d'entrer un deuxieme nombre: ");
 
-  // on verifie que les deux nombre sont soit positifs ou negatifs
-
-  if ($nb1>0 and $nb2>0 or $nb1<0 and $nb2<0 )
-
+  // on verifie si un des deux chiffre est negatif
+  if ($nb1<0 xor $nb2<0)
   {
 
-     echo "le produit de ces nombres est positif";
+     echo "le produit de ces nombres est negatif";
 
   }
 
-  // on verifie si un des deux chiffre est negatif
+  // on verifie que les deux nombre sont soit positifs ou negatifs
    
-  else if ($nb1<0 or $nb2<0)
+  else if ($nb1<0 && $nb2<0 or $nb1>0 && $nb2>0)
 
   {
 
-     echo "le produit de ces nombre est negatif: ";
+     echo "le produit de ces nombre est positif: ";
 
   }
 
