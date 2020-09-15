@@ -2,7 +2,7 @@
 
 $pa = readline("entre le prix d'un article: ");
 
-$taux = readline("entrer le taux de TVA: ");
+$taux = readline("entrer le taux de TVA en%: ");
 
 $nbart = readline("merci d'indiquer le nombre d'articles");
 
