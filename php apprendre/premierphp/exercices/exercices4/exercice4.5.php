@@ -7,7 +7,8 @@
 
      if ($sexe != "m" && $sexe != "f")
      {
-
+        
+        echo "votre saisi est incorrecte\n";
         $sexe = readline ("merci d'indiquer votre sexe (tapez m ou f: ");
 
      }
