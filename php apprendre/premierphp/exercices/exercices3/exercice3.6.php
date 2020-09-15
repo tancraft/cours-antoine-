@@ -1,43 +1,36 @@
 <?php
 
-
 // on demande l'age de l'enfant
 $age = readline("entrer l'age de votre enfant: ");
 
 // on teste les categories en fonction de la tranche d'age
-if ($age<6)
-{
+switch ($age) {
 
-   echo "votre enfant n'entre dans aucune catégorie";
+    case ($age > 5 && $age < 8):
 
-}
+        echo "votre enfant est un poussin";
+        break;
 
-else if ($age>=6 && $age<8)
-{
+    case '8':
+    case '9':
 
-   echo "votre enfant est un poussin";
+        echo "votre enfant est un pupille";
 
-}
+        break;
 
+    case '10':
+    case '11':
 
-else if ($age>=8 && $age<10)
-{
+        echo "votre enfant est un minime";
+        break;
 
-   echo "votre enfant est un pupille";
+    case '12':
+    case '13':
 
-}
+        echo "votre enfant est un cadet";
+        break;
 
-else if ($age>=10 && $age<12)
-{
-
-   echo "votre enfant est un minime";
-
-}
-
-else
-{
-
-   echo "votre enfant est un cadet";
+    default:
+        echo "votre enfant n'entre dans aucune categorie";
 
 }
-?>
