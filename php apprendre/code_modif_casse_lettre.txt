@@ -1,0 +1,3 @@
+do {
+    $sexe=strtoupper(readline("Votre sexe (H /F) :"));
+} while ($sexe != "H" && $sexe != "F");
