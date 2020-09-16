@@ -20,43 +20,35 @@ echo "le candidat 1 a obtenu " . $score1 . " % des voix\n";
 
 // on test si le candidat 1  a gagner en obtenant + 50% des voix
 
-switch($score1) 
-{
-  case $score1>50:
-
+if ($score1 >= 50) {
     echo "le candidat est élu president\n";
-  break;
 
-  case $score1 > 12.5 && $score1 < 50:
+} else {
 
-    echo "le candidat est selectionner pour le second tour\n";
-  break;
+    if ($score1 > 12.5) { // ici on test si son score est superieur a 12.5
 
-  case $score1 == 12.5:
+        echo "le candidat est selectionner pour le second tour\n";
 
-    echo "le candidat 1 est selectionner de justesse\n";
-  break;
+    } else if ($score1 < 12.5) {
 
-default : 
-   
-    echo "le candidat 1 n'est pas retenu pour le second tour, il a perdu\n";    
-}
+        echo "le candidat 1 n'est pas retenu pour le second tour, il a perdu\n";
 
-if ($score1<50)
+    } else if ($score1 == 12.5) {
 
-{
+        echo "le candidat 1 est selectionner de justesse\n";
 
-     if ($score1>$score2 && $score1>$score3 && $score1>$score4)
-     {
+    } else {
 
-         echo "le candidat 1 est favori pour gagner";
+        if ($score1 > $score2 && $score1 > $score3 && $score1 > $score4) {
 
-     }
-     else 
-     {
+            echo "le candidat 1 est favori pour gagner\n";
 
-         echo"le candidat n'est pas favori pour gagner";
+        } else {
 
-     }   
+            echo "le candidat n'est pas favori pour gagner\n";
+
+        }
+
+    }
 
 }
