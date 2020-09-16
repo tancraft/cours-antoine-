@@ -1,3 +1,14 @@
 do {
     $sexe=strtoupper(readline("Votre sexe (H /F) :"));
 } while ($sexe != "H" && $sexe != "F");
+
+
+syntaxe simplifier d'un if quand une seule condition a verifier et qu il fait la meme action
+
+exemples
+
+echo ($var > 0) ? "positif" : "negatif";
+
+ajout de valeur
+
+$var total = $op == "+" ? $var1 + $var2 : $var1 - var2 ;
