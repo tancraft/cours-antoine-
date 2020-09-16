@@ -1,5 +1,5 @@
 <?php
-
+// test envoi
 $sommdu=0; // initialise variable sommdu
 
 do
