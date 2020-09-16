@@ -41,7 +41,7 @@ default :
     echo "le candidat 1 n'est pas retenu pour le second tour, il a perdu\n";    
 }
 
-if ($score1<50)
+if ($score1<50 && $score1>12.5)
 
 {
 
