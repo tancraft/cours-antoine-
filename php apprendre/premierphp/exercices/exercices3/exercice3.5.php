@@ -15,22 +15,22 @@
 
   }
 
-  // on verifie que les deux nombre sont soit positifs ou negatifs
-   
-  else if ($nb1<0 && $nb2<0 or $nb1>0 && $nb2>0)
+  // sinon c est que le chiffre est nul 
+  else if ($nb1 == 0 or $nb2 == 0)
 
   {
 
-     echo "le produit de ces nombre est positif: ";
+   echo "ce chiffre est nul: ";
 
   }
 
-  // sinon c est que le chiffre est nul
 
-  else
+
+  else // on verifie que les deux nombre sont soit positifs ou negatifs
   {
-
-     echo "ce chiffre est nul: ";
+   
+   echo "le produit de ces nombre est positif: ";
+   
 
   }
 
