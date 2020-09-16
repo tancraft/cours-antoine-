@@ -30,7 +30,7 @@ else if ($score1 > 12.5 && $score1 < 50)
     echo "le candidat est selectionner pour le second tour\n";
 
 } 
-else if ($score1 <= 12.5 && $score1 < $score2 && $score1 < $score3 && $score1 < $score4) 
+else if ($score1 == 12.5) 
 { // ici on test si il est reçu de justesse pour le second tour (j'ai un doute sur ce test quand meme)
 
     echo "le candidat 1 est selectionner de justesse\n";
