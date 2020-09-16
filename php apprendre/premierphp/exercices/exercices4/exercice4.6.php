@@ -1,6 +1,6 @@
 <?php
 
-// on recueille nombre de voix obtenues par chaqure candidats zut
+// on recueille nombre de voix obtenues par chaqure candidats zu
 
 $nbvoix1 = readline("indiquez le nombre de voix obtenues par le candidat 1: ");
 $nbvoix2 = readline("indiquez le nombre de voix obtenues par le candidat 2: ");
