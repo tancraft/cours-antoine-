@@ -13,6 +13,11 @@ do
 } 
 while (!is_int($nb * 1)); // verifier qu'il s'agit d'un entier
 
-$fact = gmp_fact($nb); // appel de la fonction de calcul de la factorielle
+$fact=1;
+
+for ($add=1; $add<$nb; $add++)
+{
+   $fact = $fact*$add;
+}
 
 echo $fact; // affichage de la factorielle
