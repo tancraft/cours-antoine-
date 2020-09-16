@@ -1,3 +1,6 @@
+
+modif casse des lettres
+
 do {
     $sexe=strtoupper(readline("Votre sexe (H /F) :"));
 } while ($sexe != "H" && $sexe != "F");
@@ -12,3 +15,14 @@ echo ($var > 0) ? "positif" : "negatif";
 ajout de valeur
 
 $var total = $op == "+" ? $var1 + $var2 : $var1 - var2 ;
+
+
+code pour verifier si la valeur est un integer
+
+do {
+    do {
+        $x = readline("Entrer un nombre : ");
+    } while (!is_numeric($x));
+    //  var_dump( $x);
+    //  var_dump( $x*1);
+} while (!is_int($x * 1));
