@@ -15,9 +15,23 @@ while (!is_int($nb * 1)); // verifier qu'il s'agit d'un entier
 
 $fact=1;
 
-for ($add=1; $add<$nb; $add++)
+    echo "la factorielle de ".$nb." est: \n";
+
+for ($add=1; $add<$nb+1; $add++)// boucle pour le calcul de la factorielle
 {
-   $fact = $fact*$add;
+      $fact = $fact*$add;
+
+   if ($add<$nb) // condition pour affichage du calcul
+   {
+
+        echo $add."x";
+
+   }  
+   
+   else if ( $add == $nb)
+
+        echo $add;
+
 }
 
-echo $fact; // affichage de la factorielle
+     echo "=".$fact; // affichage de la factorielle
