@@ -1,4 +1,5 @@
 <?php
+   //decla
 
 // ici nous allons creer differents tableaux
 
