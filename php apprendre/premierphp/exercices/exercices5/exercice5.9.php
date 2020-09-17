@@ -1,7 +1,7 @@
 <?php
 
 /* Ici nous allons ecrire un lgorithme permettant de calculer le prix total des courses d'un client
-ainsi que le calcul pour lui rendre sa monnaie*/
+ainsi que le calcul pour lui rendre sa monnaiekk*/
 
 function demandeEntier($phrase) // Demande un entier à l'utilisateur et on a besoin dune phrase dans les paramettres
 {
