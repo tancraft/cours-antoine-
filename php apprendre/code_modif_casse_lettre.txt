@@ -14,7 +14,7 @@ echo ($var > 0) ? "positif" : "negatif";
 
 ajout de valeur
 
-$var total = $op == "+" ? $var1 + $var2 : $var1 - var2 ;
+$vartotal = $op == "+" ? $var1 + $var2 : $var1 - var2 ;
 
 
 code pour verifier si la valeur est un integer
