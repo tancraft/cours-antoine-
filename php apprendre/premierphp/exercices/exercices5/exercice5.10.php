@@ -24,7 +24,7 @@ function factorielle($nb)
 
     for ($i = 1; $i <= $nb; $i++) // boucle pour le calcul de la factorielle
     {
-        $fact = $fact * $i;
+        $fact *= $i;
 
     }
     return $fact;
