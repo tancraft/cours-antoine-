@@ -29,9 +29,9 @@ for ($add=1; $add<$nb+1; $add++)// boucle pour le calcul de la factorielle
    }  
    
    else if ( $add == $nb)
-
+   {
         echo $add;
-
+   }
 }
 
      echo "=".$fact; // affichage de la factorielle
