@@ -1,5 +1,5 @@
 <?php
-
+// correction affichage par amanda
 
 // demande saisie d'un nombre avec verification si c'est un entier
 do 
@@ -17,21 +17,12 @@ $fact=1;
 
     echo "la factorielle de ".$nb." est: \n";
 
-for ($add=1; $add<$nb+1; $add++)// boucle pour le calcul de la factorielle
+    echo "1";
+
+for ($add=2; $add<=$nb; $add++)// boucle pour le calcul de la factorielle
 {
       $fact = $fact*$add;
-
-   if ($add<$nb) // condition pour affichage du calcul
-   {
-
-        echo $add."x";
-
-   }  
-   
-   else if ( $add == $nb)
-   {
-        echo $add;
-   }
+      echo "x".$add;
 }
 
      echo "=".$fact; // affichage de la factorielle
