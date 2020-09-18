@@ -74,6 +74,7 @@ function afficheTableau($tab)
     }
     echo "\n";
 }
+
 // on demande la saisie de la taille du tableau a l'utilisateur
 $tailletab1= demandeEntier("merci d'entrer le nombre de valeurs a saisir: ");
 
