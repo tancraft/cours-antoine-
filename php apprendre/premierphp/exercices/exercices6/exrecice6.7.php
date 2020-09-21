@@ -61,3 +61,4 @@ for($i=0;$i<9;$i++)
 }
 
 echo "la moyenne est de ". $total/9;
+?>
