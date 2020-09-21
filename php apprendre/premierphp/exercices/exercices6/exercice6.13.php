@@ -12,7 +12,7 @@ require "Fonctions_tableaux.php";
 //je demande le nombre de valeurs a saisir
 $tailletab1 = demandeEntier("merci d'entrer le nombre de notes a saisir: ");
 
-//ici les variables necessaire a la recherche du plus grand nombre et sa position
+//ici les variables necessaire a la recherche du plus grand nombre
 $plusgrand = 0;
 
 /*je n'utilise pas la fonction de creation de tableau car
@@ -23,7 +23,7 @@ for ($i = 0; $i < $tailletab1; $i++)
 
     if ($tab1[$i] > $plusgrand) 
     {
-
+        //recherche du plus grand nombre et $pos correspond a sa position dans le tableau
         $plusgrand = $tab1[$i];
         $pos = $i+1;// je rajoute +1 pour pas que lors de l affichage cela m indique 0 par exemple si en premiere position
 
