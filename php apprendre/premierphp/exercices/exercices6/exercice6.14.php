@@ -25,7 +25,7 @@ $moy = $total / $tailletab1; // ici on calcule la moyenne du total des notes par
 for ($i = 0; $i < $tailletab1; $i++) 
 {
 
-    if ($tab1{$i} > $moy) 
+    if ($tab1[$i] > $moy) 
     {
 
         $nbmoy += 1;//ajout du nombre de notes au dessus de la moyenne
