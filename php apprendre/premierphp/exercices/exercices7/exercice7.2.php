@@ -28,7 +28,7 @@ for ($i=0;$i<$tailletab1-1;$i++)
          $pos=$j;
 
        }
-    
+    // echange des valeurs
        $tab1[$pos]=$tab1[$i];
        $tab1[$i]=$maxi;
 
