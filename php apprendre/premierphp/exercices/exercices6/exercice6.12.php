@@ -79,7 +79,7 @@ echo"le deuxieme tableaux\n";
 afficheForeach($tab2);
 
 // affichage du compte des valeurs positives et negatives pour les tableaux
-echo "il y a ". $pos ."valeurs positives dans le tableau 1\n et ". $neg ." valeurs negatives\n";
+echo "il y a ". $pos ." valeurs positives dans le tableau 1\n et ". $neg ." valeurs negatives\n";
 
-echo "il y a ". $pos1 ."valeurs positives dans le tableau 2\n et ". $neg1 ." valeurs negatives\n";
+echo "il y a ". $pos1 ." valeurs positives dans le tableau 2\n et ". $neg1 ." valeurs negatives\n";
 ?>
