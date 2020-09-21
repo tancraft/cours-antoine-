@@ -36,4 +36,4 @@ for ($i = 0; $i < $tailletab1; $i++)
 afficheTableau($tab1); // on affiche le tableau
 
 echo "la moyenne de la classe est de " . $moy."\n"; // affichage de la moyenne
-echo "il y a ".$nbmoy." élèves au dessus de la moyenne";//affichage du nombre d'élèves au dessus de la moyenne
+echo "il y a ".$nbmoy." eleves au dessus de la moyenne";//affichage du nombre d'élèves au dessus de la moyenne
