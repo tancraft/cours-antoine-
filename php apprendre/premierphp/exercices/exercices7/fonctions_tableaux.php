@@ -76,7 +76,6 @@ function afficheTableau($tab)
 }
 
 
-/*fonction pour la recherche et le tri de valeurs dans l'ordre croissant
-$taille: necessite la valeur $taille du tableau et la valeur du tableau
+
 
 ?>
