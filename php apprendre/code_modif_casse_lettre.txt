@@ -26,3 +26,8 @@ do {
     //  var_dump( $x);
     //  var_dump( $x*1);
 } while (!is_int($x * 1));
+
+
+reglage caractere cmd lien
+
+https://forums.commentcamarche.net/forum/affich-29238035-probleme-affichage-caracteres-speciaux-sous-cmd
