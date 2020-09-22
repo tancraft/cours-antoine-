@@ -1,6 +1,6 @@
 <?php
 include "fonctions_tableaux.php";
-$tab = creerTableauAvecTaille(5);// on cree le tableau avec 5 valeurs
+$tab = creerTab(5);// on cree le tableau avec 5 valeurs
 $consec = true; // variable consecutive sur vraie
 $i = 0;// initialize $i car pas encore fait du coup risque d erreur si n'apparait pas 
 if ($tab[0] < $tab[$i + 1])// on verifie que la premier valeur du tableau soit inferieur de 1 par rapport a la seconde valeur
