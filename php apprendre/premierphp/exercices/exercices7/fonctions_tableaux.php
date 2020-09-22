@@ -39,7 +39,7 @@ function tableauSaisie()
     
     do
     {
-        $nb= demandeEntier("Entrer une valeur");
+        $nb= demandeEntier("Entrer une valeur ");
         if ($nb != 0 ) //evite que le dernier 0 entre dans le tableau
         {
             $tab[]=$nb;
