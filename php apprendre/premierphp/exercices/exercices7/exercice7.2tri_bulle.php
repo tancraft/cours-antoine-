@@ -20,13 +20,13 @@ do//methode du tri a bulle pour le tableau1
 {
     $yapermut = false;
 
-    for ($i; $i < count($tab1) - 1; $i++) 
+    for ($i=0; $i < count($tab1) - 1; $i++) 
     {
 
         if ($tab1[$i] > $tab1[$i + 1]) 
         {
 
-            $temp = $tabn1[$i];
+            $temp = $tab1[$i];
             $tab1[$i] = $tab1[$i + 1];
             $tab1[$i + 1] = $temp;
             $yapermut = true;
