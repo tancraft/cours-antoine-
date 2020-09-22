@@ -3,7 +3,7 @@
 //algorithme qui trie un tableau dans l’ordre décroissant.
 
 // le fichier est requis, le programme s'arrête si le fichier n'est pas dispo
-require "Fonctions_tableaux.php";
+require "fonctions_tableaux.php";
 
 $tailletab1=demandeEntier("veuillez indiquez la taille du tableau ");
 
