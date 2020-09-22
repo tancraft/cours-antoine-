@@ -21,7 +21,7 @@ for ($i=0;$i<$tailletab1-1;$i++)
     $maxi=$tab1[$i];// la variable ou on mettra le plus grand nombre commence avec la valeur de base $i
     $pos=$i;// on enregistre la valeur de la position en commencant par $i
 
-    for ($j=$i+1;$j<$tailletab1;$j++)
+    for ($j=$i+1;$j<$tailletab1;$j++)// tri par insertion
     {
     
        if ($tab1[$j]>$maxi)// verification des valeurs les plus grandes
