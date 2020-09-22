@@ -1,5 +1,5 @@
 <?php
-include "FonctionsTableaux.php";
+include "fonctions_tableaux.php";
 $tab = creerTableauAvecTaille(5);// on cree le tableau avec 5 valeurs
 $consec = true; // variable consecutive sur vraie
 $i = 0;// initialize $i car pas encore fait du coup risque d erreur si n'apparait pas 
