@@ -11,7 +11,7 @@ function afficherTableau($tab)
     echo "\n";
 }
 
-
+/*
       $t = array( 'B', 'O', 'N', 'J', 'O', 'U', 'R' );
       Echo "Cette méthode doit donner B O N J O U R et ca donne : " . afficherTableau($t);
 
@@ -19,7 +19,7 @@ function afficherTableau($tab)
 
       afficherTableau($t);
 
-
+*/
      // 2. tab[] coderMot($mot)
 // méthode qui prend un mot en paramètre d'entrée et qui renvoi un tableau de caractères contenant autant de case que de lettres dans le mot. Chacune de ces cases contient un 
 //Lignes à coller dans le main
