@@ -22,7 +22,7 @@ do
    $i++;
 }
 while(!$trouver);
-echo "il existe pas !!!"
+echo "il existe pas !!!";
 
     for ($i=0;$i<count($tab2);$i++)// tri par insertion
     {
@@ -39,6 +39,6 @@ echo "il existe pas !!!"
            }
         
 
-      }
+    }
     
 
