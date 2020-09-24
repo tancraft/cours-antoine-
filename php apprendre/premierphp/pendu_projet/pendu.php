@@ -23,6 +23,8 @@ function afficherTableau($tab)
      // 2. tab[] coderMot($mot)
 // méthode qui prend un mot en paramètre d'entrée et qui renvoi un tableau de caractères contenant autant de case que de lettres dans le mot. Chacune de ces cases contient un 
 //Lignes à coller dans le main
+
+
 $test = "bonjour";
 echo "Cette méthode doit donner        et ca donne : " . afficherTableau(coderMot($t));
 
