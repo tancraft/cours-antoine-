@@ -1,4 +1,6 @@
 <?php
+
+require "fonctions_pendu.php";
 /**
  *
  * Fonctions qui affiche un tableau via foreach
@@ -156,15 +158,21 @@ afficherTableau($positions);
 Echo "Cette méthode doit donner B O N K O U R et ca donne";
 
 $t = array( 'B', 'O', 'N', 'J', 'O', 'U', 'R' );
-afficherTableau( ajouterUneLettre('K', $t, 3));*/
+afficherTableau( ajouterUneLettre('K', $t, 3));
 
 
 //etape 5
 $motATrouver="BONJOUR";
 $t = array( 'B', '_', 'N', 'J', '_', 'U', '_' );
 echo "Cette méthode doit donner B O N J O U _ et ca donne ";
-afficherTableau(ajouterLesLettres('O', $t, testerLettre('O', str_split($motATrouver),0)));
+afficherTableau(ajouterLesLettres('O', $t, testerLettre('O', str_split($motATrouver),0)));*/
 
+//etape 6
+/* méthode qui renvoi un mot en le choisissant au hasard parmi une liste de mots 
+Utiliser la méthode CreerDico disponible dans le dossier*/
+
+$tabmot=(array_rand(Creer_dico()));
+echo $tabmot;
 
 
 

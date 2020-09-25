@@ -7,7 +7,7 @@
  *
  * @return  void            Affiche le mot.
  */
-function AfficherTableau($tab)
+function AfficherTableauMartine($tab)
 {
     foreach ($tab as $ele)
     {
