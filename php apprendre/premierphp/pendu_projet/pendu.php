@@ -4,8 +4,6 @@
  * Fonctions qui affiche un tableau via foreach
  * @param  array méthode qui prend un tableau en parametre d'entrée
  *
- *
- *
  */
 function afficherTableau($tab)
 {
@@ -25,7 +23,6 @@ function afficherTableau($tab)
  * Fonctions qui remplace les lettres pr un underscore
  * méthode qui prend un mot en paramètre d'entrée
  * @param array $tab tableaau contenant un underscore par case
- *
  *
  */
 function coderMot($mot)
@@ -90,24 +87,51 @@ return ($tab);*/
 
 /**
  * 
- * fonction qui permet d'échanger une valeur dans un tableau
+ * fonction qui permet d'échanger une valeur dans un tableau, renvoi le tableau remplis
  * @param array la valeur qui remplace l'ancienne
  * @param array le tableau dans lequel on va echanger la valeur
- * @param array la position a laquelle nous allons mettre la nouvelle valeur
- * 
- * 
- * 
- * 
+ * @param array la position a laquelle nous allons mettre la nouvelle valeur 
  * 
  */
 function ajouterUneLettre($val,$tab,$key)
 {
-for ($i=0;$i<count($tab);$i++)// pas necessaire actuellement mais par la suite il faudra echanger plusieurs valeurs via un autre tableau
-{
+
    $tab[$key]=$val;
    return($tab);
+
 }
+
+/**
+ * 
+ * methode qui permet d'echanger plusieurs valeurs dans un meme tableau et renvoi le tableau remplit 
+ * renvoi le tableau remplis
+ * @param array la valeur a ajouter
+ * @param array le tableau dans lequel on doit ajouter les valeurs
+ * @param array le tableau avec les positions qui indique quels valeurs sont echanger dans le tableau initial
+ * 
+ */
+function ajouterLesLettres($val,$tab,$tabpos)
+{
+    
+    for ($i=0;$i<count($tabpos);$i++)//boucle permettant de parcourir le tableau des positions, on sort de la boucle quand tous les echanges sont fait 
+    { //flag inutile
+       for($j=0;$j<count($tab);$j++)//boucle permettant de parcourir le tableau ou l'echange doit etre fait
+       {
+
+           if($tabpos[$i]==$j)//si la position dans le tableau pos correspond a la position dans tableau initial on fait l'echange
+           {
+
+            ajouterUneLettre($val,$tab,$tabpos[$i]);
+            $tab[$j]=$val;
+
+           }
+       }        
+
+    }
+    return($tab);
+
 }
+
 
 /*//etape 1
 $t = array('B', 'O', 'N', 'J', 'O', 'U', 'R');
@@ -125,12 +149,22 @@ afficherTableau(coderMot($test));
 echo "Cette méthode doit donner \n 1 \n 4 et ca donne \n";
 $t = array('B', 'O', 'N', 'J', 'O', 'U', 'R');
 $positions = testerLettre('O', $t, 0);
-afficherTableau($positions);*/
+afficherTableau($positions);
 
 
 //etape 4
 Echo "Cette méthode doit donner B O N K O U R et ca donne";
 
 $t = array( 'B', 'O', 'N', 'J', 'O', 'U', 'R' );
-afficherTableau( ajouterUneLettre('K', $t, 3));
+afficherTableau( ajouterUneLettre('K', $t, 3));*/
+
+
+//etape 5
+$motATrouver="BONJOUR";
+$t = array( 'B', '_', 'N', 'J', '_', 'U', '_' );
+echo "Cette méthode doit donner B O N J O U _ et ca donne ";
+afficherTableau(ajouterLesLettres('O', $t, testerLettre('O', str_split($motATrouver),0)));
+
+
+
 
