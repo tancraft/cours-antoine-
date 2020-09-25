@@ -88,6 +88,27 @@ while ($i == count($tab));
 return ($tab);*/
 }
 
+/**
+ * 
+ * fonction qui permet d'échanger une valeur dans un tableau
+ * @param array la valeur qui remplace l'ancienne
+ * @param array le tableau dans lequel on va echanger la valeur
+ * @param array la position a laquelle nous allons mettre la nouvelle valeur
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
+function ajouterUneLettre($val,$tab,$key)
+{
+for ($i=0;$i<count($tab);$i++)// pas necessaire actuellement mais par la suite il faudra echanger plusieurs valeurs via un autre tableau
+{
+   $tab[$key]=$val;
+   return($tab);
+}
+}
+
 /*//etape 1
 $t = array('B', 'O', 'N', 'J', 'O', 'U', 'R');
 echo "Cette méthode doit donner B O N J O U R et ca donne : " . afficherTableau($t);
@@ -106,13 +127,7 @@ $t = array('B', 'O', 'N', 'J', 'O', 'U', 'R');
 $positions = testerLettre('O', $t, 0);
 afficherTableau($positions);*/
 
-function ajouterUneLettre($val,$tab,$key)
-{
-for ($i=0;$i<count($tab);$i++)
-{
-   $tab[$key]=$val;
-}
-}
+
 //etape 4
 Echo "Cette méthode doit donner B O N K O U R et ca donne";
 
