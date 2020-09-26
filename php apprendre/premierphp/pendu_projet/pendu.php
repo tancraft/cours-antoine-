@@ -66,7 +66,7 @@ function testerLettre($lettre, $tab, $pos)
     {
 
         $positions[] = $res + $pos; // on veut la position de la lettre dans le mot ($tab) position de la lettre $pos offset du tableau de base
-        $tabPos = array_merge($positions, testerLettre($lettre, $tab, $res + $pos + 1));// fusionne les tableau obtenus grace a array search via array merge
+        $tabPos = array_merge($positions, testerLettre($lettre, $tab, $res + $pos + 1)); // fusionne les tableau obtenus grace a array search via array merge
         return $tabPos; // renvoie le tableau des position de la lettre recherchee
 
     }
@@ -88,52 +88,51 @@ return ($tab);*/
 }
 
 /**
- * 
+ *
  * fonction qui permet d'échanger une valeur dans un tableau, renvoi le tableau remplis
  * @param array la valeur qui remplace l'ancienne
  * @param array le tableau dans lequel on va echanger la valeur
- * @param array la position a laquelle nous allons mettre la nouvelle valeur 
- * 
+ * @param array la position a laquelle nous allons mettre la nouvelle valeur
+ *
  */
-function ajouterUneLettre($val,$tab,$key)
+function ajouterUneLettre($val, $tab, $key)
 {
 
-   $tab[$key]=$val;
-   return($tab);
+    $tab[$key] = $val;
+    return ($tab);
 
 }
 
 /**
- * 
- * methode qui permet d'echanger plusieurs valeurs dans un meme tableau et renvoi le tableau remplit 
+ *
+ * methode qui permet d'echanger plusieurs valeurs dans un meme tableau et renvoi le tableau remplit
  * renvoi le tableau remplis
  * @param array la valeur a ajouter
  * @param array le tableau dans lequel on doit ajouter les valeurs
  * @param array le tableau avec les positions qui indique quels valeurs sont echanger dans le tableau initial
- * 
+ *
  */
-function ajouterLesLettres($val,$tab,$tabpos)
+function ajouterLesLettres($val, $tab, $tabpos)
 {
-    
-    for ($i=0;$i<count($tabpos);$i++)//boucle permettant de parcourir le tableau des positions, on sort de la boucle quand tous les echanges sont fait 
+
+    for ($i = 0; $i < count($tabpos); $i++) //boucle permettant de parcourir le tableau des positions, on sort de la boucle quand tous les echanges sont fait
     { //flag inutile
-       for($j=0;$j<count($tab);$j++)//boucle permettant de parcourir le tableau ou l'echange doit etre fait
-       {
+        for ($j = 0; $j < count($tab); $j++) //boucle permettant de parcourir le tableau ou l'echange doit etre fait
+        {
 
-           if($tabpos[$i]==$j)//si la position dans le tableau pos correspond a la position dans tableau initial on fait l'echange
-           {
+            if ($tabpos[$i] == $j) //si la position dans le tableau pos correspond a la position dans tableau initial on fait l'echange
+            {
 
-            ajouterUneLettre($val,$tab,$tabpos[$i]);
-            $tab[$j]=$val;
+                ajouterUneLettre($val, $tab, $tabpos[$i]);
+                $tab[$j] = $val;
 
-           }
-       }        
+            }
+        }
 
     }
-    return($tab);
+    return ($tab);
 
 }
-
 
 /*//etape 1
 $t = array('B', 'O', 'N', 'J', 'O', 'U', 'R');
@@ -153,13 +152,11 @@ $t = array('B', 'O', 'N', 'J', 'O', 'U', 'R');
 $positions = testerLettre('O', $t, 0);
 afficherTableau($positions);
 
-
 //etape 4
 Echo "Cette méthode doit donner B O N K O U R et ca donne";
 
 $t = array( 'B', 'O', 'N', 'J', 'O', 'U', 'R' );
 afficherTableau( ajouterUneLettre('K', $t, 3));
-
 
 //etape 5
 $motATrouver="BONJOUR";
@@ -168,11 +165,8 @@ echo "Cette méthode doit donner B O N J O U _ et ca donne ";
 afficherTableau(ajouterLesLettres('O', $t, testerLettre('O', str_split($motATrouver),0)));*/
 
 //etape 6
-/* méthode qui renvoi un mot en le choisissant au hasard parmi une liste de mots 
+/* méthode qui renvoi un mot en le choisissant au hasard parmi une liste de mots
 Utiliser la méthode CreerDico disponible dans le dossier*/
 
-$tabmot=(array_rand(Creer_dico()));
+$tabmot = (array_rand(Creer_dico()));
 echo $tabmot;
-
-
-
