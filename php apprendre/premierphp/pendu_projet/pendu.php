@@ -1,5 +1,5 @@
 <?php
-
+//test2
 require "fonctions_pendu.php";
 /**
  *
