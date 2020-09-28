@@ -1,20 +1,4 @@
 <?php
-/**
- * Affiche le tableau entré en paramètre
- * et sépare les lettres par des espaces.
- *
- * @param   array   $tab    Tableau contentant une lettre par case.
- *
- * @return  void            Affiche le mot.
- */
-function AfficherTableauMartine($tab)
-{
-    foreach ($tab as $ele)
-    {
-        echo $ele . " ";
-    }
-    echo "\n";
-}
 
 function Creer_dico()
 {
@@ -855,4 +839,236 @@ function DessinerPendu($nbErreur)
         default:
             break;
     }
+}
+/**
+ *
+ * Fonctions qui affiche un tableau via foreach
+ * @param  [array] tab méthode qui prend un tableau en parametre d'entrée
+ *
+ */
+function afficherTableau($tab)
+{
+
+    echo "\n";
+    foreach ($tab as $elt) // le tableau est parcouru de la 1ere à la dernière case, les cases sont mises tour à tour dans $elt
+    {
+
+        echo $elt . " ";
+
+    }
+    echo "\n";
+}
+
+/**
+ *
+ * Fonctions qui remplace les lettres pr un underscore
+ * méthode qui prend un mot en paramètre d'entrée
+ * @param [array] tab tableaau contenant un underscore par case
+ *
+ */
+function coderMot($mot)
+{
+
+    $tab = str_split($mot);
+    for ($i = 0; $i < count($tab); $i++) {
+
+        $tab[$i] = "_"; //ne pas mettre d'echo
+
+    }
+    return ($tab);
+
+}
+
+/**
+ *
+ * fonction qui recherche les occurencess d'une lettre passee en paramettre dans un tableau
+ * dans un tableau de caracteres lui meme passee en parametre et renvois les positions dans un tableau
+ * @param [char] lettre la lettre a recherchee
+ * @param [array]  tab le tableau dans lequel il doit chercher
+ * @param [array]  pos la position de depart de recherche dans le tableau
+ *
+ */
+function testerLettre($lettre, $tab, $pos)
+{
+    $tabRecherche = array_slice($tab, $pos); // utilise le tableau de base pour en creer 1 suite a la fonction array slice
+    $res = array_search($lettre, $tabRecherche); //verifie si lettre apparait dans tableaux
+
+    if ($res === false) // === signifie que c est egal en valaur et type de variable
+    {
+
+        return []; // retourne rien
+
+    } else // si ne vaut pas false
+    {
+
+        $positions[] = $res + $pos; // on veut la position de la lettre dans le mot ($tab) position de la lettre $pos offset du tableau de base
+        $tabPos = array_merge($positions, testerLettre($lettre, $tab, $res + $pos + 1)); // fusionne les tableau obtenus grace a array search via array merge
+        return $tabPos; // renvoie le tableau des position de la lettre recherchee
+
+    }
+}
+
+/**
+ *
+ * fonction qui permet d'échanger une valeur dans un tableau, renvoi le tableau remplis
+ * @param [array] la valeur qui remplace l'ancienne
+ * @param [array] le tableau dans lequel on va echanger la valeur
+ * @param [array] la position a laquelle nous allons mettre la nouvelle valeur
+ *
+ */
+function ajouterUneLettre($lettre, $tab, $pos)
+{
+
+    $tab[$pos] = $lettre;
+    return ($tab);
+
+}
+
+/**
+ *
+ * methode qui permet d'echanger plusieurs valeurs dans un meme tableau et renvoi le tableau remplit
+ * renvoi le tableau remplis
+ * @param [array] la valeur a ajouter
+ * @param [array] le tableau dans lequel on doit ajouter les valeurs
+ * @param [array] le tableau avec les positions qui indique quels valeurs sont echanger dans le tableau initial
+ *
+ */
+function ajouterLesLettres($val, $tab, $tabpos)
+{
+
+    for ($i = 0; $i < count($tabpos); $i++) //boucle permettant de parcourir le tableau des positions
+    {
+        $tab = ajouterUneLettre($val, $tab, $tabpos[$i]);
+    }
+    return $tab;
+}
+
+/**
+ * Permet d'afficher les caractères contenus dans la liste
+ * passée en paramètre
+ *
+ * @param array $listeLettres contenant la liste de lettres à afficher
+ */
+function afficherMauvaisesLettres($listeLettres)
+{
+    echo "\n Les lettres non présentes sont ";
+    $taille = count($listeLettres);
+    for ($i = 0; $i < $taille; $i++) 
+    {
+        if ($i == $taille - 1) 
+        {
+            echo $listeLettres[$i];
+        }
+        else 
+        {
+            echo $listeLettres[$i] . ",";
+        }
+    }
+}
+
+/**
+ * méthode qui renvoi un mot en le choisissant au hasard parmi une liste de mots
+ *
+ * @return  string  $mot    le mot choisi le dictionnaire
+ *
+ */
+function choisirMot()
+{
+
+    $dico = creer_dico();
+    $nb = rand(0, count($dico) - 1);
+    return $dico[$nb]; // ou  return $dico[array_rand($dico)]
+}
+/**
+ * méthode qui demande une lettre à l’utilisateur, elle vérifie que le caractère saisi est une lettre et le renvoi en majuscule.
+ *
+ * @return void
+ */
+function demanderLettre()
+{
+    do 
+    {
+        echo "\n";
+        $lettre = strtoupper(readline("entrez une lettre "));
+    } 
+    while ((!ctype_alpha($lettre)) || (strlen($lettre) > 1)); // ou utilisation de  while (!IntlChar::isalpha($lettre))
+    return $lettre;
+}
+
+/**
+ * méthode qui renvoi 1 si la partie est gagné, -1 si la partie est perdu, 
+ * 0 si la partie continue. Elle reçoit en paramètre le nombre d’erreurs et le tableau contenant le mot composé
+ * 
+ * @param [int] le nombre d'erreurs commise par le joueur
+ * 
+ * @param [array] le tableau ou se trouve les bonne reponses
+ * 
+ */
+
+function testerGagner($nberreur, $tab)
+{
+    if ($nberreur == 9) 
+    {
+        return -1;
+
+    } 
+    else if (in_array("_", $tab) === false) 
+    {
+        return 1;  
+    } 
+    else 
+    {
+        return 0;
+    }
+
+}
+
+/**
+ * méthode qui lance et gère une partie 
+ * @return void
+ */
+function lancerPartie()
+{
+    $motatrouver = choisirMot();
+    $tabmat = str_split($motatrouver);
+    $motcoder = coderMot($motatrouver);
+
+    $nberreurs = 0;
+    $gagne = false;
+    $mauvaiselettre[] = " ";
+
+    do 
+    {
+        afficherTableau($motcoder);
+
+        if (!empty($mauvaiselettre)) 
+        {
+
+            afficherMauvaisesLettres($mauvaiselettre);
+
+        }
+        $lettre = demanderLettre();
+        $lettrepos = testerLettre($lettre, $tabmat, 0);
+
+        if (empty($lettrepos)) {
+
+            $nberreurs++;
+            $mauvaiselettre[] = $lettre;
+
+        } 
+        else 
+        {
+            $motcoder = ajouterLesLettres($lettre, $motcoder, $lettrepos);
+        }
+        DessinerPendu($nberreurs);
+
+        $gagne = testerGagner($nberreurs, $motcoder);
+        
+
+
+
+    } 
+    while ($gagne == 0);
+
+
 }
