@@ -11,7 +11,7 @@ do
        do 
        {
    
-           $choix = strtoupper(readline("Voulez vous rejouer ? ")); // je demande a se que la casse soit obligatoirement une majuscule mais ne fonctionne pas
+           $choix = strtoupper(readline("Voulez vous rejouer ? ")); // je demande a se que la casse soit obligatoirement une majuscule
    
        } while ($choix != "O" && $choix != "N");
 }
