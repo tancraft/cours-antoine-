@@ -115,7 +115,7 @@ function ajouterLesLettres($val, $tab, $tabpos)
 
     }
     return ($tab);
-
+}
 /**
  * méthode qui demande une lettre à l’utilisateur, elle vérifie que le caractère saisi est une lettre et le renvoi en majuscule.
  * 
@@ -163,4 +163,3 @@ afficherTableau(ajouterLesLettres('O', $t, testerLettre('O', str_split($motATrou
 //etape 6
 /* méthode qui renvoi un mot en le choisissant au hasard parmi une liste de mots
 Utiliser la méthode CreerDico disponible dans le dossier*/
-
