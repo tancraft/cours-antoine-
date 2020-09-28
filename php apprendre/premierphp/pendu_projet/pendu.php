@@ -116,6 +116,44 @@ function ajouterLesLettres($val, $tab, $tabpos)
     }
     return ($tab);
 }
+
+
+/**
+ * Permet d'afficher les caractères contenus dans la liste
+ * passée en paramètre
+ *
+ * @param array $listeLettres contenant la liste de lettres à afficher
+ */
+function afficherMauvaisesLettres($listeLettres)
+{
+    echo "\n Les lettres non présentes sont ";
+    $taille = count($listeLettres);
+    for ($i = 0; $i < $taille; $i++)
+    {
+        if ($i == $taille - 1)
+        {
+            echo $listeLettres[$i];
+        }
+        else
+        {
+            echo $listeLettres[$i] . ",";
+        }
+    }
+}
+
+/**
+ * méthode qui renvoi un mot en le choisissant au hasard parmi une liste de mots
+ *
+ * @return  string  $mot    le mot choisi le dictionnaire
+ *
+ */
+function choisirMot()
+{
+
+    $dico = creer_dico();
+    $nb = rand(0, count($dico) - 1);
+    return $dico[$nb]; // ou  return $dico[array_rand($dico)]
+}
 /**
  * méthode qui demande une lettre à l’utilisateur, elle vérifie que le caractère saisi est une lettre et le renvoi en majuscule.
  * 
@@ -146,6 +184,10 @@ function testerGagner($nberreur, $tab)
     }
 
 }
+
+
+
+
 
 /*//etape 1
 $t = array('B', 'O', 'N', 'J', 'O', 'U', 'R');
