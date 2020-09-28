@@ -1005,16 +1005,22 @@ function demanderLettre()
  * 
  */
 
-function testerGagner($nberreur, $tab)
+function testerGagner($nberreur, $tab,$motatrouver)
 {
     if ($nberreur == 9) 
     {
         return -1;
+        echo "VOUS AVEZ PERDU !!!\n";
+        echo "le mot était ".$motatrouver. "\n";
 
     } 
     else if (in_array("_", $tab) === false) 
     {
+        
         return 1;  
+        echo "VOUS AVEZ GAGNER !!!\n";
+        echo "le mot est bien ".$motatrouver. "\n";
+
     } 
     else 
     {
@@ -1050,7 +1056,8 @@ function lancerPartie()
         $lettre = demanderLettre();
         $lettrepos = testerLettre($lettre, $tabmat, 0);
 
-        if (empty($lettrepos)) {
+        if (empty($lettrepos)) 
+        {
 
             $nberreurs++;
             $mauvaiselettre[] = $lettre;
@@ -1062,13 +1069,27 @@ function lancerPartie()
         }
         DessinerPendu($nberreurs);
 
-        $gagne = testerGagner($nberreurs, $motcoder);
-        
-
-
+        $gagne = testerGagner($nberreurs, $motcoder,$motatrouver);
+          
 
     } 
     while ($gagne == 0);
+
+    if ($gagne == -1) 
+    {
+
+        echo "VOUS AVEZ PERDU !!!\n";
+        echo "le mot était ".$motatrouver. "\n";
+
+    } 
+    else
+    {
+        
+
+        echo "VOUS AVEZ GAGNER !!!\n";
+        echo "le mot est bien ".$motatrouver. "\n";
+
+    } 
 
 
 }
