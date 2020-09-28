@@ -95,10 +95,11 @@ do//methode du tri a bulle pour le tableau1
         }
 
     }
-    return($tab);
+    
 
 } 
 while ($yapermut);
+return($tab);
 }
 
 function rechercheInsert($tab)
