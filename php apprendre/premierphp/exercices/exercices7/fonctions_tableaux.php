@@ -76,7 +76,7 @@ function afficheTableau($tab)
     echo "\n";
 }
 
-function recherchebulle($tab)
+function recherchebulle($tab) // a renommer
 {
     do//methode du tri a bulle pour le tableau1
     {
@@ -102,9 +102,9 @@ function recherchebulle($tab)
     return ($tab);
 }
 
-function rechercheInsert($tab)
+function rechercheInsert($tab) // a renommer
 {
-    $tailletab = max($tab);
+    $tailletab = max($tab);  // a remplacer par Count
 
     for ($i = 0; $i < $tailletab - 1; $i++) 
     {
@@ -132,7 +132,7 @@ function rechercheInsert($tab)
 }
 
 
-function rechercheLarge($tab)
+function rechercheLarge($tab)   // a renommer
 {
 
        for ($i = 0; $i< intdiv(count($tab),2);$i++)// diviser la taille du tableau
