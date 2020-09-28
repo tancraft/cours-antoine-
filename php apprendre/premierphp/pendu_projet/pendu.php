@@ -74,9 +74,9 @@ function testerLettre($lettre, $tab, $pos)
 /**
  *
  * fonction qui permet d'échanger une valeur dans un tableau, renvoi le tableau remplis
- * @param array la valeur qui remplace l'ancienne
- * @param array le tableau dans lequel on va echanger la valeur
- * @param array la position a laquelle nous allons mettre la nouvelle valeur
+ * @param [array] la valeur qui remplace l'ancienne
+ * @param [array] le tableau dans lequel on va echanger la valeur
+ * @param [array] la position a laquelle nous allons mettre la nouvelle valeur
  *
  */
 function ajouterUneLettre($val, $tab, $key)
@@ -91,9 +91,9 @@ function ajouterUneLettre($val, $tab, $key)
  *
  * methode qui permet d'echanger plusieurs valeurs dans un meme tableau et renvoi le tableau remplit
  * renvoi le tableau remplis
- * @param array la valeur a ajouter
- * @param array le tableau dans lequel on doit ajouter les valeurs
- * @param array le tableau avec les positions qui indique quels valeurs sont echanger dans le tableau initial
+ * @param [array] la valeur a ajouter
+ * @param [array] le tableau dans lequel on doit ajouter les valeurs
+ * @param [array] le tableau avec les positions qui indique quels valeurs sont echanger dans le tableau initial
  *
  */
 function ajouterLesLettres($val, $tab, $tabpos)
