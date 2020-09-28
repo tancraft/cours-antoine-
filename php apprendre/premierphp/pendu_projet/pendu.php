@@ -4,7 +4,7 @@ require "fonctions_pendu.php";
 /**
  *
  * Fonctions qui affiche un tableau via foreach
- * @param  array méthode qui prend un tableau en parametre d'entrée
+ * @param  [array] tab méthode qui prend un tableau en parametre d'entrée
  *
  */
 function afficherTableau($tab)
@@ -24,7 +24,7 @@ function afficherTableau($tab)
  *
  * Fonctions qui remplace les lettres pr un underscore
  * méthode qui prend un mot en paramètre d'entrée
- * @param array $tab tableaau contenant un underscore par case
+ * @param [array] tab tableaau contenant un underscore par case
  *
  */
 function coderMot($mot)
@@ -45,12 +45,11 @@ function coderMot($mot)
  *
  * fonction qui recherche les occurencess d'une lettre passee en paramettre dans un tableau
  * dans un tableau de caracteres lui meme passee en parametre et renvois les positions dans un tableau
- * @param array la lettre a recherchee
- * @param array le tableau dans lequel il doit chercher
- * @param array la position de depart de recherche dans le tableau
+ * @param [char] lettre la lettre a recherchee
+ * @param [array]  tab le tableau dans lequel il doit chercher
+ * @param [array]  pos la position de depart de recherche dans le tableau
  *
  */
-
 function testerLettre($lettre, $tab, $pos)
 {
     $tabRecherche = array_slice($tab, $pos); // utilise le tableau de base pour en creer 1 suite a la fonction array slice
@@ -70,21 +69,6 @@ function testerLettre($lettre, $tab, $pos)
         return $tabPos; // renvoie le tableau des position de la lettre recherchee
 
     }
-
-    /*do
-{
-for ($i = $pos; $i < count($tab); $i++)
-{
-if ($lettre == $tab[$i])
-{
-
-$tab[$i] = $lettre;
-}
-
-}
-}
-while ($i == count($tab));
-return ($tab);*/
 }
 
 /**
@@ -132,6 +116,18 @@ function ajouterLesLettres($val, $tab, $tabpos)
     }
     return ($tab);
 
+/**
+ * méthode qui demande une lettre à l’utilisateur, elle vérifie que le caractère saisi est une lettre et le renvoi en majuscule.
+ * 
+ * @return void
+ */
+function demanderLettre()
+{
+    do {
+        echo "\n";
+        $lettre = strtoupper(readline("entrez une lettre"));
+    } while ((!ctype_alpha($lettre)) || (strlen($lettre) > 1)); // ou utilisation de  while (!IntlChar::isalpha($lettre))
+    return $lettre;
 }
 
 /*//etape 1
@@ -168,5 +164,3 @@ afficherTableau(ajouterLesLettres('O', $t, testerLettre('O', str_split($motATrou
 /* méthode qui renvoi un mot en le choisissant au hasard parmi une liste de mots
 Utiliser la méthode CreerDico disponible dans le dossier*/
 
-$tabmot = (array_rand(Creer_dico()));
-echo $tabmot;
