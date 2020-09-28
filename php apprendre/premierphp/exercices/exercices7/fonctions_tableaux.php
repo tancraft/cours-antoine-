@@ -6,12 +6,13 @@
 $phrase: il faut indiquer la phrase dans les parametre a ecrire pour l'utilisateur
 renvoi la valeur nombre*/
 function demandeEntier($phrase) // Demande un entier à l'utilisateur
+
 {
     do 
     {
         do 
         {
-            $nombre= readline($phrase);
+            $nombre = readline($phrase);
         } 
         while (!is_numeric($nombre)); // on verifie que la chaine de caracterer ne contient que des chiffres
     } 
@@ -25,9 +26,9 @@ cela renvoi le tableau ($tab)*/
 function creerTab($tailletab)
 {
 
-    for ($i=0; $i<$tailletab; $i++) 
+    for ($i = 0; $i < $tailletab; $i++) 
     {
-        $tab[]= demandeEntier("veulliez entrer votre saisie: ");
+        $tab[] = demandeEntier("veulliez entrer votre saisie: ");
     }
     return ($tab);
 }
@@ -36,16 +37,16 @@ function creerTab($tailletab)
 renvoie le tableau remplit a la fin de la saisie*/
 function tableauSaisie()
 {
-    
-    do
+
+    do 
     {
-        $nb= demandeEntier("Entrer une valeur ");
-        if ($nb != 0 ) //evite que le dernier 0 entre dans le tableau
+        $nb = demandeEntier("Entrer une valeur ");
+        if ($nb != 0) //evite que le dernier 0 entre dans le tableau
         {
-            $tab[]=$nb;
+            $tab[] = $nb;
         }
-    }
-    while ($nb != 0 );
+    } 
+    while ($nb != 0);
     return $tab;
 }
 
@@ -63,73 +64,69 @@ function afficheForeach($tab)
 }
 
 /*fonction qui affiche le tableau en utilisant la boucle for
- $tab: attend le nom de la variable tableau pour s'executer*/
+$tab: attend le nom de la variable tableau pour s'executer*/
 function afficheTableau($tab)
 {
     echo "\n";
 
-    for ( $i=0;$i<count($tab);$i++) // la fonction count renvoi la taille du tableau
+    for ($i = 0; $i < count($tab); $i++) // la fonction count renvoi la taille du tableau
     {
-        echo $tab[$i]."\t";
+        echo $tab[$i] . "\t";
     }
     echo "\n";
 }
 
 function recherchebulle($tab)
 {
-do//methode du tri a bulle pour le tableau1
-{
-    $yapermut = false;
-
-    for ($i=0; $i < count($tab) - 1; $i++) 
+    do//methode du tri a bulle pour le tableau1
     {
+        $yapermut = false;
 
-        if ($tab[$i] > $tab[$i + 1]) 
+        for ($i = 0; $i < count($tab) - 1; $i++) 
         {
 
-            $temp = $tab[$i];
-            $tab[$i] = $tab[$i + 1];
-            $tab[$i + 1] = $temp;
-            $yapermut = true;
+            if ($tab[$i] > $tab[$i + 1]) 
+            {
+
+                $temp = $tab[$i];
+                $tab[$i] = $tab[$i + 1];
+                $tab[$i + 1] = $temp;
+                $yapermut = true;
+
+            }
 
         }
 
-    }
-    
-
-} 
-while ($yapermut);
-return($tab);
+    } 
+    while ($yapermut);
+    return ($tab);
 }
 
 function rechercheInsert($tab)
 {
-    $tailletab=max($tab);
+    $tailletab = max($tab);
 
-    for ($i=0;$i<$tailletab-1;$i++)
+    for ($i = 0; $i < $tailletab - 1; $i++) 
     {
-        $maxi=$tab[$i];// la variable ou on mettra le plus grand nombre commence avec la valeur de base $i
-        $pos=$i;// on enregistre la valeur de la position en commencant par $i
-    
-        for ($j=$i+1;$j<$tailletab;$j++)// tri par insertion
+        $maxi = $tab[$i]; // la variable ou on mettra le plus grand nombre commence avec la valeur de base $i
+        $pos = $i; // on enregistre la valeur de la position en commencant par $i
+
+        for ($j = $i + 1; $j < $tailletab; $j++) // tri par insertion
         {
-        
-           if ($tab[$j]>$maxi)// verification des valeurs les plus grandes
-           {
-    
-             $maxi=$tab[$j];
-             $pos=$j;
-    
-           }
+
+            if ($tab[$j] > $maxi) // verification des valeurs les plus grandes
+            {
+
+                $maxi = $tab[$j];
+                $pos = $j;
+
+            }
         } //<-- correction amanda le deplacement de } ici au lieu d apres echange de valeurs
-          // echange des valeurs
-           $tab[$pos]=$tab[$i];
-           $tab[$i]=$maxi;
-    
-        
-    
+        // echange des valeurs
+        $tab[$pos] = $tab[$i];
+        $tab[$i] = $maxi;
+
     }
-    return($tab);
+    return ($tab);
 
 }
-?>
