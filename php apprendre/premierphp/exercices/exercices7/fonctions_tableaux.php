@@ -75,7 +75,60 @@ function afficheTableau($tab)
     echo "\n";
 }
 
+function recherchebulle($tab)
+{
+do//methode du tri a bulle pour le tableau1
+{
+    $yapermut = false;
 
+    for ($i=0; $i < count($tab) - 1; $i++) 
+    {
 
+        if ($tab[$i] > $tab[$i + 1]) 
+        {
 
+            $temp = $tab[$i];
+            $tab[$i] = $tab[$i + 1];
+            $tab[$i + 1] = $temp;
+            $yapermut = true;
+
+        }
+
+    }
+    return($tab);
+
+} 
+while ($yapermut);
+}
+
+function rechercheInsert($tab)
+{
+    $tailletab=max($tab);
+
+    for ($i=0;$i<$tailletab-1;$i++)
+    {
+        $maxi=$tab[$i];// la variable ou on mettra le plus grand nombre commence avec la valeur de base $i
+        $pos=$i;// on enregistre la valeur de la position en commencant par $i
+    
+        for ($j=$i+1;$j<$tailletab;$j++)// tri par insertion
+        {
+        
+           if ($tab[$j]>$maxi)// verification des valeurs les plus grandes
+           {
+    
+             $maxi=$tab[$j];
+             $pos=$j;
+    
+           }
+        } //<-- correction amanda le deplacement de } ici au lieu d apres echange de valeurs
+          // echange des valeurs
+           $tab[$pos]=$tab[$i];
+           $tab[$i]=$maxi;
+    
+        
+    
+    }
+    return($tab);
+
+}
 ?>
