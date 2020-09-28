@@ -130,3 +130,18 @@ function rechercheInsert($tab)
     return ($tab);
 
 }
+
+
+function rechercheLarge($tab)
+{
+
+       for ($i = 0; $i< intdiv(count($tab),2);$i++)// diviser la taille du tableau
+       {
+       
+              $temp= $tab[$i];
+              $tab1[$i]= $tab[(count($tab)-1)-$i];
+              $tab[(count($tab)-1)-$i] =$temp;
+       }
+       return($tab);
+
+}
