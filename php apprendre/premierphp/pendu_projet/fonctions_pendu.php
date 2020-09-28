@@ -996,6 +996,27 @@ function demanderLettre()
 }
 
 /**
+ * 
+ * fonction pour verifier si la saisie d'un choix est un entier
+ * 
+ * @param [string] $phrase il faut indiquer la phrase dans les parametres a ecrire pour l'utilisateur
+ * @return [int] retourne les valeurs des choix utilisateur
+ */
+function choixParametre($phrase) // Demande un entier à l'utilisateur
+{
+    do 
+    {
+        do 
+        {
+            $nombre= readline($phrase);
+        } 
+        while (!is_numeric($nombre)); // on verifie que la chaine de caractere ne contient que des chiffres
+    } 
+    while (!is_int($nombre * 1)); // on vérifie que le nombre est entier (pas réel)
+    return $nombre; //renvoi le nombre saisi
+}
+
+/**
  * méthode qui renvoi 1 si la partie est gagné, -1 si la partie est perdu, 
  * 0 si la partie continue. Elle reçoit en paramètre le nombre d’erreurs et le tableau contenant le mot composé
  * 
@@ -1005,21 +1026,17 @@ function demanderLettre()
  * 
  */
 
-function testerGagner($nberreur, $tab,$motatrouver)
+function testerGagner($nberreur, $tab)
 {
     if ($nberreur == 9) 
     {
         return -1;
-        echo "VOUS AVEZ PERDU !!!\n";
-        echo "le mot était ".$motatrouver. "\n";
 
     } 
     else if (in_array("_", $tab) === false) 
     {
         
         return 1;  
-        echo "VOUS AVEZ GAGNER !!!\n";
-        echo "le mot est bien ".$motatrouver. "\n";
 
     } 
     else 
@@ -1030,11 +1047,43 @@ function testerGagner($nberreur, $tab,$motatrouver)
 }
 
 /**
+ * 
+ * choix des parametres du jeux aucun parametres a saisir
+ * 
+ * @return [array] renvoi le tableau avedc les valeurs choisies
+ */
+function parametres()
+{
+    echo "choisissez votre thème\n";
+
+    echo "theme naruto tapez 1\n";
+    echo "theme classique tapez 2\n";
+    echo "theme je sais pas tapez 3\n";
+
+    $nb = choixParametre("quel theme voulez vous faire ? ");
+
+    echo "choisissez votre niveau de difficultée:\n ";
+
+    echo " niveau de difficultée facile, tapez 1\n";
+    echo " niveau de difficultée normal, tapez 2\n";
+    echo " niveau de difficultée difficile, tapez 3\n";
+
+    $nb1 = choixParametre("quel niveau choisissez vous ? ");
+
+    $parametres[0]= $nb;
+    $parametres[1]= $nb1;
+
+    return($parametres);
+
+}
+
+/**
  * méthode qui lance et gère une partie 
  * @return void
  */
 function lancerPartie()
-{
+{   
+    $param=parametres();
     $motatrouver = choisirMot();
     $tabmat = str_split($motatrouver);
     $motcoder = coderMot($motatrouver);
@@ -1069,7 +1118,7 @@ function lancerPartie()
         }
         DessinerPendu($nberreurs);
 
-        $gagne = testerGagner($nberreurs, $motcoder,$motatrouver);
+        $gagne = testerGagner($nberreurs, $motcoder);
           
 
     } 

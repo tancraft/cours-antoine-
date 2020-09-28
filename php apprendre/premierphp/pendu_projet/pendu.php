@@ -1,9 +1,9 @@
 <?php
-//test2
+
 require "fonctions_pendu.php";
 
     
-
+/*
 do 
 { 
     echo "**** PENDU V1 ****";
@@ -18,4 +18,11 @@ do
 }
 while($choix=="O");
 
-echo "merci d'avoir jouer";
+echo "merci d'avoir jouer";*/
+
+
+
+
+
+echo $param[0];
+echo $param[1];
