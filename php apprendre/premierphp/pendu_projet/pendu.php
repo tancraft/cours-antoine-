@@ -130,6 +130,23 @@ function demanderLettre()
     return $lettre;
 }
 
+function testerGagner($nberreur, $tab)
+{
+    if ($nberreur == 9)
+    {
+        return -1;
+    }
+    else if (in_array("_", $tab) === false)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+
+}
+
 /*//etape 1
 $t = array('B', 'O', 'N', 'J', 'O', 'U', 'R');
 echo "Cette méthode doit donner B O N J O U R et ca donne : " . afficherTableau($t);
