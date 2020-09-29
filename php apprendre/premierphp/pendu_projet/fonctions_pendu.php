@@ -1015,14 +1015,33 @@ function ajouterUneLettre($lettre, $tab, $pos)
  * @param [array] le tableau avec les positions qui indique quels valeurs sont echanger dans le tableau initial
  *
  */
-function ajouterLesLettres($val, $tab, $tabpos)
+function ajouterLesLettres($val, $tab, $tabpos,$niveau)
 {
 
-    for ($i = 0; $i < count($tabpos); $i++) //boucle permettant de parcourir le tableau des positions
+    switch ($niveau)
     {
-        $tab = ajouterUneLettre($val, $tab, $tabpos[$i]);
-    }
-    return $tab;
+        case 1:
+            for ($i = 0; $i < count($tabpos); $i++) //boucle permettant de parcourir le tableau des positions
+                {
+                $tab = ajouterUneLettre($val, $tab, $tabpos[$i]);
+            }
+            return $tab;
+        case 2:
+        case 4:
+            //on place les lettres une à une de gauche à droite
+            for ($i = 0; $i < count($tabpos); $i++) //on parcours les positions
+                {
+                $posEtudiee = $tabpos[$i];
+                //on verifie que la position n'est pas occupée
+                if ($tab[$posEtudiee] != $val)
+                {
+                    $tab = ajouterUneLettre($val, $tab, $posEtudiee);
+                    return $tab;
+                }
+            }
+            return -1; // plus de place pour la lettre
+        case 3:
+    }        // on place les lettres aléatoirement
 }
 
 /**
@@ -1190,7 +1209,7 @@ function lancerPartie()
         } 
         else 
         {
-            $motcoder = ajouterLesLettres($lettre, $motcoder, $lettrepos);
+            $motcoder = ajouterLesLettres($lettre, $motcoder, $lettrepos,$param[1]);
         }
 
         $gagne = testerGagner($nberreurs, $motcoder);
