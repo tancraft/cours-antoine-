@@ -34,6 +34,7 @@ function Creer_dico($param)
             $tabMots[] = "OBITO";
             $tabMots[] = "RIN";
             $tabMots[] = "AYAME";
+            $tabMots[] = "ITACHI";
 
             break;
 
