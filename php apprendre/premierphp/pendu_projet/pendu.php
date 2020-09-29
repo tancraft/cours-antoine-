@@ -3,10 +3,10 @@
 require "fonctions_pendu.php";
 
     
-/*
+
 do 
 { 
-    echo "**** PENDU V1 ****";
+    echo "\n\t**** PENDU V1 ****\n";
        lancerPartie();
 
        do 
@@ -18,11 +18,5 @@ do
 }
 while($choix=="O");
 
-echo "merci d'avoir jouer";*/
+echo "merci d'avoir jouer";
 
-
-
-
-
-echo $param[0];
-echo $param[1];
