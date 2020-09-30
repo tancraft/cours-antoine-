@@ -1196,7 +1196,8 @@ function parametres()
  * 
  * petit message visuel si on gagne ou perd.
  * 
- * @param [int] $fin
+ * @param [int] $fin il s agit du retour de tester gagner en 1 ou -1
+ * @param [string] $mot il s'agit du mot ressortit lors de creer dico
  * @return void
  */
 function messageDeFin($fin,$mot)
