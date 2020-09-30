@@ -945,12 +945,9 @@ function coderMot($mot, $param)
         case 1:
             for ($i = 1; $i < count($tab) - 1; $i++) {
 
-                if($tab[$i]=="-")
-                {
+                if ($tab[$i] == "-") {
                     $tab[$i] = "-"; //ne pas mettre d'echo
-                }
-                else
-                {
+                } else {
 
                     $tab[$i] = "_";
 
@@ -962,17 +959,13 @@ function coderMot($mot, $param)
         default:
 
             for ($i = 0; $i < count($tab); $i++) {
-                if($tab[$i]=="-")
-                {
+                if ($tab[$i] == "-") {
                     $tab[$i] = "-"; //ne pas mettre d'echo
-                }
-                else
-                {
+                } else {
 
                     $tab[$i] = "_";
 
                 }
-
 
             }
             break;
@@ -1200,6 +1193,38 @@ function parametres()
 }
 
 /**
+ * 
+ * petit message visuel si on gagne ou perd.
+ * 
+ * @param [int] $fin
+ * @return void
+ */
+function messageDeFin($fin,$mot)
+{
+    if ($fin==1) 
+    {
+        echo "le mot est bien " . $mot . "\n";
+
+        echo "\t" . "________________ ______________   ____________________" . "\t\n";
+        echo "\t" . "__  ____/___    |__  ____/___  | / /___  ____/___  __ \\" . "\t\n";
+        echo "\t" . "_  / __  __  /| |_  / __  __   |/ / __  __/   __  /_/ /" . "\t\n";
+        echo "\t" . "/ /_/ /  _  ___ |/ /_/ /  _  /|  /  _  /___   _  _, _/ " . "\t\n";
+        echo "\t" . "\____/   /_/  |_|\____/   /_/ |_/   /_____/   /_/ |_| " . "\t\n";
+        
+    }
+    else
+    {
+        echo "le mot était " . $mot . "\n";
+
+        echo "\t" . "    ________ __________________ ________ _____  __" . "\t\n";
+        echo "\t" . "___  __ \___  ____/___  __ \___  __ \__  / / /    " . "\t\n";
+        echo "\t" . "__  /_/ /__  __/   __  /_/ /__  / / /_  / / /     " . "\t\n";
+        echo "\t" . "_  ____/ _  /___   _  _, _/ _  /_/ / / /_/ /      " . "\t\n";
+        echo "\t" . "/_/      /_____/   /_/ |_|  /_____/  \____/       " . "\t\n";
+
+    }
+}
+/**
  * méthode qui lance et gère une partie
  * @return void
  */
@@ -1237,16 +1262,8 @@ function lancerPartie()
         echo chr(27) . chr(91) . 'H' . chr(27) . chr(91) . 'J'; //permet de vider l'écran
     } while ($gagne == 0);
 
-    if ($gagne == -1) {
-
-        echo "VOUS AVEZ PERDU !!!\n";
-        echo "le mot était " . $motatrouver . "\n";
-
-    } else {
-
-        echo "VOUS AVEZ GAGNER !!!\n";
-        echo "le mot est bien " . $motatrouver . "\n";
-
-    }
+    messageDeFin($gagne,$motatrouver);
 
 }
+
+
