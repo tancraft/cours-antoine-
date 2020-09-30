@@ -779,23 +779,30 @@ function Creer_dico($param)
             break;
 
         case 3:
-            $tabMots[] = "BENSON";
-            $tabMots[] = "MUNCH";
-            $tabMots[] = "CRAGEN";
-            $tabMots[] = "STABLER";
-            $tabMots[] = "JEFFRIES";
-            $tabMots[] = "TUTUOLA";
-            $tabMots[] = "CABOT";
-            $tabMots[] = "MELINDA";
-            $tabMots[] = "HUANG";
-            $tabMots[] = "NOVAK";
+            $tabMots[] = "OLIVIA-BENSON";
+            $tabMots[] = "JOHN-MUNCH";
+            $tabMots[] = "DON-CRAGEN";
+            $tabMots[] = "ELLIOT-STABLER";
+            $tabMots[] = "MONIQUE-JEFFRIES";
+            $tabMots[] = "ODAFIN-TUTUOLA";
+            $tabMots[] = "ALEXANDRA-CABOT";
+            $tabMots[] = "MELINDA-WARNER";
+            $tabMots[] = "GEORGE-HUANG";
+            $tabMots[] = "CASEY-NOVAK";
             $tabMots[] = "IAC";
-            $tabMots[] = "GREYLEK";
-            $tabMots[] = "ROLLINS";
-            $tabMots[] = "AMARO";
-            $tabMots[] = "BARBA";
-            $tabMots[] = "CARISI";
+            $tabMots[] = "KIM-GREYLEK";
+            $tabMots[] = "AMANDA-ROLLINS";
+            $tabMots[] = "KIM-ROLLINS";
+            $tabMots[] = "NICK-AMARO";
+            $tabMots[] = "RAFAEL-BARBA";
+            $tabMots[] = "DOMINICK-CARISI-JR";
             $tabMots[] = "STONE";
+            $tabMots[] = "ERIN-LINDSAY";
+            $tabMots[] = "KATHY-STABLER";
+            $tabMots[] = "STEVEN-HARRIS";
+            $tabMots[] = "LUKE-BRESLIN";
+            $tabMots[] = "GABRIELLE-VEGA";
+            $tabMots[] = "SANDRA-ROBERTS";
 
             break;
 
@@ -928,30 +935,44 @@ function afficherTableau($tab)
  * @param [int] attend le choix difficultée de l'utilisateur
  *
  */
-function coderMot($mot,$param)
+function coderMot($mot, $param)
 {
 
     $tab = str_split($mot);
 
-    switch ($param) 
-    {
+    switch ($param) {
 
         case 1:
-            for ($i = 1; $i < count($tab)-1; $i++) 
-            {
+            for ($i = 1; $i < count($tab) - 1; $i++) {
+
+                if($tab[$i]=="-")
+                {
+                    $tab[$i] = "-"; //ne pas mettre d'echo
+                }
+                else
+                {
 
                     $tab[$i] = "_";
 
-                
+                }
+
             }
             break;
 
         default:
 
-            for ($i = 0; $i < count($tab); $i++) 
-            {
+            for ($i = 0; $i < count($tab); $i++) {
+                if($tab[$i]=="-")
+                {
+                    $tab[$i] = "-"; //ne pas mettre d'echo
+                }
+                else
+                {
 
-                $tab[$i] = "_"; //ne pas mettre d'echo
+                    $tab[$i] = "_";
+
+                }
+
 
             }
             break;
@@ -1016,14 +1037,13 @@ function ajouterUneLettre($lettre, $tab, $pos)
  * @param [array] le tableau avec les positions qui indique quels valeurs sont echanger dans le tableau initial
  *
  */
-function ajouterLesLettres($val, $tab, $tabpos,$niveau)
+function ajouterLesLettres($val, $tab, $tabpos, $niveau)
 {
 
-    switch ($niveau)
-    {
+    switch ($niveau) {
         case 1:
             for ($i = 0; $i < count($tabpos); $i++) //boucle permettant de parcourir le tableau des positions
-                {
+            {
                 $tab = ajouterUneLettre($val, $tab, $tabpos[$i]);
             }
             return $tab;
@@ -1031,18 +1051,29 @@ function ajouterLesLettres($val, $tab, $tabpos,$niveau)
         case 4:
             //on place les lettres une à une de gauche à droite
             for ($i = 0; $i < count($tabpos); $i++) //on parcours les positions
-                {
+            {
                 $posEtudiee = $tabpos[$i];
                 //on verifie que la position n'est pas occupée
-                if ($tab[$posEtudiee] != $val)
-                {
+                if ($tab[$posEtudiee] != $val) {
                     $tab = ajouterUneLettre($val, $tab, $posEtudiee);
                     return $tab;
                 }
             }
             return -1; // plus de place pour la lettre
         case 3:
-    }        // on place les lettres aléatoirement
+            // on place les lettres aléatoirement
+            $test = testerLettre($val, $tab, 0); //on cherche les lettres déjà placées dans le mot code
+            $pos = array_diff($tabpos, $test); //différence entre les tableaux
+            if (!empty($pos)) //s'il reste des lettres à placer
+            {
+                $posetudie = array_rand($pos); //on choisit une position au hasard
+                $tab = ajouterUneLettre($val, $tab, $pos[$posetudie]);
+                return $tab;
+            } else //il n'y a plus de lettre à placer
+            {
+                return -1;
+            }
+    }
 }
 
 /**
@@ -1055,14 +1086,10 @@ function afficherMauvaisesLettres($listeLettres)
 {
     echo "\nLes lettres non présentes sont ";
     $taille = count($listeLettres);
-    for ($i = 0; $i < $taille; $i++) 
-    {
-        if ($i == $taille - 1) 
-        {
+    for ($i = 0; $i < $taille; $i++) {
+        if ($i == $taille - 1) {
             echo $listeLettres[$i];
-        }
-        else 
-        {
+        } else {
             echo $listeLettres[$i] . ",";
         }
     }
@@ -1075,19 +1102,16 @@ function afficherMauvaisesLettres($listeLettres)
  * @return  string  $mot    le mot choisi le dictionnaire
  *
  */
-function choisirMot($param,$niv)
+function choisirMot($param, $niv)
 {
     $dico = creer_dico($param);
     if ($niv == 4) // mot <= à 4 lettres
     {
-        do
-        {
+        do {
             $nb = rand(0, count($dico) - 1);
         } while (strlen($dico[$nb]) > 4);
         return $dico[$nb];
-    }
-    else
-    { //mot au hasard dans tout le dico
+    } else { //mot au hasard dans tout le dico
         return $dico[array_rand($dico)];
     }
 }
@@ -1116,11 +1140,9 @@ function choixParametre($phrase) // Demande un entier à l'utilisateur
 
 {
     do {
-        do 
-        {
+        do {
             $nombre = readline($phrase);
-        }
-         while (!is_numeric($nombre)); // on verifie que la chaine de caractere ne contient que des chiffres
+        } while (!is_numeric($nombre)); // on verifie que la chaine de caractere ne contient que des chiffres
     } while (!is_int($nombre * 1)); // on vérifie que le nombre est entier (pas réel)
     return $nombre; //renvoi le nombre saisi
 }
@@ -1170,8 +1192,8 @@ function parametres()
 
     $nb1 = choixParametre("quel niveau choisissez vous ? ");
 
-    $parametres[0] = $nb;//choix du theme
-    $parametres[1] = $nb1;//choix du niveau
+    $parametres[0] = $nb; //choix du theme
+    $parametres[1] = $nb1; //choix du niveau
 
     return ($parametres);
 
@@ -1184,9 +1206,9 @@ function parametres()
 function lancerPartie()
 {
     $param = parametres();
-    $motatrouver = choisirMot($param[0],$param[1]);
+    $motatrouver = choisirMot($param[0], $param[1]);
     $tabmat = str_split($motatrouver);
-    $motcoder = coderMot($motatrouver,$param[1]);
+    $motcoder = coderMot($motatrouver, $param[1]);
     $nberreurs = 0;
     $gagne = false;
     $mauvaiselettre[] = " ";
@@ -1194,8 +1216,7 @@ function lancerPartie()
     do {
         afficherTableau($motcoder);
         DessinerPendu($nberreurs);
-        if (!empty($mauvaiselettre)) 
-        {
+        if (!empty($mauvaiselettre)) {
 
             afficherMauvaisesLettres($mauvaiselettre);
 
@@ -1203,16 +1224,13 @@ function lancerPartie()
         $lettre = demanderLettre();
         $lettrepos = testerLettre($lettre, $tabmat, 0);
 
-        if (empty($lettrepos)) 
-        {
+        if (empty($lettrepos)) {
 
             $nberreurs++;
             $mauvaiselettre[] = $lettre;
 
-        } 
-        else 
-        {
-            $motcoder = ajouterLesLettres($lettre, $motcoder, $lettrepos,$param[1]);
+        } else {
+            $motcoder = ajouterLesLettres($lettre, $motcoder, $lettrepos, $param[1]);
         }
 
         $gagne = testerGagner($nberreurs, $motcoder);
