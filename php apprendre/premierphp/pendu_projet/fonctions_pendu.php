@@ -1116,9 +1116,11 @@ function choixParametre($phrase) // Demande un entier à l'utilisateur
 
 {
     do {
-        do {
+        do 
+        {
             $nombre = readline($phrase);
-        } while (!is_numeric($nombre)); // on verifie que la chaine de caractere ne contient que des chiffres
+        }
+         while (!is_numeric($nombre)); // on verifie que la chaine de caractere ne contient que des chiffres
     } while (!is_int($nombre * 1)); // on vérifie que le nombre est entier (pas réel)
     return $nombre; //renvoi le nombre saisi
 }

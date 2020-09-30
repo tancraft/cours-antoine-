@@ -891,7 +891,7 @@ function dessinerPendu($nbErreur)
  * @param char $lettre
  * @param array $tab
  * @param int $depart  represente le point de depart de la recherche
- * @return void
+ * @return array tableau des positions
  */
 function testerLettre($lettre, $tab, $depart)
 {
@@ -960,6 +960,18 @@ function ajouterLesLettres($val, $tab, $tabpos, $niveau)
             return -1; // plus de place pour la lettre
         case 3:
             // on place les lettres aléatoirement
+            $test=testerLettre($val,$tab,0);    //on cherche les lettres déjà placées dans le mot code
+            $pos=array_diff($tabpos,$test);     //différence entre les tableaux
+            if(!empty($pos))        //s'il reste des lettres à placer
+            {
+                $posetudie=array_rand($pos);    //on choisit une position au hasard
+                $tab = ajouterUneLettre($val, $tab, $pos[$posetudie]);
+                return $tab;
+            }
+            else    //il n'y a plus de lettre à placer
+            {
+                return -1;
+            }
     }
     return -1;
 }
