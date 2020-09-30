@@ -6,7 +6,7 @@ require "fonctions_pendu.php";
 
 do 
 { 
-    echo "\n\t**** PENDU V1 ****\n";
+    echo "\n\t**** PENDU V2 ****\n";
        lancerPartie();
 
        do 
