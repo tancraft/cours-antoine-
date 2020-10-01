@@ -5,7 +5,7 @@ $score = [7, 19, 7, 18, 12, 16, 19, 2, 13, 5, 3, 14, 11, 15, 19, 20, 4, 15];
 //variables nécessaires
 $somme = 0;
 $moy = 0;
-$plusgrand = 0;
+$plusgrand = $score[0];
 $nbscores = 0;
 
 //affichage du tableau
