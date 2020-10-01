@@ -354,6 +354,36 @@ function testerGagne($plateau, $alignementPourGagner, $positions, $symbole, $jeu
 }
 
 /**
+ * détermine si le plateau est plein (aucune place disponible). Renvoi vrai si le plateau est plein, faux sinon
+ *
+ * @param array $plateau
+ * @param string jeu
+ * @return bool
+ */
+function plateauPlein($plateau, $jeu)
+{
+    if ($jeu == "M")
+    {
+        for ($i = 0; $i < count($plateau); $i++)
+        {
+            if (in_array(".", $plateau[$i]))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    else
+    {
+        if (in_array(".", $plateau[0]))
+        {
+            return false;
+        }
+        return true;
+    }
+}
+
+/**
  * gère la partie avec les autres fonctions
  *
  * @return void
@@ -406,7 +436,6 @@ function lancerPartie()
         afficheTableau($plateau, $jeu);
         $positions = selectionPosition($plateau, $symboles[$joueurEnCours], $jeu);
         $plateau = remplirTableau($plateau, $symboles[$joueurEnCours], $positions);
-        var_dump($plateau);
         $testGagner = testerGagne($plateau, $alignementPourGagner, $positions, $symboles[$joueurEnCours], $jeu);
         echo chr(27) . chr(91) . 'H' . chr(27) . chr(91) . 'J'; //permet de vider l'écran
     } while ($testGagner == 0);
@@ -421,34 +450,6 @@ function lancerPartie()
     afficheTableau($plateau,$jeu);
 }
 
-/**
- * détermine si le plateau est plein (aucune place disponible). Renvoi vrai si le plateau est plein, faux sinon
- *
- * @param array $plateau
- * @param string jeu
- * @return bool
- */
-function plateauPlein($plateau, $jeu)
-{
-    if ($jeu == "M")
-    {
-        for ($i = 0; $i < count($plateau); $i++)
-        {
-            if (in_array(".", $plateau[$i]))
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-    else
-    {
-        if (in_array(".", $plateau[0]))
-        {
-            return false;
-        }
-        return true;
-    }
-}
+
 
 lancerPartie();
