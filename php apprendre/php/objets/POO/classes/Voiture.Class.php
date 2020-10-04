@@ -126,4 +126,5 @@ $v2 = new Voiture("renault", "r3", "diesel",1999);
 echo $v1->toString();
 echo $v2->toString();
 echo $v1->equalsTo($v2);
-echo $v1->compareTo($v2);
+var_dump($v1->equalsTo($v2));
+echo $v1->compareTo($v2);// affichage du booleen
