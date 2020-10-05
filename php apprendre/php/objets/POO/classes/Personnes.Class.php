@@ -1,6 +1,5 @@
 <?php
 
-
 class Personne//nom de la classe
 
 {
@@ -22,8 +21,7 @@ class Personne//nom de la classe
     }
     public function hydrate($data)
     {
-        foreach ($data as $key => $value)
-        {
+        foreach ($data as $key => $value) {
             $methode = "set" . ucfirst($key); //ucfirst met la 1ere lettre en majuscule
             if (is_callable(([$this, $methode]))) // is_callable verifie que la methode existe
             {
@@ -32,7 +30,6 @@ class Personne//nom de la classe
         }
     }
 
-    
     // setters
     public function SetPrenom($pn)
     {
@@ -86,11 +83,9 @@ class Personne//nom de la classe
 
     public function getSexe()
     {
-            return $this->_sexe;
-
+        return $this->_sexe;
 
     }
-
 
     public function getAge()
     {
@@ -114,50 +109,37 @@ class Personne//nom de la classe
         \tNom: $this->_nom \n
         \tSexe: $this->_sexe \n
         \tAge: $this->_age ans\n
-        \tVoiture: ".$this->_voiture."\n";
-
-        
+        \tVoiture: " . $this->_voiture . "\n";
 
     }
 
     public function equalsTo(Personne $obj)
     {
 
-        return($this->_prenom == $obj->getPrenom() && 
-        $this->_nom == $obj->getNom() && 
-        $this->_sexe == $obj->getSexe() && 
-        $this->_age == $obj->getAge() &&
-        $this->_voiture == $obj->getVoiture() );
-
+        return ($this->_prenom == $obj->getPrenom() &&
+            $this->_nom == $obj->getNom() &&
+            $this->_sexe == $obj->getSexe() &&
+            $this->_age == $obj->getAge() &&
+            $this->_voiture == $obj->getVoiture());
 
     }
 
     public function compareTo($obj)
     {
 
-        if ($this->getNom() > $obj->getNom() ) 
-        {
+        if ($this->getNom() > $obj->getNom()) {
             return 1;
 
-        }
-        else if($this->getNom() < $obj->getNom() )
-        {
-         
+        } else if ($this->getNom() < $obj->getNom()) {
+
             return -1;
 
-        }
-        else
-        {
-            if ($this->getPrenom()>$obj->getPrenom())
-            {
+        } else {
+            if ($this->getPrenom() > $obj->getPrenom()) {
                 return 1;
-            }
-            else if ($this->getPrenom()<$obj->getPrenom())
-            {
+            } else if ($this->getPrenom() < $obj->getPrenom()) {
                 return -1;
-            }
-            else
-            {   // égalité sur les personnes
+            } else { // égalité sur les personnes
                 return 0;
             }
         }
@@ -165,4 +147,3 @@ class Personne//nom de la classe
     }
 
 }
-
