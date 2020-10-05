@@ -106,7 +106,7 @@ class Rectangle
     public function perimetre()
     {
 
-      return ($this->getLongueur()+$this->getLargeur)*2;
+      return ($this->getLongueur()+$this->getLargeur())*2;
 
     }
 
@@ -130,8 +130,8 @@ class Rectangle
     {
 
 
-        $reponse= "Longueur:". $this->getLongueur()."\n Largeur: ".$this->getLongueur()."\n"."Perimetre: " .$this->perimetre()."Aire: ".$this->aire()."\n" ;
-        $reponse .= $this->estCarre()?"Il s'agit d'un carré ":"Il ne s'agit pas d'un carré ";
+        $reponse= " Longueur:". $this->getLongueur()."\n Largeur: ".$this->getLargeur()."\n"." Perimetre: " .$this->perimetre()."\n"." Aire: ".$this->aire()."\n" ;
+        $reponse .= $this->estCarre()?" Il s'agit d'un carré ":" Il ne s'agit pas d'un carré ";
         return $reponse;
 
     }
