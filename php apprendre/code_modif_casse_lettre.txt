@@ -31,3 +31,7 @@ do {
 reglage caractere cmd lien
 
 https://forums.commentcamarche.net/forum/affich-29238035-probleme-affichage-caracteres-speciaux-sous-cmd
+
+
+creer des snippets pour visual code
+https://code.visualstudio.com/docs/editor/userdefinedsnippets
