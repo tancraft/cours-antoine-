@@ -100,13 +100,13 @@ class Personne//nom de la classe
     public function toString()
     {
 
-        $reponse = "\tPrenom: $this->_prenom \n
+        return "\tPrenom: $this->_prenom \n
         \tNom: $this->_nom \n
         \tSexe: $this->_sexe \n
         \tAge: $this->_age ans\n
         \tVoiture: ".$this->_voiture."\n";
 
-        return ($reponse);
+        
 
     }
 
