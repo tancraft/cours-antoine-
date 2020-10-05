@@ -93,8 +93,7 @@ class Voiture//nom de la classe
     public function toString()
     {
 
-        $reponse = " la voiture est de marque $this->_marque de type $this->_type, son moteur utilise le carburant $this->_moteur et construit en $this->_annee.\n ";
-        return ($reponse);
+       return " la voiture est de marque $this->_marque de type $this->_type, son moteur utilise le carburant $this->_moteur et construit en $this->_annee.\n ";
 
     }
 
