@@ -135,6 +135,7 @@ class Rectangle
         return $reponse;
 
     }
+    
     /**
     * Affiche les propriétés du rectangle
     *
