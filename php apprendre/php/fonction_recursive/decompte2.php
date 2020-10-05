@@ -6,18 +6,19 @@
 function decompte($nombre)//creation de la fonction nombre
 {
 
-       $nombre--;
-    if($nombre > 0)// condition d'arret tant qu on est pas a zero
+       $decompte=$nombre;
+
+    if($decompte == 0)// condition d'arret quand egal a zero
     {
-        decompte($nombre);//on rappelle la fonction en enlevant-1 a chaque tour   
-        
+    
+        return 0;
         
     }
     else
     {
 
-        return(0); 
-
+       
+    decompte($decompte-1);//on rappelle la fonction en enlevant-1 a chaque tour
     }
 
 }
