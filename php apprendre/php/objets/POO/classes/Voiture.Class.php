@@ -10,14 +10,28 @@ class Voiture//nom de la classe
 
     //constructeurs
 
-    public function __construct($ma, $ty, $mo,$a)
-    {
-        $this->setMarque($ma);
-        $this->setType($ty);
-        $this->setMoteur($mo);
-        $this->setAnnee($a);
+    /*****************Constructeur***************** */
 
+    public function __construct(array $options = [])
+    {
+        if (!empty($options)) // empty : renvoi vrai si le tableau est vide
+        {
+            $this->hydrate($options);
+        }
     }
+    public function hydrate($data)
+    {
+        foreach ($data as $key => $value)
+        {
+            $methode = "set" . ucfirst($key); //ucfirst met la 1ere lettre en majuscule
+            if (is_callable(([$this, $methode]))) // is_callable verifie que la methode existe
+            {
+                $this->$methode($value);
+            }
+        }
+    }
+
+
     // setters
     public function SetMarque($ma)
     {
@@ -84,46 +98,48 @@ class Voiture//nom de la classe
 
     }
 
-    public function equalsTo($obj)
+    public function equalsTo(Voiture $obj)//on précise la classe Personne pour préciser le type de la variable attendue
     {
 
-        if ($this->_marque == $obj->getMarque() && 
+        return ($this->_marque == $obj->getMarque() && 
         $this->_type == $obj->getType() && 
         $this->_moteur == $obj->getMoteur() &&
-        $this->_annee == $obj->getAnnee()) {
-            return true;
-        }
-        return false;
+        $this->_annee == $obj->getAnnee());
+
 
     }
 
     public function compareTo($obj)
     {
 
-        if ($this->_annee < $obj->getAnnee() ) 
+        if ($this->getMarque() > $obj->getMarque() ) 
         {
-            return (1);
+            return 1;
 
         }
-        else if($this->_annee == $obj->getAnnee() )
+        else if($this->getMarque() < $obj->getMarque() )
         {
          
-            return (0);
+            return -1;
 
         }
         else
         {
-            return (-1);
+            if ($this->getType()>$obj->getType())
+            {
+                return 1;
+            }
+            else if ($this->getType()<$obj->getType())
+            {
+                return -1;
+            }
+            else
+            {   // égalité sur les personnes
+                return 0;
+            }
         }
 
     }
 
 }
 
-$v1 = new Voiture("renault", "r5", "diesel",2000);
-$v2 = new Voiture("renault", "r3", "diesel",1999);
-//tests
-echo $v1->toString();
-echo $v2->toString();
-var_dump($v1->equalsTo($v2));// affichage du booleen
-echo $v1->compareTo($v2);

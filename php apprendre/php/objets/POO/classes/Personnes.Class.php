@@ -1,6 +1,5 @@
 <?php
 
-require "Voiture.Class.php";
 
 class Personne//nom de la classe
 
@@ -14,7 +13,7 @@ class Personne//nom de la classe
 
     //constructeurs
 
-    public function __construct($pn, $n,$sx,$a,$v)
+    public function __construct(String $pn, String $n,String $sx,String $a,Voiture $v)
     {
         $this->setPrenom($pn);
         $this->setNom($n);
@@ -110,51 +109,49 @@ class Personne//nom de la classe
 
     }
 
-    public function equalsTo($obj)
+    public function equalsTo(Personne $obj)
     {
 
-        if ($this->_prenom == $obj->getPrenom() && 
+        return($this->_prenom == $obj->getPrenom() && 
         $this->_nom == $obj->getNom() && 
         $this->_sexe == $obj->getSexe() && 
         $this->_age == $obj->getAge() &&
-        $this->_voiture == $obj->getVoiture() ) {
-            return true;
-        }
-        return false;
+        $this->_voiture == $obj->getVoiture() );
+
 
     }
 
     public function compareTo($obj)
     {
 
-        if ($this->_age < $obj->getAge() ) 
+        if ($this->getNom() > $obj->getNom() ) 
         {
-            return (1);
+            return 1;
 
         }
-        else if($this->_age == $obj->getAge() )
+        else if($this->getNom() < $obj->getNom() )
         {
          
-            return (0);
+            return -1;
 
         }
         else
         {
-            return (-1);
+            if ($this->getPrenom()>$obj->getPrenom())
+            {
+                return 1;
+            }
+            else if ($this->getPrenom()<$obj->getPrenom())
+            {
+                return -1;
+            }
+            else
+            {   // égalité sur les personnes
+                return 0;
+            }
         }
 
     }
 
 }
 
-//tests
-$v4 = new Voiture("renault", "r5","garçon","diesel",2004);
-$v3 = new Voiture("citroen", "c4","garçon","essence",2010);
-
-$p1 = new Personne("pierre", "rambault","garçon",21,$v4);
-$p2 = new Personne("sophie", "ramier","fille", 19,$v3);
-
-echo $p1->toString().$v4->toString();
-echo $p2->toString().$v3->toString();
-var_dump($p1->equalsTo($p2));// affichage du booleen
-echo $p1->compareTo($p2);
