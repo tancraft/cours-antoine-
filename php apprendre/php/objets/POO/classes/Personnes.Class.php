@@ -11,17 +11,28 @@ class Personne//nom de la classe
     private $_age;
     private $_voiture;
 
-    //constructeurs
+    /*****************Constructeur***************** */
 
-    public function __construct(String $pn, String $n,String $sx,String $a,Voiture $v)
+    public function __construct(array $options = [])
     {
-        $this->setPrenom($pn);
-        $this->setNom($n);
-        $this->setSexe($sx);
-        $this->setAge($a);
-        $this->setVoiture($v);
-
+        if (!empty($options)) // empty : renvoi vrai si le tableau est vide
+        {
+            $this->hydrate($options);
+        }
     }
+    public function hydrate($data)
+    {
+        foreach ($data as $key => $value)
+        {
+            $methode = "set" . ucfirst($key); //ucfirst met la 1ere lettre en majuscule
+            if (is_callable(([$this, $methode]))) // is_callable verifie que la methode existe
+            {
+                $this->$methode($value);
+            }
+        }
+    }
+
+    
     // setters
     public function SetPrenom($pn)
     {
