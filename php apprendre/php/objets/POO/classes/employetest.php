@@ -23,15 +23,16 @@ function afficheTableau($tab)
 }
 
 //creation agences
-
-
+$ag1 = new Agence(["Nom"=>"camping","Adresse"=>"rue de la Maurienne","codePostal"=>59140,"ville"=>"dunkerque","restauration"=>"restaurant d’entreprise"]);
+$ag2 = new Agence(["Nom"=>"equals","Adresse"=>"zone industrielle","codePostal"=>62230,"ville"=>"calais","restauration"=>"restaurant d’entreprise"]);
+$ag3 = new Agence(["Nom"=>"resort","Adresse"=>"rue d'ibiza","codePostal"=>75120,"ville"=>"paris","restauration"=>"tickets restaurants"]);
 
 //creation des employés
-$emp[] = new Employe(["Nom" => "bobozo", "Prenom" => "thomas", "DateEmbauche" => new DateTime('2015-02-15'), "fonction" => "directeur des ventes", "SalaireAnnuel" => 26, "service" => "vente","agence"=>"camping"]); // les dateTime il faut indiquer en annee-mois-jour
-$emp[] = new Employe(["Nom" => "gecepah", "Prenom" => "georges", "DateEmbauche" => new DateTime('2005-09-21'), "fonction" => "comptable", "SalaireAnnuel" => 11, "service" => "comptabilitée","agence"=>"resort"]);
-$emp[] = new Employe(["Nom" => "isus", "Prenom" => "sophie", "DateEmbauche" => new DateTime('2017-08-06'), "fonction" => "secrétaire", "SalaireAnnuel" => 13, "service" => "comptabilitée","agence"=>"equals"]);
-$emp[] = new Employe(["Nom" => "nacrov", "Prenom" => "alex", "DateEmbauche" => new DateTime('2012-03-24'), "fonction" => "comptable", "SalaireAnnuel" => 16, "service" => "comptabilitée","agence"=>"camping"]);
-$emp[] = new Employe(["Nom" => "thesion", "Prenom" => "francis", "DateEmbauche" => new DateTime('2008-04-17'), "fonction" => "commercial", "SalaireAnnuel" => 13, "service" => "vente","agence"=>"resort"]);
+$emp[] = new Employe(["Nom" => "bobozo", "Prenom" => "thomas", "DateEmbauche" => new DateTime('2015-02-15'), "fonction" => "directeur des ventes", "SalaireAnnuel" => 26, "service" => "vente","Agence"=>$ag1]); // les dateTime il faut indiquer en annee-mois-jour
+$emp[] = new Employe(["Nom" => "gecepah", "Prenom" => "georges", "DateEmbauche" => new DateTime('2005-09-21'), "fonction" => "comptable", "SalaireAnnuel" => 11, "service" => "comptabilitée","agence"=>$ag2]);
+$emp[] = new Employe(["Nom" => "isus", "Prenom" => "sophie", "DateEmbauche" => new DateTime('2017-08-06'), "fonction" => "secrétaire", "SalaireAnnuel" => 13, "service" => "comptabilitée","agence"=>$ag1]);
+$emp[] = new Employe(["Nom" => "nacrov", "Prenom" => "alex", "DateEmbauche" => new DateTime('2012-03-24'), "fonction" => "comptable", "SalaireAnnuel" => 16, "service" => "comptabilitée","agence"=>$ag3]);
+$emp[] = new Employe(["Nom" => "thesion", "Prenom" => "francis", "DateEmbauche" => new DateTime('2008-04-17'), "fonction" => "commercial", "SalaireAnnuel" => 13, "service" => "vente","agence"=>$ag2]);
 
 //Ordre de transfert PRIME
 $dateAujourdhui = new DateTime('now');

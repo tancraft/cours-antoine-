@@ -8,6 +8,7 @@ class Agence
     private $_adresse;
     private $_codePostal;
     private $_ville;
+    private $_restauration;
 
     /*****************Accesseurs***************** */
     public function getVille()
@@ -48,6 +49,16 @@ class Agence
     public function setNom($nom)
     {
         $this->_nom = ucfirst($nom);
+    }
+
+    public function getRestauration()
+    {
+        return $this->_restauration;
+    }
+
+    public function setRestauration($restauration)
+    {
+        $this->_restauration = $restauration;
     }
 
     /*****************Constructeur***************** */
@@ -106,5 +117,7 @@ class Agence
     {
         return 0;
     }
+
+
 
 }
