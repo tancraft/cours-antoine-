@@ -5,31 +5,65 @@ function autoload($classe)
 }
 spl_autoload_register("autoload");
 
-$date1 = new DateTime("30-12-2020");
-$date3 = new DateTime("30-10-2002");
-$date4 = new DateTime("10-05-1999");
-$date5 = new DateTime("15-12-2015");
-$e1 = new Employe(["dateEmbauche" => $date1, "salaire" => 50]);
-$e2 = new Employe(["dateEmbauche" => new DateTime("30-11-2010"), "salaire" => 10]);
-$e3 = new Employe(["dateEmbauche" => $date3, "salaire" => 20]);
-$e4 = new Employe(["dateEmbauche" => $date4, "salaire" => 25]);
-$e5 = new Employe(["dateEmbauche" => $date5, "salaire" => 15]);
+/*
+Description : Affiche les éléments du tableau séparés par une tabulation // Utilisation du foreach
+$tab : tableau à afficher
+ */
+function afficheTableau($tab)
+{
+    echo "\n";
+    foreach ($tab as $elt) // le tableau est parcouru de la 1ere à la dernière case, les cases sont mises tour à tous dans $elt
+    {
+        echo $elt->toString() . "\n";
+    }
+    echo "\n";
+}
 
-//Ordre de transfert
- $dateAujourdhui = new DateTime('now');
+$e[] = new Employe(["Nom" => "Aarouss", "Prenom" => "Sofiane", "dateEmbauche" => new DateTime("01-12-2020"), "fonction" => "Eleveur de punaise", "salaireAnnuel" => "14", "Service" => "Nettoyage"]);
+$e[] = new Employe(["Nom" => "Courquin", "Prenom" => "Pierre", "dateEmbauche" => new DateTime("12-03-2006"), "fonction" => "Gynecologue", "salaireAnnuel" => "40", "Service" => "Medecine"]);
+$e[] = new Employe(["Nom" => "Rjeb", "Prenom" => "Zied", "dateEmbauche" => new DateTime("15-09-2015"), "fonction" => "Kebabiste", "salaireAnnuel" => "30", "Service" => "Restauration"]);
+$e[] = new Employe(["Nom" => "Balair", "Prenom" => "Quentin", "dateEmbauche" => new DateTime("03-03-2003"), "fonction" => "Plaquiste", "salaireAnnuel" => "20", "Service" => "batiment"]);
+$e[] = new Employe(["Nom" => "Cugny", "Prenom" => "Maxime", "dateEmbauche" => new DateTime("27-08-2007"), "fonction" => "Homme de menage", "salaireAnnuel" => "50", "Service" => "Nettoyage"]);
+
+echo "Il y a " . Employe::getCompteur() . " créé \n";
+
+//TRI
+
+//AfficheTableau($e);
+//usort($e,array("Employe","compareToNomPrenom"));
+//AfficheTableau($e);
+usort($e, array("Employe", "compareToServiceNomPrenom"));
+AfficheTableau($e);
+
+
+//Masse Salariale
+$masseSalarialeTotale = 0;
+foreach ($e as $elt)
+{
+    $masseSalarialeTotale += $elt->masseSalariale();
+}
+echo "La masse salariale totale est de " . $masseSalarialeTotale . "\n";
+
+
+
+//Ordre de transfert PRIME
+$dateAujourdhui = new DateTime('now');
 // $annee = $dateAujourdhui->format('Y');
-// $jourDePrime = new DateTime('30-11-' . $annee);
-$jourDePrime = (new DateTime())->setDate($dateAujourdhui->format('Y'),11,30);
-echo "Jour de prime :\n";
-var_dump($jourDePrime);
-echo "Jour aujourd'hui :\n";
-var_dump($dateAujourdhui);
+// $jourDePrime = new DateTime('30-09-' . $annee);
+$jourDePrime = (new DateTime())->setDate($dateAujourdhui->format('Y'), 9, 30);
+// echo "Jour de prime :\n";
+// var_dump($jourDePrime);
+// echo "Jour aujourd'hui :\n";
+// var_dump($dateAujourdhui);
 
 if ($jourDePrime < $dateAujourdhui)
 { //on compare les dates
-    echo "L'ordre de transfert a été envoyé à la banque :" . $e1->prime();
+    foreach ($e as $elt)
+    {
+        echo "L'ordre de transfert a été envoyé à la banque pour " . $elt->getNom()." " . $elt->getPrenom(). " d'un montant de ".$elt->prime()."\n";
+    }
 }
 else
 {
-    echo "L'ordre de transfert n'a pas été envoyé à la banque";
+    echo "L'ordre de transfert n'a pas été envoyé à la banque\n";
 }

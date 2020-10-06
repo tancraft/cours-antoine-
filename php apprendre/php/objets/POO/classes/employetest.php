@@ -6,67 +6,64 @@ function ChargerClasse($classe)
 }
 spl_autoload_register("ChargerClasse");
 
-/**
- *
- * sert a tester par rapport a la date si la prime de l'employé est envoyée
- *
- *
- * @param Classe $obj objet a tester
- * @return echo si la prime est envoyée ou non
+
+
+/*
+Description : Affiche les éléments du tableau séparés par une tabulation // Utilisation du foreach
+$tab : tableau à afficher
  */
-function testEnvoiPrime($obj)
+function afficheTableau($tab)
 {
-
-//Ordre de transfert
-    $dateAujourdhui = new DateTime('now');
-// $annee = $dateAujourdhui->format('Y');
-    // $jourDePrime = new DateTime('30-11-' . $annee);
-    $jourDePrime = (new DateTime())->setDate($dateAujourdhui->format('Y'), 11, 30);
-    echo "Jour de prime :\n";
-    echo "Jour aujourd'hui :\n";
-
-    if ($jourDePrime < $dateAujourdhui) { //on compare les dates
-        echo "L'ordre de transfert a été envoyé à la banque :\n\n" . $obj->prime();
-    } else {
-        echo "L'ordre de transfert n'a pas été envoyé à la banque\n\n";
+    echo "\n";
+    foreach ($tab as $elt) // le tableau est parcouru de la 1ere à la dernière case, les cases sont mises tour à tous dans $elt
+    {
+        echo $elt->toString() . "\n";
     }
-
+    echo "\n";
 }
 
-
-function compareService()
-{
+//creation agences
 
 
-
-
-
-
-}
 
 //creation des employés
-$emp1 = new Employe(["Nom" => "bobozo", "Prenom" => "thomas", "DateEmbauche" => new DateTime('2015-02-15'), "fonction" => "directeur des ventes", "SalaireAnnuel" => 26, "service" => "vente"]); // les dateTime il faut indiquer en annee-mois-jour
-$emp2 = new Employe(["Nom" => "gecepah", "Prenom" => "georges", "DateEmbauche" => new DateTime('2005-09-21'), "fonction" => "comptable", "SalaireAnnuel" => 11, "service" => "comptabilitée"]);
-$emp3 = new Employe(["Nom" => "isus", "Prenom" => "sophie", "DateEmbauche" => new DateTime('2017-08-06'), "fonction" => "secrétaire", "SalaireAnnuel" => 13, "service" => "comptabilitée"]);
-$emp4 = new Employe(["Nom" => "nacrov", "Prenom" => "alex", "DateEmbauche" => new DateTime('2012-03-24'), "fonction" => "comptable", "SalaireAnnuel" => 16, "service" => "comptabilitée"]);
-$emp5 = new Employe(["Nom" => "thesion", "Prenom" => "francis", "DateEmbauche" => new DateTime('2008-04-17'), "fonction" => "commercial", "SalaireAnnuel" => 13, "service" => "vente"]);
+$emp[] = new Employe(["Nom" => "bobozo", "Prenom" => "thomas", "DateEmbauche" => new DateTime('2015-02-15'), "fonction" => "directeur des ventes", "SalaireAnnuel" => 26, "service" => "vente","agence"=>"camping"]); // les dateTime il faut indiquer en annee-mois-jour
+$emp[] = new Employe(["Nom" => "gecepah", "Prenom" => "georges", "DateEmbauche" => new DateTime('2005-09-21'), "fonction" => "comptable", "SalaireAnnuel" => 11, "service" => "comptabilitée","agence"=>"resort"]);
+$emp[] = new Employe(["Nom" => "isus", "Prenom" => "sophie", "DateEmbauche" => new DateTime('2017-08-06'), "fonction" => "secrétaire", "SalaireAnnuel" => 13, "service" => "comptabilitée","agence"=>"equals"]);
+$emp[] = new Employe(["Nom" => "nacrov", "Prenom" => "alex", "DateEmbauche" => new DateTime('2012-03-24'), "fonction" => "comptable", "SalaireAnnuel" => 16, "service" => "comptabilitée","agence"=>"camping"]);
+$emp[] = new Employe(["Nom" => "thesion", "Prenom" => "francis", "DateEmbauche" => new DateTime('2008-04-17'), "fonction" => "commercial", "SalaireAnnuel" => 13, "service" => "vente","agence"=>"resort"]);
 
-echo "le montant de la prime annuelle pour " . $emp1->getPrenom() . " " . $emp1->getNom() . " est de " . $emp1->prime() . " euros.\n";
-testEnvoiPrime($emp1);
-echo "le montant de la prime annuelle pour " . $emp2->getPrenom() . " " . $emp2->getNom() . " est de " . $emp2->prime() . " euros.\n";
-testEnvoiPrime($emp2);
-echo "le montant de la prime annuelle pour " . $emp3->getPrenom() . " " . $emp3->getNom() . " est de " . $emp3->prime() . " euros.\n";
-testEnvoiPrime($emp3);
-echo "le montant de la prime annuelle pour " . $emp4->getPrenom() . " " . $emp4->getNom() . " est de " . $emp4->prime() . " euros.\n";
-testEnvoiPrime($emp4);
-echo "le montant de la prime annuelle pour " . $emp5->getPrenom() . " " . $emp5->getNom() . " est de " . $emp5->prime() . " euros.\n";
-testEnvoiPrime($emp5);
+//Ordre de transfert PRIME
+$dateAujourdhui = new DateTime('now');
+$jourDePrime = (new DateTime())->setDate($dateAujourdhui->format('Y'), 9, 30);
 
-$tabemp = [$emp1, $emp2, $emp3, $emp4, $emp5];
-sort($tabemp); //permet de trier le tableaau par nom et prenom situé dans les objets renvoi vrai faux mais nous interresse pas sur cet exercice
 
-foreach ($tabemp as $elt) // le tableau est parcouru de la 1ere à la dernière case, les cases sont mises tour à tour dans $elt
-{
-    echo $elt->toString(); // defini que le toString de l'objet est l element a afficher
+if ($jourDePrime < $dateAujourdhui)
+{ //on compare les dates
+    foreach ($emp as $elt)
+    {
+        echo "L'ordre de transfert a été envoyé à la banque pour " . $elt->getNom()." " . $elt->getPrenom(). " d'un montant de ".$elt->prime()."\n";
+    }
 }
-//usort($tabemp, "compareService()");
+else
+{
+    echo "L'ordre de transfert n'a pas été envoyé à la banque\n";
+}
+
+echo "Il y a " . Employe::getNombreEmploye() . " créé \n";
+
+//TRI
+
+
+usort($emp, array("Employe", "compareToServiceNomPrenom"));
+AfficheTableau($emp);
+
+
+//Masse Salariale
+$masseSalarialeTotale = 0;
+foreach ($emp as $elt)
+{
+    $masseSalarialeTotale += $elt->masseSalariale();
+}
+echo "La masse salariale totale est de " . $masseSalarialeTotale . "\n";
+
