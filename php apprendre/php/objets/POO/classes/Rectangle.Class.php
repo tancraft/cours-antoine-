@@ -56,7 +56,7 @@ class Rectangle
     //autres methodes
 
     // fonction pour verifier si les objets sont egaux
-    public function equalsTo()
+    public function equalsTo(Rectangle $obj)
     {
 
 

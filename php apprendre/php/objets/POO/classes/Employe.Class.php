@@ -5,10 +5,11 @@ class Employe
     /*****************Attributs***************** */
     private $_nom;
     private $_prenom;
-    private $_dateembauche;
+    private $_dateEmbauche;
     private $_fonction;
-    private $_salaireannuel;
+    private $_salaireAnnuel;
     private $_service;
+    private static $_nombreEmploye=0;
 
     /*****************Accesseurs***************** */
     public function getNom()
@@ -18,7 +19,7 @@ class Employe
 
     public function setNom($nom)
     {
-        $this->_nom = $nom;
+        $this->_nom = ucfirst($nom);
     }
 
     public function getPrenom()
@@ -28,19 +29,10 @@ class Employe
 
     public function setPrenom($prenom)
     {
-        $this->_prenom = $prenom;
+        $this->_prenom = ucfirst($prenom);
     }
 
-    public function getDateEmbauche()
-    {
-        return $this->_dateembauche;
-    }
 
-    public function setDateEmbauche(DateTime $dateembauche)
-    {
-      $this->_dateembauche= $dateembauche;
-
-    }
 
     public function getFonction()
     {
@@ -52,15 +44,7 @@ class Employe
         $this->_fonction = $fonction;
     }
 
-    public function getSalaire()
-    {
-        return $this->_salaireannuel;
-    }
 
-    public function setSalaire($salaire)
-    {
-        $this->_salaireannuel = $salaire;
-    }
 
     public function getService()
     {
@@ -72,6 +56,36 @@ class Employe
         $this->_service = $service;
     }
 
+    
+    public function getDateEmbauche()
+    {
+        return $this->_dateEmbauche;
+    }
+
+    public function setDateEmbauche(DateTime $dateEmbauche)
+    {
+        $this->_dateEmbauche = $dateEmbauche;
+    }
+
+    public function getSalaireAnnuel()
+    {
+        return $this->_salaireAnnuel;
+    }
+
+    public function setSalaireAnnuel($salaireAnnuel)
+    {
+        $this->_salaireAnnuel = $salaireAnnuel;
+    }
+
+    public function getNombreEmploye()
+    {
+        return $this->_nombreEmploye;
+    }
+
+    public function setNombreEmploye($nombreEmploye)
+    {
+        $this->_nombreEmploye = $nombreEmploye;
+    }
     /*****************Constructeur***************** */
 
     public function __construct(array $options = [])
@@ -79,6 +93,7 @@ class Employe
         if (!empty($options)) // empty : renvoi vrai si le tableau est vide
         {
             $this->hydrate($options);
+            self:: $_nombreEmploye++;
         }
     }
     public function hydrate($data)
@@ -101,7 +116,7 @@ class Employe
      */
     public function toString()
     {
-        return "";
+        return $this->getNom()." ".$this->getPrenom()." est employé dans l'entreprise le ". $this->getDateEmbauche()->format("d-m-Y")." en tant que ".$this->getFonction()." dans le service ". $this->getService().".\n Il gagne ".$this->getSalaireAnnuel()."k euros par ans.\n"."sa prime cette année sera de ".$this->prime()." euros.\n\n";
     }
 
     /**
@@ -114,6 +129,7 @@ class Employe
     {
         return true;
     }
+
     /**
      * Compare 2 objets
      * Renvoi 1 si le 1er est <
@@ -122,7 +138,7 @@ class Employe
      *
      * @param string Employe $obj
      * 
-     * @return void
+     * @return int le rsultat de la comparaison 1 si la condition est verifier -1 si elle ne l'est pas et 0 si c'"est egal
      */
     public function compareTo(Employe $obj)
     {   
@@ -147,37 +163,57 @@ class Employe
 
     /**
      * methode pour savoir depuis combien d'annes il est employé
-     * 
-     * @param [type] $obj1
-     * @param [type] $obj
-     * @return void
-     * 
-     * 
+     *  
+     * @return int le nombre d'années dans l'entreprise
      */
-    public function nombreAnnees()
+    public function anciennete()
     {
        
-       $date= new DateTime ('now');
-       $datenb=$date->diff($this->getDateEmbauche(),true);
-       var_dump($datenb);
-       return ($datenb->format("%Y"))*1;
+       $date= new DateTime ('now');//creer l'objet date du jour actuel
+       $datenb=$date->diff($this->getDateEmbauche(),true);// ici nous faisont le calcul de la difference via la fonction diff en mettant la date actuelle avant et la date a deduire en parametre
+       return ($datenb->format("%Y"))*1;//on retourne la date obtenu apres l'avoir formater en nombre d'années
 
     }
 
     /**
-     * methode pour savoir depuis combien d'annes il est employé
+     * methode pour pour calculer la prime salaire
      * 
-     * @param [type] $obj1
-     * @param [type] $obj
-     * @return void
-     * 
-     * 
+     * @return  double  le montant de la prime salaire
      */
-    public function primeAnnee()
+    private function primeSalaire()
     {
 
-       return $this->getSalaire()*0.05+$this->getSalaire()*0.02*$this->nombreAnnees();// on retourne le montant de la prime annuelle
+       return $this->getSalaireAnnuel()*0.05;// on retourne le montant de la prime annuelle
 
     }
+
+    /**
+     * methode pour pour calculer la prime d'ancienneté
+     * 
+     * @return   double le montant de la prime d'ancienneté
+     */
+    private function primeAnciennete()
+    {
+
+       return $this->getSalaireAnnuel()*1000*0.02*$this->anciennete();// on retourne le montant de la prime annuelle
+
+    }
+
+     /**
+     * methode pour pour calculer la prime annuelle
+     * 
+     * @return  double  le montant de la prime annuelle 
+     */
+    public function prime()
+    {
+
+       return $this->primeSalaire()+$this->primeAnciennete();// on retourne le montant de la prime annuelle
+
+    }
+
+
+
+
+
 
 }
