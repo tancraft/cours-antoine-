@@ -9,9 +9,9 @@ class Employe
     private $_fonction;
     private $_salaireAnnuel;
     private $_service;
-    private static $_nombreEmploye = 0;
     private $_agence;
-    private $_enfant;
+    private $_enfant = [];
+    private static $_nombreEmploye = 0;
 
     /*****************Accesseurs***************** */
     public function getNom()
@@ -89,7 +89,7 @@ class Employe
         return $this->_agence;
     }
 
-    public function setAgence($agence)
+    public function setAgence(Agence $agence)
     {
         $this->_agence = $agence;
     }
@@ -99,7 +99,7 @@ class Employe
         return $this->_enfant;
     }
 
-    public function setEnfant($enfant)
+    public function setEnfant(Array $enfant)
     {
         $this->_enfant = $enfant;
     }
@@ -133,7 +133,44 @@ class Employe
      */
     public function toString()
     {
-        return "\t***\tEMPLOYE\t***\n\nNom: ".$this->getNom() . "\nPrenom: ". $this->getPrenom() ."\n\n".$this->getAgence()->toString()."Date d'embauche:  " . $this->getDateEmbauche()->format("d-m-Y") ."\nFonction:  " . $this->getFonction() ."\nService: " . $this->getService() . "\nSalaire annuel: " . $this->getSalaireAnnuel() . "k euros par ans.\nPrime annuelle:  " . $this->prime() . " euros.\nCheques vacances: ".$this->chequeVacances()."\n\n";
+        $aff="-----------------------------------------------------\n" ;
+        $aff.= "\t***\tEMPLOYE\t***\n" . "\nNom: " . $this->getNom();
+        $aff.="\nPrenom: " . $this->getPrenom() . "\n" ;
+        $aff .= "\n\t***\tENFANTS\t***\n";
+        if (count($this->getEnfant()) > 0)
+        {
+            foreach ($this->getEnfant() as $enfant)
+            {
+                $aff .= $enfant->toString();
+            }
+        }
+        else
+        {
+            $aff .= "Pas d'enfant\n";
+        }
+        $aff .= "\n*** CHEQUES NOEL ***\n\n";
+        $cheques = $this->recoitChequeNoel();
+        if (array_sum($cheques) > 0)
+        {
+            foreach ($cheques as $key=>$nbCheque) // on parcours le tableau de chèques
+            {
+                if ($nbCheque > 0)    //  si le nombre de chèque est supérieur à 0
+                {
+                    $aff .= $nbCheque . " chèque(s) de ".$key."\n";   //$nbCheque contient le nombre de chèques  et $key, la valeur du chèque
+                }
+            }
+        }
+        else
+        {
+            $aff .= "Pas de chèques de Noël\n";
+        }
+        $aff.= "\n\t***\tAGENCE\t***\n" .$this->getAgence()->toString(); 
+        $aff.= "Date d'embauche:  " . $this->getDateEmbauche()->format("d-m-Y") . "\nFonction:  ";
+        $aff.= $this->getFonction() . "\nService: " . $this->getService() . "\nSalaire annuel: ";
+        $aff.= $this->getSalaireAnnuel() . "k euros par ans.\nPrime annuelle:  " . $this->prime() . " euros.\nCheques vacances: " ;
+        $aff.= $this->recoitChequeVacances()? 'oui':'non' . "\n\n";
+
+        return $aff;
     }
 
     /**
@@ -254,20 +291,33 @@ class Employe
     }
 
     /**
-     * 
+     *
      * verifie si l'employé et elligible aux cheques vacances
      *
      * @return string oui ou non selon si l'employé est elligible ou pas
      */
-    public function chequeVacances()
+    public function recoitChequeVacances()
     {
 
-       return ($this->anciennete()>1) ? 'Oui' : 'Non';// on verifie par rapport a l'anciennete si l employé est dans l'entreprise depuis plus d'un an
-
+        return ($this->anciennete() >= 1); // on verifie par rapport a l'anciennete si l employé est dans l'entreprise depuis plus d'un an
 
     }
 
 
-
+    /**
+     * renvoi un tableau contenant le nombre de chèque de chaque montant
+     *
+     * @return array
+     */
+    public function recoitChequeNoel()
+    {
+        $cheque = ["0" => 0, "20" => 0, "30" => 0, "50" => 0];
+        foreach ($this->getEnfant() as $enfant)
+        {
+            $cheque[$enfant->montantChequeNoel()] += 1; // on augmente la valeur liée à l'étiquette correspondant au montant retourné par la fonction
+        }
+        $cheque["0"] = 0;       // pour que la somme du tableau corresponde au nombre de chèques à distibuer
+        return $cheque;
+    }
 
 }

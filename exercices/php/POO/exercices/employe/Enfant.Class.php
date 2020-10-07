@@ -68,7 +68,7 @@ class Enfant
      */
     public function toString()
     {
-        return "Nom: ".$this->getNom()."\nPrenom: ".$this->getPrenom()."\nAge: ".$this->ageEnfant()."\n";
+        return "\nNom: ".$this->getNom()."\nPrenom: ".$this->getPrenom()."\nAge: ".$this->ageEnfant()."\n\n";
     }
 
     /**
@@ -96,6 +96,10 @@ class Enfant
         return 0;
     }
 
+    /**
+     * calcul l'age de l'enfant
+     * @return int retourne l'age de l'enfant
+     */
     public function ageEnfant()
     {
 
@@ -103,6 +107,32 @@ class Enfant
         $age = $date->diff($this->getDateDeNaissance(), true); // ici nous faisont le calcul de la difference via la fonction diff en mettant la date actuelle avant et la date a deduire en parametre
         return ($age->format("%Y")) * 1; //on retourne l'age obtenu apres avoir formater la date en nombre d'années
 
+    }
+
+        /**
+     * Détermine le cheque Noel auquel l'enfant à droit
+     *
+     * @return int montant du chèque
+     */
+    public function montantChequeNoel()
+    {
+        $a = $this->ageEnfant();
+        if ($a >= 0 && $a < 11)
+        {
+            return 20;
+        }
+        else if ($a < 16)
+        {
+            return 30;
+        }
+        else if ($a < 19)
+        {
+            return 50;
+        }
+        else
+        {
+            return 0;
+        }
     }
 
 }

@@ -2,7 +2,7 @@
 
 class Agence
 {
-
+  
     /*****************Attributs***************** */
     private $_nom;
     private $_adresse;
@@ -11,24 +11,15 @@ class Agence
     private $_restauration;
 
     /*****************Accesseurs***************** */
-    public function getVille()
+
+    public function getNom()
     {
-        return $this->_ville;
+        return $this->_nom;
     }
 
-    public function setVille($ville)
+    public function setNom($nom)
     {
-        $this->_ville = ucfirst($ville);
-    }
-
-    public function getCodePostal()
-    {
-        return $this->_codePostal;
-    }
-
-    public function setCodePostal($codePostal)
-    {
-        $this->_codePostal = $codePostal;
+        $this->_nom = $nom;
     }
 
     public function getAdresse()
@@ -41,14 +32,24 @@ class Agence
         $this->_adresse = $adresse;
     }
 
-    public function getNom()
+    public function getCodePostal()
     {
-        return $this->_nom;
+        return $this->_codePostal;
     }
 
-    public function setNom($nom)
+    public function setCodePostal($codePostal)
     {
-        $this->_nom = ucfirst($nom);
+        $this->_codePostal = $codePostal;
+    }
+
+    public function getVille()
+    {
+        return $this->_ville;
+    }
+
+    public function setVille($ville)
+    {
+        $this->_ville = $ville;
     }
 
     public function getRestauration()
@@ -60,7 +61,7 @@ class Agence
     {
         $this->_restauration = $restauration;
     }
-
+    
     /*****************Constructeur***************** */
 
     public function __construct(array $options = [])
@@ -72,7 +73,8 @@ class Agence
     }
     public function hydrate($data)
     {
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value)
+        {
             $methode = "set" . ucfirst($key); //ucfirst met la 1ere lettre en majuscule
             if (is_callable(([$this, $methode]))) // is_callable verifie que la methode existe
             {
@@ -82,7 +84,7 @@ class Agence
     }
 
     /*****************Autres Méthodes***************** */
-
+    
     /**
      * Transforme l'objet en chaine de caractères
      *
@@ -90,13 +92,14 @@ class Agence
      */
     public function toString()
     {
-        return "\nNom de l'agence: ".$this->getNom()."\nAdresse: ".$this->getAdresse()."\nCode postal: ".$this->getCodePostal()."\nVille: ".$this->getVille()."\nRestauration: ".$this->getRestauration()."\n\n";
+        return "Nom :" . $this->getNom() . "\nAdresse :" . $this->getAdresse()."\nCode postal : " . $this->getCodePostal()."\nVille : " . $this->getVille(). "\nRestauration :" . $this->getRestauration();
+
     }
 
     /**
      * Renvoi vrai si l'objet en paramètre est égal à l'objet appelant
      *
-     * @param [type] $obj
+     * @param [type] obj
      * @return bool
      */
     public function equalsTo($obj)
@@ -118,6 +121,5 @@ class Agence
         return 0;
     }
 
-
-
+    
 }

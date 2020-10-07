@@ -31,7 +31,7 @@ $ag3 = new Agence(["Nom"=>"resort","Adresse"=>"rue d'ibiza","codePostal"=>75120,
 $enf[] = new Enfant(["Nom" => "bobozo", "Prenom" => "sylvain", "DateDeNaissance" => new DateTime('2017-03-11')]);
 $enf[] = new Enfant(["Nom" => "bobozo", "Prenom" => "julie", "DateDeNaissance" => new DateTime('2010-08-14')]);
 
-$enf1[] = new Enfant(["Nom" => "nacrov", "Prenom" => "ginette", "DateDeNaissance" => new DateTime('2005-11-21')]);
+$enf1[] = new Enfant(["Nom" => "nacrov", "Prenom" => "ginette", "DateDeNaissance" => new DateTime('2019-11-21')]);
 
 //creation des employés
 $emp[] = new Employe(["Nom" => "bobozo", "Prenom" => "thomas", "DateEmbauche" => new DateTime('2015-02-15'), "fonction" => "directeur des ventes", "SalaireAnnuel" => 26, "service" => "vente","Agence"=>$ag1,"enfant"=>$enf]); // les dateTime il faut indiquer en annee-mois-jour
