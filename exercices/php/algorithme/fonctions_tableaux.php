@@ -1,10 +1,11 @@
 <?php
 
-// ici nous allons creer differents tableaux
-
-/*fonction pour verifier si la saisie d'un nombre est un entier
-$phrase: il faut indiquer la phrase dans les parametre a ecrire pour l'utilisateur
-renvoi la valeur nombre*/
+/**
+ * fonction pour verifier si le chiffre saisi est bien un entier
+ * 
+ * @param string $phrase mettez la phrase pour la saisie que vous attendez
+ * @return int retourne un entier
+ */
 function demandeEntier($phrase) // Demande un entier à l'utilisateur
 {
     do 
