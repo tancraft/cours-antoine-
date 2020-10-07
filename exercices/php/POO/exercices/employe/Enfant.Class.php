@@ -1,46 +1,13 @@
 <?php
-
-class Agence
+class Enfant
 {
 
     /*****************Attributs***************** */
     private $_nom;
-    private $_adresse;
-    private $_codePostal;
-    private $_ville;
-    private $_restauration;
+    private $_prenom;
+    private $_dateDeNaissance;
 
     /*****************Accesseurs***************** */
-    public function getVille()
-    {
-        return $this->_ville;
-    }
-
-    public function setVille($ville)
-    {
-        $this->_ville = ucfirst($ville);
-    }
-
-    public function getCodePostal()
-    {
-        return $this->_codePostal;
-    }
-
-    public function setCodePostal($codePostal)
-    {
-        $this->_codePostal = $codePostal;
-    }
-
-    public function getAdresse()
-    {
-        return $this->_adresse;
-    }
-
-    public function setAdresse($adresse)
-    {
-        $this->_adresse = $adresse;
-    }
-
     public function getNom()
     {
         return $this->_nom;
@@ -48,19 +15,29 @@ class Agence
 
     public function setNom($nom)
     {
-        $this->_nom = ucfirst($nom);
+        $this->_nom = $nom;
     }
 
-    public function getRestauration()
+    public function getPrenom()
     {
-        return $this->_restauration;
+        return $this->_prenom;
     }
 
-    public function setRestauration($restauration)
+    public function setPrenom($prenom)
     {
-        $this->_restauration = $restauration;
+        $this->_prenom = $prenom;
     }
 
+    public function getDateDeNaissance()
+    {
+        return $this->_dateDeNaissance;
+    }
+
+    public function setDateDeNaissance(DateTime $dateDeNaissance)
+    {
+        $this->_dateDeNaissance = $dateDeNaissance;
+    }
+    
     /*****************Constructeur***************** */
 
     public function __construct(array $options = [])
@@ -72,7 +49,8 @@ class Agence
     }
     public function hydrate($data)
     {
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value)
+        {
             $methode = "set" . ucfirst($key); //ucfirst met la 1ere lettre en majuscule
             if (is_callable(([$this, $methode]))) // is_callable verifie que la methode existe
             {
@@ -82,7 +60,7 @@ class Agence
     }
 
     /*****************Autres Méthodes***************** */
-
+    
     /**
      * Transforme l'objet en chaine de caractères
      *
@@ -90,7 +68,7 @@ class Agence
      */
     public function toString()
     {
-        return "\t***\tAGENCE\t***\n\nNom de l'agence: ".$this->getNom()."\nAdresse: ".$this->getAdresse()."\nCode postal: ".$this->getCodePostal()."\nVille: ".$this->getVille()."\nRestauration: ".$this->getRestauration()."\n\n";
+        return "Nom: ".$this->getNom()."\nPrenom: ".$this->getPrenom()."\nAge: ".$this->ageEnfant()."\n";
     }
 
     /**
@@ -118,6 +96,13 @@ class Agence
         return 0;
     }
 
+    public function ageEnfant()
+    {
 
+        $date = new DateTime('now'); //creer l'objet date du jour actuel
+        $age = $date->diff($this->getDateDeNaissance(), true); // ici nous faisont le calcul de la difference via la fonction diff en mettant la date actuelle avant et la date a deduire en parametre
+        return ($age->format("%Y")) * 1; //on retourne l'age obtenu apres avoir formater la date en nombre d'années
+
+    }
 
 }

@@ -11,6 +11,7 @@ class Employe
     private $_service;
     private static $_nombreEmploye = 0;
     private $_agence;
+    private $_enfant;
 
     /*****************Accesseurs***************** */
     public function getNom()
@@ -92,6 +93,16 @@ class Employe
     {
         $this->_agence = $agence;
     }
+
+    public function getEnfant()
+    {
+        return $this->_enfant;
+    }
+
+    public function setEnfant($enfant)
+    {
+        $this->_enfant = $enfant;
+    }
     /*****************Constructeur***************** */
 
     public function __construct(array $options = [])
@@ -122,7 +133,7 @@ class Employe
      */
     public function toString()
     {
-        return $this->getNom() . " " . $this->getPrenom() . " est employé dans l'entreprise le " . $this->getDateEmbauche()->format("d-m-Y") . " en tant que " . $this->getFonction() . " dans le service " . $this->getService() . ".\n Il gagne " . $this->getSalaireAnnuel() . "k euros par ans.\n" . "sa prime cette année sera de " . $this->prime() . " euros.\n il travaille a l'agence de ".$this->getAgence()->getNom()."\n";
+        return "\t***\tEMPLOYE\t***\n\nNom: ".$this->getNom() . "\nPrenom: ". $this->getPrenom() ."\n\n".$this->getAgence()->toString()."Date d'embauche:  " . $this->getDateEmbauche()->format("d-m-Y") ."\nFonction:  " . $this->getFonction() ."\nService: " . $this->getService() . "\nSalaire annuel: " . $this->getSalaireAnnuel() . "k euros par ans.\nPrime annuelle:  " . $this->prime() . " euros.\nCheques vacances: ".$this->chequeVacances()."\n\n";
     }
 
     /**
@@ -241,6 +252,22 @@ class Employe
     {
         return $this->getSalaireAnnuel() * 1000 + $this->prime();
     }
+
+    /**
+     * 
+     * verifie si l'employé et elligible aux cheques vacances
+     *
+     * @return string oui ou non selon si l'employé est elligible ou pas
+     */
+    public function chequeVacances()
+    {
+
+       return ($this->anciennete()>1) ? 'Oui' : 'Non';// on verifie par rapport a l'anciennete si l employé est dans l'entreprise depuis plus d'un an
+
+
+    }
+
+
 
 
 }
