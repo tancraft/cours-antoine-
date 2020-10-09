@@ -67,9 +67,9 @@ class Fille implements InterFaceTest// sur cet exemple InterfaceTest est deja l'
         return 0;
     }
 
-    public function mange()// meme si elle ne retourne rien il faut creer methode abstract de la classe mere avec la meme signature
+    public function mange()// meme si elle ne retourne rien il faut creer methode abstract de la classe mere avec la meme signature ne pas ecrire absract devant
     {}
 
-    public function test()// meme si elle ne retourne rien il faut creer methode abstract de la classe interface avec la meme signature
+    public function test()// meme si elle ne retourne rien il faut creer methode abstract de la classe interface avec la meme signature ne pas ecrire absract devant
     {}
 }
