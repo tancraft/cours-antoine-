@@ -11,6 +11,7 @@ class Produit
     private $_lieuDeStockage;
     private static $_compteur = 0;
     private $_prixHt;
+    private $_toto;
 
     /*****************Accesseurs***************** */
     public function getNumero()
@@ -163,4 +164,5 @@ class Produit
     }
 
     
+
 }
