@@ -42,10 +42,10 @@ function ajoutAttributs(array $tabatt) // en ajoutant array on recoit que des ta
  */
 function ajoutObjet(array $tabclasse) // en ajoutant array on recoit que des tableaux
 {
-    
+
     foreach ($tabclasse as $elt)
     {
-        
+
     }
     return $elt;
 }
@@ -77,9 +77,9 @@ function afficheGetSet(array $tabatt) // en ajoutant array on recoit que des tab
 do
 {
 //saisie des paramettres
+
     $classe = ucfirst(readline("Quel est le nom de votre classe? ")); // on indique le nom de la classe en mettant la premiere lettre en maj
     $nbatt = demandeEntier("Combien d'attributs avez vous besoin? "); // on demande combien ilfaut d'attributs
-    
 
     for ($i = 0; $i < $nbatt; $i++)
     {
@@ -171,12 +171,12 @@ do
 
     fputs($fp, "}");
 
-    unset($tabatt);// supprimer tableau des attributs en vue de reconstrution
+    unset($tabatt); // supprimer tableau des attributs en vue de reconstrution
     do
     {
 
         $choix = strtoupper(readline("Voulez vous continuer ? ")); // je demande a se que la casse soit obligatoirement une majuscule mais ne fonctionne pas
-        
+
     } while ($choix != "O" && $choix != "N");
 
 } while ($choix == "O");
@@ -189,8 +189,8 @@ $entMain = '<?php' . "\n\n" .
     '{' . "\n" .
     "\t" . 'require $classe . ".Class.php";' . "\n" .
     '}' . "\n" .
-    'spl_autoload_register("ChargerClasse");'."\n\n".
+    'spl_autoload_register("ChargerClasse");' . "\n\n" .
 
-    '$objet = new Classe ([" "=>" ", " "=>" "]); // remplacer le mot classe par le nom de la classe de l objet a creer'. "\n"; //les elements sont les attributs
+    '$objet = new Classe ([" "=>" ", " "=>" "]); // remplacer le mot classe par le nom de la classe de l objet a creer' . "\n"; //les elements sont les attributs
 
 fputs($fp, $entMain); // on affiche l'entete
