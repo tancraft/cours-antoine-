@@ -27,7 +27,8 @@ function ajoutAttributs(array $tabatt) // en ajoutant array on recoit que des ta
 
 {
     $attributs = "";
-    foreach ($tabatt as $elt) {
+    foreach ($tabatt as $elt) 
+    {
         $attributs .= "\t" . 'private $_' . $elt . ';' . "\n"; //les elements sont les attributs
     }
     return $attributs;
@@ -42,11 +43,12 @@ function ajoutAttributs(array $tabatt) // en ajoutant array on recoit que des ta
 function ajoutObjet(array $tabclasse) // en ajoutant array on recoit que des tableaux
 
 {
-
-    foreach ($tabclasse as $elt) {
-
+    $aff=" ";
+    foreach ($tabclasse as $elt) 
+    {
+       $aff.='$'.$elt.' = new '.ucfirst($elt).' ([" "=>" ", " "=>" "]); // remplacer le mot classe par le nom de la classe de l objet a creer' . "\n";
     }
-    return $elt;
+    return $aff;
 }
 
 /**
@@ -59,7 +61,8 @@ function afficheGetSet(array $tabatt) // en ajoutant array on recoit que des tab
 
 {
     $getSet = "";
-    foreach ($tabatt as $elt) {
+    foreach ($tabatt as $elt) 
+    {
         $getSet .= "\t" . 'public function get' . ucfirst($elt) . '()' . "\n" . //les elements sont les attributs
         "\t" . '{' . "\n" .
         "\t\t" . 'return $this->_' . $elt . ';' . "\n" .
@@ -73,23 +76,29 @@ function afficheGetSet(array $tabatt) // en ajoutant array on recoit que des tab
     return $getSet;
 }
 
-$i = 0;
-do {
+do 
+{
 //saisie des paramettres
 
     $classe = ucfirst(readline("Quel est le nom de votre classe? ")); // on indique le nom de la classe en mettant la premiere lettre en maj
     $nbatt = demandeEntier("Combien d'attributs avez vous besoin? "); // on demande combien ilfaut d'attributs
-    $tabclasse[$i] = $classe; // creation et remplissage tableau classe
-    $i + 1; // incrementation
+    $tabclasse[] = $classe; // creation et remplissage tableau classe pas besoin d indice
 
-    for ($i = 0; $i < $nbatt; $i++) 
+    if ($nbatt == 0) 
     {
-        do 
+        $aff = "";
+    } 
+    else 
+    {
+        for ($i = 0; $i < $nbatt; $i++) 
         {
-            $att = readline("veulliez entrer le nom de votre attribut: ");
-        } 
-        while (!ctype_alnum($att)); // on boucle tant que la saisie n'est pas de type alpha
-        $tabatt[] = $att; //on remplit le tableau des attributs avec la saisie reussi
+            do 
+            {
+                $att = readline("veulliez entrer le nom de votre attribut: ");
+            } 
+            while (!ctype_alnum($att)); // on boucle tant que la saisie n'est pas de type alpha
+            $tabatt[] = $att; //on remplit le tableau des attributs avec la saisie reussi
+        }
     }
 
     $fp = fopen('./' . $classe . '.Class.php', "w"); // on cree le fichier
@@ -99,16 +108,21 @@ do {
         '{' . "\n";
 
     fputs($fp, $entete); // on affiche l'entete
+    if ($nbatt == 0) 
+    {
+        $aff = "";
+    } 
+    else 
+    {
+        $ajoutAttributs = "\t" . '/*****************Attributs***************** */' . "\n" .
+        ajoutAttributs($tabatt);
 
-    $ajoutAttributs = "\t" . '/*****************Attributs***************** */' . "\n" .
-    ajoutAttributs($tabatt);
+        fputs($fp, $ajoutAttributs); // on affiche les attributs
 
-    fputs($fp, $ajoutAttributs); // on affiche les attributs
-
-    $ajoutGetSet = "\t" . '/*****************Accesseurs***************** */' . "\n" .
-    afficheGetSet($tabatt);
-    fputs($fp, $ajoutGetSet);
-
+        $ajoutGetSet = "\t" . '/*****************Accesseurs***************** */' . "\n" .
+        afficheGetSet($tabatt);
+        fputs($fp, $ajoutGetSet);
+    }
     $ajoutConstruct = "\t" . '/*****************Constructeur***************** */' . "\n\n" . //creer une variable string pour le constructeur
 
     "\t " . 'public function __construct(array $options = [])' . "\n" .
@@ -179,7 +193,6 @@ do {
         $choix = strtoupper(readline("Voulez vous continuer ? ")); // je demande a se que la casse soit obligatoirement une majuscule mais ne fonctionne pas
 
     } while ($choix != "O" && $choix != "N");
-    var_dump($tabclasse); //test sur tableau classe
 
 } while ($choix == "O");
 
@@ -193,6 +206,6 @@ $entMain = '<?php' . "\n\n" .
     '}' . "\n" .
     'spl_autoload_register("ChargerClasse");' . "\n\n" .
 
-    '$objet = new Classe ([" "=>" ", " "=>" "]); // remplacer le mot classe par le nom de la classe de l objet a creer' . "\n"; //les elements sont les attributs
+     ajoutObjet($tabclasse); 
 
 fputs($fp, $entMain); // on affiche l'entete
