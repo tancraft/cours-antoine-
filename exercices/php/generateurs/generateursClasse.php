@@ -87,7 +87,7 @@ do
         do
         {
             $att = readline("veulliez entrer le nom de votre attribut: ");
-        } while (!ctype_alpha($att)); // on boucle tant que la saisie n'est pas de type alpha
+        } while (!ctype_alnum($att)); // on boucle tant que la saisie n'est pas de type alpha
         $tabatt[] = $att; //on remplit le tableau des attributs avec la saisie reussi
     }
 
