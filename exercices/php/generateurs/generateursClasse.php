@@ -78,6 +78,7 @@ do
 {
 //saisie des paramettres
 
+
     $classe = ucfirst(readline("Quel est le nom de votre classe? ")); // on indique le nom de la classe en mettant la premiere lettre en maj
     $nbatt = demandeEntier("Combien d'attributs avez vous besoin? "); // on demande combien ilfaut d'attributs
 
@@ -178,6 +179,7 @@ do
         $choix = strtoupper(readline("Voulez vous continuer ? ")); // je demande a se que la casse soit obligatoirement une majuscule mais ne fonctionne pas
 
     } while ($choix != "O" && $choix != "N");
+
 
 } while ($choix == "O");
 
