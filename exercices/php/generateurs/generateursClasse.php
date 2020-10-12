@@ -7,11 +7,10 @@
  * @return int retourne un entier
  */
 function demandeEntier($phrase) // Demande un entier à l'utilisateur
+
 {
-    do
-    {
-        do
-        {
+    do {
+        do {
             $nombre = readline($phrase);
         } while (!is_numeric($nombre)); // on verifie que la chaine de caractere ne contient que des chiffres
     } while (!is_int($nombre * 1)); // on vérifie que le nombre est entier (pas réel)
@@ -25,10 +24,10 @@ function demandeEntier($phrase) // Demande un entier à l'utilisateur
  * @return string l affichage des attributs du tableau
  */
 function ajoutAttributs(array $tabatt) // en ajoutant array on recoit que des tableaux
+
 {
     $attributs = "";
-    foreach ($tabatt as $elt)
-    {
+    foreach ($tabatt as $elt) {
         $attributs .= "\t" . 'private $_' . $elt . ';' . "\n"; //les elements sont les attributs
     }
     return $attributs;
@@ -41,10 +40,10 @@ function ajoutAttributs(array $tabatt) // en ajoutant array on recoit que des ta
  * @return string l affichage des exemple d'objets de base
  */
 function ajoutObjet(array $tabclasse) // en ajoutant array on recoit que des tableaux
+
 {
 
-    foreach ($tabclasse as $elt)
-    {
+    foreach ($tabclasse as $elt) {
 
     }
     return $elt;
@@ -57,10 +56,10 @@ function ajoutObjet(array $tabclasse) // en ajoutant array on recoit que des tab
  * @return string l affichage des getters setters selon les  attributs du tableau
  */
 function afficheGetSet(array $tabatt) // en ajoutant array on recoit que des tableaux
+
 {
     $getSet = "";
-    foreach ($tabatt as $elt)
-    {
+    foreach ($tabatt as $elt) {
         $getSet .= "\t" . 'public function get' . ucfirst($elt) . '()' . "\n" . //les elements sont les attributs
         "\t" . '{' . "\n" .
         "\t\t" . 'return $this->_' . $elt . ';' . "\n" .
@@ -74,22 +73,23 @@ function afficheGetSet(array $tabatt) // en ajoutant array on recoit que des tab
     return $getSet;
 }
 
-do
-{
+$i = 0;
+do {
 //saisie des paramettres
-
 
     $classe = ucfirst(readline("Quel est le nom de votre classe? ")); // on indique le nom de la classe en mettant la premiere lettre en maj
     $nbatt = demandeEntier("Combien d'attributs avez vous besoin? "); // on demande combien ilfaut d'attributs
+    $tabclasse[$i] = $classe; // creation et remplissage tableau classe
+    $i + 1; // incrementation
 
-    for ($i = 0; $i < $nbatt; $i++)
-    {
-        do
-        {
-            $att = readline("veulliez entrer le nom de votre attribut: ");
-        } while (!ctype_alnum($att)); // on boucle tant que la saisie n'est pas de type alpha
-        $tabatt[] = $att; //on remplit le tableau des attributs avec la saisie reussi
-    }
+
+        for ($i = 0; $i < $nbatt; $i++) {
+            do {
+                $att = readline("veulliez entrer le nom de votre attribut: ");
+            } while (!ctype_alnum($att)); // on boucle tant que la saisie n'est pas de type alpha
+            $tabatt[] = $att; //on remplit le tableau des attributs avec la saisie reussi
+        }
+
 
     $fp = fopen('./' . $classe . '.Class.php', "w"); // on cree le fichier
 
@@ -99,14 +99,15 @@ do
 
     fputs($fp, $entete); // on affiche l'entete
 
-    $ajoutAttributs = "\t" . '/*****************Attributs***************** */' . "\n" .
-    ajoutAttributs($tabatt);
 
-    fputs($fp, $ajoutAttributs); // on affiche les attributs
+        $ajoutAttributs = "\t" . '/*****************Attributs***************** */' . "\n" .
+        ajoutAttributs($tabatt);
 
-    $ajoutGetSet = "\t" . '/*****************Accesseurs***************** */' . "\n" .
-    afficheGetSet($tabatt);
-    fputs($fp, $ajoutGetSet);
+        fputs($fp, $ajoutAttributs); // on affiche les attributs
+
+        $ajoutGetSet = "\t" . '/*****************Accesseurs***************** */' . "\n" .
+        afficheGetSet($tabatt);
+        fputs($fp, $ajoutGetSet);
 
     $ajoutConstruct = "\t" . '/*****************Constructeur***************** */' . "\n\n" . //creer une variable string pour le constructeur
 
@@ -173,13 +174,12 @@ do
     fputs($fp, "}");
 
     unset($tabatt); // supprimer tableau des attributs en vue de reconstrution
-    do
-    {
+    do {
 
         $choix = strtoupper(readline("Voulez vous continuer ? ")); // je demande a se que la casse soit obligatoirement une majuscule mais ne fonctionne pas
 
     } while ($choix != "O" && $choix != "N");
-
+    var_dump($tabclasse); //test sur tableau classe
 
 } while ($choix == "O");
 
