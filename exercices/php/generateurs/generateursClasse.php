@@ -9,8 +9,10 @@
 function demandeEntier($phrase) // Demande un entier à l'utilisateur
 
 {
-    do {
-        do {
+    do
+    {
+        do
+        {
             $nombre = readline($phrase);
         } while (!is_numeric($nombre)); // on verifie que la chaine de caractere ne contient que des chiffres
     } while (!is_int($nombre * 1)); // on vérifie que le nombre est entier (pas réel)
@@ -27,7 +29,7 @@ function ajoutAttributs(array $tabatt) // en ajoutant array on recoit que des ta
 
 {
     $attributs = "";
-    foreach ($tabatt as $elt) 
+    foreach ($tabatt as $elt)
     {
         $attributs .= "\t" . 'private $_' . $elt . ';' . "\n"; //les elements sont les attributs
     }
@@ -43,10 +45,10 @@ function ajoutAttributs(array $tabatt) // en ajoutant array on recoit que des ta
 function ajoutObjet(array $tabclasse) // en ajoutant array on recoit que des tableaux
 
 {
-    $aff=" ";
-    foreach ($tabclasse as $elt) 
+    $aff = " ";
+    foreach ($tabclasse as $elt)
     {
-       $aff.='$'.$elt.' = new '.ucfirst($elt).' ([" "=>" ", " "=>" "]); // remplacer le mot classe par le nom de la classe de l objet a creer' . "\n";
+        $aff .= '$' . $elt . ' = new ' . ucfirst($elt) . ' ([" "=>" ", " "=>" "]); // remplacer le mot classe par le nom de la classe de l objet a creer' . "\n";
     }
     return $aff;
 }
@@ -61,7 +63,7 @@ function afficheGetSet(array $tabatt) // en ajoutant array on recoit que des tab
 
 {
     $getSet = "";
-    foreach ($tabatt as $elt) 
+    foreach ($tabatt as $elt)
     {
         $getSet .= "\t" . 'public function get' . ucfirst($elt) . '()' . "\n" . //les elements sont les attributs
         "\t" . '{' . "\n" .
@@ -76,7 +78,7 @@ function afficheGetSet(array $tabatt) // en ajoutant array on recoit que des tab
     return $getSet;
 }
 
-do 
+do
 {
 //saisie des paramettres
 
@@ -84,19 +86,18 @@ do
     $nbatt = demandeEntier("Combien d'attributs avez vous besoin? "); // on demande combien ilfaut d'attributs
     $tabclasse[] = $classe; // creation et remplissage tableau classe pas besoin d indice
 
-    if ($nbatt == 0) 
+    if ($nbatt == 0)
     {
         $aff = "";
-    } 
-    else 
+    }
+    else
     {
-        for ($i = 0; $i < $nbatt; $i++) 
+        for ($i = 0; $i < $nbatt; $i++)
         {
-            do 
+            do
             {
                 $att = readline("veulliez entrer le nom de votre attribut: ");
-            } 
-            while (!ctype_alnum($att)); // on boucle tant que la saisie n'est pas de type alpha
+            } while (!ctype_alnum($att)); // on boucle tant que la saisie n'est pas de type alpha
             $tabatt[] = $att; //on remplit le tableau des attributs avec la saisie reussi
         }
     }
@@ -108,11 +109,11 @@ do
         '{' . "\n";
 
     fputs($fp, $entete); // on affiche l'entete
-    if ($nbatt == 0) 
+    if ($nbatt == 0)
     {
         $aff = "";
-    } 
-    else 
+    }
+    else
     {
         $ajoutAttributs = "\t" . '/*****************Attributs***************** */' . "\n" .
         ajoutAttributs($tabatt);
@@ -122,29 +123,29 @@ do
         $ajoutGetSet = "\t" . '/*****************Accesseurs***************** */' . "\n" .
         afficheGetSet($tabatt);
         fputs($fp, $ajoutGetSet);
+
+        $ajoutConstruct = "\t" . '/*****************Constructeur***************** */' . "\n\n" . //creer une variable string pour le constructeur
+
+            "\t " . 'public function __construct(array $options = [])' . "\n" .
+            "\t" . '{' .
+            "\t\t" . 'if (!empty($options)) // empty : renvoi vrai si le tableau est vide' . "\n" .
+            "\t\t" . '{' . "\n" .
+            "\t\t\t" . '$this->hydrate($options);' . "\n" .
+            "\t\t" . ' }' . "\n" .
+            "\t" . '}' . "\n" .
+            "\t" . 'public function hydrate($data)' . "\n" .
+            "\t" . '{' . "\n" .
+            "\t\t" . 'foreach ($data as $key => $value)' . "\n" .
+            "\t\t" . '{' . "\n" .
+            "\t\t\t" . '$methode = "set" . ucfirst($key); //ucfirst met la 1ere lettre en majuscule' . "\n" .
+            "\t\t\t" . 'if (is_callable(([$this, $methode]))) // is_callable verifie que la methode existe' . "\n" .
+            "\t\t\t" . '{' . "\n" .
+            "\t\t\t\t" . '$this->$methode($value);' . "\n" .
+            "\t\t\t" . '}' . "\n" .
+            "\t\t" . '}' . "\n" .
+            "\t" . '}' . "\n\n";
+        fputs($fp, $ajoutConstruct);
     }
-    $ajoutConstruct = "\t" . '/*****************Constructeur***************** */' . "\n\n" . //creer une variable string pour le constructeur
-
-    "\t " . 'public function __construct(array $options = [])' . "\n" .
-        "\t" . '{' .
-        "\t\t" . 'if (!empty($options)) // empty : renvoi vrai si le tableau est vide' . "\n" .
-        "\t\t" . '{' . "\n" .
-        "\t\t\t" . '$this->hydrate($options);' . "\n" .
-        "\t\t" . ' }' . "\n" .
-        "\t" . '}' . "\n" .
-        "\t" . 'public function hydrate($data)' . "\n" .
-        "\t" . '{' . "\n" .
-        "\t\t" . 'foreach ($data as $key => $value)' . "\n" .
-        "\t\t" . '{' . "\n" .
-        "\t\t\t" . '$methode = "set" . ucfirst($key); //ucfirst met la 1ere lettre en majuscule' . "\n" .
-        "\t\t\t" . 'if (is_callable(([$this, $methode]))) // is_callable verifie que la methode existe' . "\n" .
-        "\t\t\t" . '{' . "\n" .
-        "\t\t\t\t" . '$this->$methode($value);' . "\n" .
-        "\t\t\t" . '}' . "\n" .
-        "\t\t" . '}' . "\n" .
-        "\t" . '}' . "\n\n";
-    fputs($fp, $ajoutConstruct);
-
     $ajoutMethode = "\t" . '/*****************Autres Méthodes***************** */' . "\n" .
 
         "\t" . '/**' . "\n" .
@@ -188,7 +189,8 @@ do
     fputs($fp, "}");
 
     unset($tabatt); // supprimer tableau des attributs en vue de reconstrution
-    do {
+    do
+    {
 
         $choix = strtoupper(readline("Voulez vous continuer ? ")); // je demande a se que la casse soit obligatoirement une majuscule mais ne fonctionne pas
 
@@ -199,13 +201,13 @@ do
 $fp = fopen('./' . 'Main.php', "w"); // on cree le fichier
 
 $entMain = '<?php' . "\n\n" .
-    '//charge les fichiers de classe necessaires au programme' . "\n" .
-    'function ChargerClasse($classe)' . "\n" .
-    '{' . "\n" .
-    "\t" . 'require $classe . ".Class.php";' . "\n" .
-    '}' . "\n" .
-    'spl_autoload_register("ChargerClasse");' . "\n\n" .
+'//charge les fichiers de classe necessaires au programme' . "\n" .
+'function ChargerClasse($classe)' . "\n" .
+'{' . "\n" .
+"\t" . 'require $classe . ".Class.php";' . "\n" .
+'}' . "\n" .
+'spl_autoload_register("ChargerClasse");' . "\n\n" .
 
-     ajoutObjet($tabclasse); 
+ajoutObjet($tabclasse);
 
 fputs($fp, $entMain); // on affiche l'entete
