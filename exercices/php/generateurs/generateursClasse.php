@@ -82,14 +82,15 @@ do {
     $tabclasse[$i] = $classe; // creation et remplissage tableau classe
     $i + 1; // incrementation
 
-
-        for ($i = 0; $i < $nbatt; $i++) {
-            do {
-                $att = readline("veulliez entrer le nom de votre attribut: ");
-            } while (!ctype_alnum($att)); // on boucle tant que la saisie n'est pas de type alpha
-            $tabatt[] = $att; //on remplit le tableau des attributs avec la saisie reussi
-        }
-
+    for ($i = 0; $i < $nbatt; $i++) 
+    {
+        do 
+        {
+            $att = readline("veulliez entrer le nom de votre attribut: ");
+        } 
+        while (!ctype_alnum($att)); // on boucle tant que la saisie n'est pas de type alpha
+        $tabatt[] = $att; //on remplit le tableau des attributs avec la saisie reussi
+    }
 
     $fp = fopen('./' . $classe . '.Class.php', "w"); // on cree le fichier
 
@@ -99,15 +100,14 @@ do {
 
     fputs($fp, $entete); // on affiche l'entete
 
+    $ajoutAttributs = "\t" . '/*****************Attributs***************** */' . "\n" .
+    ajoutAttributs($tabatt);
 
-        $ajoutAttributs = "\t" . '/*****************Attributs***************** */' . "\n" .
-        ajoutAttributs($tabatt);
+    fputs($fp, $ajoutAttributs); // on affiche les attributs
 
-        fputs($fp, $ajoutAttributs); // on affiche les attributs
-
-        $ajoutGetSet = "\t" . '/*****************Accesseurs***************** */' . "\n" .
-        afficheGetSet($tabatt);
-        fputs($fp, $ajoutGetSet);
+    $ajoutGetSet = "\t" . '/*****************Accesseurs***************** */' . "\n" .
+    afficheGetSet($tabatt);
+    fputs($fp, $ajoutGetSet);
 
     $ajoutConstruct = "\t" . '/*****************Constructeur***************** */' . "\n\n" . //creer une variable string pour le constructeur
 
