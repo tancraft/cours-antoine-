@@ -1,2 +1,6 @@
 https://codepen.io/
 pour du css effets
+
+
+securiser wordpress
+https://wpchannel.com/wordpress/tutoriels-wordpress/14-astuces-securiser-site-wordpress/

@@ -48,7 +48,7 @@ function ajoutObjet(array $tabclasse) // en ajoutant array on recoit que des tab
     $aff = "";
     foreach ($tabclasse as $elt)
     {
-        $aff .= '$' . $elt . ' = new ' . ucfirst($elt) . ' ([" "=>" ", " "=>" "]); // remplacer le mot classe par le nom de la classe de l objet a creer' . "\n";
+        $aff .= '$' . $elt . ' = new ' . $elt . ' ([" "=>" ", " "=>" "]); // remplacer le mot classe par le nom de la classe de l objet a creer' . "\n";
     }
     return $aff;
 }
