@@ -46,7 +46,7 @@ class Audio extends Document
      */
     public function toString()
     {
-        return $this->toString()." Durée: ".$this->getDuree()."\n";
+        return parent::toString()." Durée: ".$this->getDuree()."\n";
     }
 
 
