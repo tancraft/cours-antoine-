@@ -93,17 +93,17 @@ class Voiture//nom de la classe
     public function toString()
     {
 
-       return " la voiture est de marque $this->_marque de type $this->_type, son moteur utilise le carburant $this->_moteur et construit en $this->_annee.\n ";
+       return " la voiture est de marque ".$this->getMarque()." de type ".$this->getType().", son moteur utilise le carburant $this->getMoteur() et construit en ".$this->getAnnee()."\n ";
 
     }
 
     public function equalsTo(Voiture $obj)//on précise la classe Personne pour préciser le type de la variable attendue
     {
 
-        return ($this->_marque == $obj->getMarque() && 
-        $this->_type == $obj->getType() && 
-        $this->_moteur == $obj->getMoteur() &&
-        $this->_annee == $obj->getAnnee());
+        return ($this->getMarque() == $obj->getMarque() && 
+        $this->getType() == $obj->getType() && 
+        $this->getMoteur() == $obj->getMoteur() &&
+        $this->getAnnee() == $obj->getAnnee());
 
 
     }
