@@ -29,7 +29,7 @@ Class Personne// toujours maj en premier sur le nom de la classe
     {
         $this->_nom = $n;
     }
-    public function setModele($p)
+    public function setPrenom($p)
     {
         $this->_prenom = $p;
     }
