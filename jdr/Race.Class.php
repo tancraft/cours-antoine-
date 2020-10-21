@@ -38,7 +38,7 @@ class Race
         }
         /***************************** Autres méthodes ******************************************/
 
-        public function renvoiDescription()
+        public function renvoiDescriptionRace()
         {
 
             if ($this->getNomRace() == "Nain")

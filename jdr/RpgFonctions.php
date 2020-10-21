@@ -44,7 +44,7 @@ function choixRace()
         {
             $obj = new Race(["NomRace" => "Elfe"]);
         }
-        echo $obj->renvoiDescription();
+        echo $obj->renvoiDescriptionRace();
         $accepter = strtoupper(readline("Etes vous sur de votre choix (O/N)? "));
     }
     return $obj;
@@ -79,7 +79,7 @@ function choixClasse()
         {
             $obj = new Classe(["NomClasse" => "Clerc"]);
         }
-        echo $obj->renvoiDescription();
+        echo $obj->renvoiDescriptionClasse();
         $accepter = strtoupper(readline("Etes vous sur de votre choix (O/N)? "));
         return $obj;
     }

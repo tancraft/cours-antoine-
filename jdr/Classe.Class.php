@@ -37,7 +37,7 @@ class Classe
             }
         }
         /***************************** Autres méthodes ******************************************/
-        public function renvoiDescription()
+        public function renvoiDescriptionClasse()
         {
 
             if ($this->getNomClasse() == "Guerrier")
