@@ -31,11 +31,11 @@ SELECT now();
 l. Affichez l'ancienneté des clients.
 SELECT FLOOR(DATEDIFF(now(),`dateEntreeClient`)/365) AS Anciennetee, `nomClient`,`prenomClient` FROM `clients` ORDER BY Anciennetee
 m. Affichez la quantité maximale achetée par un client.
-SELECT MAX(`quantiteCommande`),`nomClient`,`prenomClient` FROM `commandes` INNER JOIN `clients` ON `commandes`.`idClient` = `clients`.`idClient`
+SELECT MAX(`quantiteCommande`) AS `Quantitee max`,`nomClient`,`prenomClient` FROM `commandes` INNER JOIN `clients` ON `commandes`.`idClient` = `clients`.`idClient`
 n. Affichez la quantité totale achetée par le client2.
 SELECT SUM(`quantiteCommande`) ,`nomClient`,`prenomClient` FROM `commandes` INNER JOIN `clients` ON `commandes`.`idClient` = `clients`.`idClient` WHERE `commandes`.`idClient` = 2
 o. Affichez la quantité moyenne achetée par le client 2.
-SELECT AVG(`quantiteCommande`) ,`nomClient`,`prenomClient` FROM `commandes` INNER JOIN `clients` ON `commandes`.`idClient` = `clients`.`idClient` WHERE `commandes`.`idClient` = 2
+SELECT ROUND(AVG(`quantiteCommande`),2) ,`nomClient`,`prenomClient` FROM `commandes` INNER JOIN `clients` ON `commandes`.`idClient` = `clients`.`idClient` WHERE `commandes`.`idClient` = 2
 p. Affichez les clients classés par ordre alphabétique de leur nom.
 SELECT `nomClient`,`prenomClient` FROM `clients` ORDER BY `nomClient`
 q. Affichez les articles classés selon leur prix décroissant.
