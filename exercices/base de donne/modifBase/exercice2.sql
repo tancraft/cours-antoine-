@@ -30,7 +30,7 @@ SELECT ROUND(AVG(`quantiteCommande`),2) AS `moyenne commande par article`,`descr
 J) Afficher le nombre total d articles commandés par article.
 SELECT SUM(`quantiteCommande`) AS `nombre moyen d'articles`,`descriptionArticle` FROM `commandes` INNER JOIN `articles` ON `commandes`.`idArticle` = `articles`.`idArticle` GROUP BY `commandes`.`idArticle`
 K) Afficher le nombre moyen d articles par client et par date.
-SELECT ROUND(AVG(`quantiteCommande`),2) AS `nombre moyen d'articles`,`descriptionArticle`,`nomClient`,`prenomClient` FROM `commandes` INNER JOIN `articles`, `clients` ON `commandes`.`idArticle` = `articles`.`idArticle`, `commandes`.`idClient` = `clients`.`idClient` GROUP BY `commandes`.`idClient` & `commandes`.`dateCommande`
+SELECT ROUND(AVG(`quantiteCommande`),2) AS `nombre moyen d'articles`,`descriptionArticle`,`nomClient`,`prenomClient` FROM `commandes` INNER JOIN `articles` ON `commandes`.`idArticle` = `articles`.`idArticle` INNER JOIN `clients` ON `commandes`.`idClient` = `clients`.`idClient` GROUP BY `commandes`.`idClient` & `commandes`.`dateCommande`
 L) Afficher le nombre de commandes par jour.
 M) Afficher le nombre de clients dans la table.
 N) Afficher le nombre de clients différents qui ont passé commande.

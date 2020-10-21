@@ -1,6 +1,0 @@
---user=root --databases tabase > C:\Backup\backup_tabase.sql
-
-
-se placer
-C:\wamp64\bin\mysql\mysql5.7.31\bin
-pour wamp modifier chemin d'acces selon ou se trouve la version de mysql
