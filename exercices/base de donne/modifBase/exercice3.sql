@@ -3,25 +3,27 @@ tables correspondantes.
 
 
 A)Les noms des étudiants nés avant l''étudiant « JULES LECLERCQ »
-SELECT `nomEtudiant`, `prenomEtudiant`, `dateNaissanceEtudiant` FROM `etudiants` WHERE `dateNaissanceEtudiant` <( SELECT `dateNaissanceEtudiant` FROM `etudiants` WHERE `nomEtudiant` = "LECLERCQ" AND `prenomEtudiant` = "Jules" )
+SELECT `nomEtudiant`, `prenomEtudiant`, `dateNaissanceEtudiant` FROM `etudiants` WHERE `dateNaissanceEtudiant` <( SELECT `dateNaissanceEtudiant` FROM `etudiants` WHERE `nomEtudiant` = "LECLERCQ" AND `prenomEtudiant` = "Jules" ) ORDER BY `etudiants`.`dateNaissanceEtudiant`
 B) Les noms et notes des étudiants qui ont,à l''épreuve 4, une note supérieure à la moyenne de cette épreuve.
-SELECT `nomEtudiant`,`prenomEtudiant`,`note`, ROUND((SELECT AVG(`note`) FROM `avoir_note` WHERE `avoir_note`.`idEpreuve`=4),2) As `moyenne de l'epreuve` FROM `avoir_note` INNER JOIN `etudiants` ON `avoir_note`.`idEtudiant`= `etudiants`.`idEtudiant`
-WHERE `avoir_note`.`idEpreuve`=4 
-AND `avoir_note`.`note`>(SELECT AVG(`note`) FROM `avoir_note` WHERE `avoir_note`.`idEpreuve`=4)
-
+SELECT `nomEtudiant`,`prenomEtudiant`,`note`, ROUND((SELECT AVG(`note`) FROM `avoir_note` WHERE `avoir_note`.`idEpreuve`=4),2) As `moyenne de l'epreuve` FROM `avoir_note` INNER JOIN `etudiants` ON `avoir_note`.`idEtudiant`= `etudiants`.`idEtudiant`WHERE `avoir_note`.`idEpreuve`=4 AND `avoir_note`.`note`>(SELECT AVG(`note`) FROM `avoir_note` WHERE `avoir_note`.`idEpreuve`=4)
 C) Le nom des étudiants qui ont obtenu un 12 ou plus.
-SELECT `nomEtudiant`, `prenomEtudiant`,`note` FROM `avoir_note` INNER JOIN `etudiants` ON `avoir_note`.`idEtudiant`= `etudiants`.`idEtudiant` WHERE `note`>=12 AND `idEpreuve` = 4
+SELECT `nomEtudiant`, `prenomEtudiant`,`note` FROM `avoir_note` INNER JOIN `etudiants` ON `avoir_note`.`idEtudiant`= `etudiants`.`idEtudiant` WHERE `note`>=12 AND `idEpreuve` = 4 ORDER BY `avoir_note`.`note`
 D)Le nom des étudiants qui ont dans l''épreuve 4 une note supérieure à celle obtenue par « LUC DUPONT »(à cette même épreuve).
-SELECT `nomEtudiant`, `prenomEtudiant`,`note` FROM `avoir_note` INNER JOIN `etudiants` ON `avoir_note`.`idEtudiant`= `etudiants`.`idEtudiant` WHERE `avoir_note`.`idEpreuve` = 4 AND `avoir_note`.`note`>(SELECT `note` FROM `avoir_note` INNER JOIN `etudiants` ON `avoir_note`.`idEtudiant`=`etudiants`.`idEtudiant`  WHERE  `nomEtudiant` = "DUPONT" AND `prenomEtudiant` = "Luc" AND `avoir_note`.`idEpreuve` = 4 )
+SELECT `nomEtudiant`, `prenomEtudiant`,`note` FROM `avoir_note` INNER JOIN `etudiants` ON `avoir_note`.`idEtudiant`= `etudiants`.`idEtudiant` WHERE `avoir_note`.`idEpreuve` = 4 AND `avoir_note`.`note`>(SELECT `note` FROM `avoir_note` INNER JOIN `etudiants` ON `avoir_note`.`idEtudiant`=`etudiants`.`idEtudiant`  WHERE  `nomEtudiant` = "DUPONT" AND `prenomEtudiant` = "Luc" AND `avoir_note`.`idEpreuve` = 4 ) ORDER BY `avoir_note`.`note`
 E) Le nom des étudiants qui partagent une ou plusieurs notes avec « LUC DUPONT ».
-
-
+SELECT `idEpreuve`,`nomEtudiant`, `prenomEtudiant`,`note` FROM `avoir_note` INNER JOIN `etudiants` ON `avoir_note`.`idEtudiant`= `etudiants`.`idEtudiant` WHERE `avoir_note`.`note`IN (SELECT `note` FROM `avoir_note` INNER JOIN `etudiants` ON `avoir_note`.`idEtudiant`=`etudiants`.`idEtudiant`  WHERE  `nomEtudiant` = "DUPONT" AND `prenomEtudiant` = "Luc") AND `idEpreuve` IN (SELECT `idEpreuve` FROM `avoir_note` INNER JOIN `etudiants` ON `avoir_note`.`idEtudiant`=`etudiants`.`idEtudiant`  WHERE  `nomEtudiant` = "DUPONT" AND `prenomEtudiant` = "Luc") ORDER BY `avoir_note`.`idEpreuve`
 F) Ajoutez une colonne HOBBY à la table ETUDIANT. Cette colonne est de type chaine sur 20 caractères.
 Par défaut le HOBBY est mis à SPORT. 
+ALTER TABLE `etudiants` ADD hobby VARCHAR(20) DEFAULT 'sport';
+ALTER TABLE `etudiants` DROP hobby;
 G) Ajouter à la table ETUDIANT une colonne NEWCOL de type INTEGER (vérifier en affichant la
 structure de la table) puis la supprimer (vérifier de nouveau la suppression).
+ALTER TABLE `etudiants` ADD newcol INT(10) NOT NULL;
+ALTER TABLE `etudiants` DROP newcol;
 H) Vérifiez que PREnomEtudiant peut ne pas avoir de contenu puis indiquez que la colonne PREnomEtudiant
 doit obligatoirement avoir une valeur. Vérifiez sur la description de la table.
+DESCRIBE `etudiants` 
+ALTER TABLE  `etudiants` MODIFY  `prenomEtudiant`VARCHAR(50) NOT NULL
 I)Insérez les enregistrements suivants: 7, ''interro écrite',9,1,'21-oct-96'',1 dans EPREUVE 
 1,7,10
 2,7,08
