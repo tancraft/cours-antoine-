@@ -1,7 +1,0 @@
-retrouver le nombre d etudiant qui on participer a l epreuve
-retrouver le numero de cette epreuve
-
-faire la somme des notes de cette epreuve
-diviser par le nombre d etudiant ayant participer
-
-rechercher ceux dont la note est superieure a cette note
