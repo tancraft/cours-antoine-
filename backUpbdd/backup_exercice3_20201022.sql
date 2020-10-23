@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 -- MySQL dump 10.13  Distrib 5.7.31, for Win64 (x86_64)
 --
 -- Host: localhost    Database: exercice3
@@ -246,3 +247,5 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2020-10-22 17:31:29
+=======
+>>>>>>> 4a99e3e0b1c93f89a7c7b7a7978910d7a00ee636
