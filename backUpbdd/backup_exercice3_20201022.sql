@@ -128,7 +128,7 @@ DROP TABLE IF EXISTS `etudiants`;
 CREATE TABLE `etudiants` (
   `idEtudiant` int(11) NOT NULL AUTO_INCREMENT,
   `nomEtudiant` varchar(20) NOT NULL,
-  `prenomEtudiant` varchar(20) DEFAULT NULL,
+  `prenomEtudiant` varchar(50) NOT NULL,
   `adresseEtudiant` varchar(40) DEFAULT NULL,
   `villeEtudiant` varchar(10) DEFAULT NULL,
   `codePostalEtudiant` int(11) DEFAULT NULL,
@@ -138,6 +138,7 @@ CREATE TABLE `etudiants` (
   `remarqueEtudiant` varchar(40) DEFAULT NULL,
   `sexeEtudiant` char(1) DEFAULT NULL,
   `dateNaissanceEtudiant` date DEFAULT NULL,
+  `hobby` varchar(20) DEFAULT 'sport',
   PRIMARY KEY (`idEtudiant`)
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -148,7 +149,7 @@ CREATE TABLE `etudiants` (
 
 LOCK TABLES `etudiants` WRITE;
 /*!40000 ALTER TABLE `etudiants` DISABLE KEYS */;
-INSERT INTO `etudiants` VALUES (1,'roblin','lea','12,bd de la liberte','calais',62100,'21345678','2014-09-01',1,'','F','1995-01-14'),(2,'macarthur','leon','121,bd gambetta','calais',62100,'21-30-65-09','2014-09-01',1,'','M','1994-04-12'),(3,'minol','luc','9,rue des prairies','boulogne',62200,'21-30-20-10','2014-09-01',1,'','M','1997-03-12'),(4,'bagnole','sophie','12,rue des capucines','wimereux',62930,'21-89-04-30','2014-09-01',1,'','F','1996-03-21'),(5,'bury','marc','67,allee ronde','marcq',62300,'21-90-87-65','2014-09-01',1,'','M','1993-02-05'),(6,'vendraux','marc','5,rue de marseille','calais',62100,'21-96-00-09','2013-09-01',1,'a redouble sa premiere annee','M','1996-01-21'),(7,'vendermaele','helene','456,rue de paris','boulogne',62200,'21-45-45-60','2014-09-01',1,'','F','1995-03-30'),(8,'besson','loic','3,allee carpentier','dunkerque',59300,'28-90-89-78','2014-09-01',2,'','M','1994-05-21'),(9,'godart','jean-paul','123,rue de lens','marck',59870,'28-09-87-65','2013-09-01',2,'a double sa seconde annee','M','1993-01-12'),(10,'beaux','marie','1,allee des cygnes','dunkerque',59100,'21-30-87-90','2014-09-01',2,NULL,'F','1996-04-12'),(11,'turini','elsa','12,route de paris','boulogne',62200,'21-32-47-97','2014-09-01',2,NULL,'F','1996-07-17'),(12,'torelle','elise','123,vallee du denacre','boulogne',62200,'21-67-86-90','2014-09-01',2,NULL,'F','1997-04-16'),(13,'pharis','pierre','12,avenue foch','calais',62100,'21-21-85-90','2014-09-01',2,NULL,'M','1996-03-18'),(14,'ephyre','luc','12,rue de lyon','calais',62100,'21-35-32-90','2014-09-01',2,NULL,'M','1995-01-21'),(15,'leclercq','jules','12,allee des ravins','boulogne',62200,'21-36-71-92','2014-09-01',2,NULL,'M','1994-05-19'),(16,'dupont','luc','21,avenue monsigny','calais',62200,'21-21-34-99','2014-09-01',2,NULL,'M','1996-11-02'),(17,'marke','loic','312,route de paris','wimereux',62930,'21-87-87-71','2014-09-01',2,NULL,'M','1996-11-12'),(18,'dewa','leon','121,allee des eglantines','dunkerque',59100,'28-30-87-90','2014-09-01',2,NULL,'M','1997-04-03');
+INSERT INTO `etudiants` VALUES (1,'roblin','lea','12,bd de la liberte','calais',62100,'21345678','2014-09-01',1,'','F','1995-01-14','sport'),(2,'macarthur','leon','121,bd gambetta','calais',62100,'21-30-65-09','2014-09-01',1,'','M','1994-04-12','sport'),(3,'minol','luc','9,rue des prairies','boulogne',62200,'21-30-20-10','2014-09-01',1,'','M','1997-03-12','sport'),(4,'bagnole','sophie','12,rue des capucines','wimereux',62930,'21-89-04-30','2014-09-01',1,'','F','1996-03-21','sport'),(5,'bury','marc','67,allee ronde','marcq',62300,'21-90-87-65','2014-09-01',1,'','M','1993-02-05','sport'),(6,'vendraux','marc','5,rue de marseille','calais',62100,'21-96-00-09','2013-09-01',1,'a redouble sa premiere annee','M','1996-01-21','sport'),(7,'vendermaele','helene','456,rue de paris','boulogne',62200,'21-45-45-60','2014-09-01',1,'','F','1995-03-30','sport'),(8,'besson','loic','3,allee carpentier','dunkerque',59300,'28-90-89-78','2014-09-01',2,'','M','1994-05-21','sport'),(9,'godart','jean-paul','123,rue de lens','marck',59870,'28-09-87-65','2013-09-01',2,'a double sa seconde annee','M','1993-01-12','sport'),(10,'beaux','marie','1,allee des cygnes','dunkerque',59100,'21-30-87-90','2014-09-01',2,NULL,'F','1996-04-12','sport'),(11,'turini','elsa','12,route de paris','boulogne',62200,'21-32-47-97','2014-09-01',2,NULL,'F','1996-07-17','sport'),(12,'torelle','elise','123,vallee du denacre','boulogne',62200,'21-67-86-90','2014-09-01',2,NULL,'F','1997-04-16','sport'),(13,'pharis','pierre','12,avenue foch','calais',62100,'21-21-85-90','2014-09-01',2,NULL,'M','1996-03-18','sport'),(14,'ephyre','luc','12,rue de lyon','calais',62100,'21-35-32-90','2014-09-01',2,NULL,'M','1995-01-21','sport'),(15,'leclercq','jules','12,allee des ravins','boulogne',62200,'21-36-71-92','2014-09-01',2,NULL,'M','1994-05-19','sport'),(16,'dupont','luc','21,avenue monsigny','calais',62200,'21-21-34-99','2014-09-01',2,NULL,'M','1996-11-02','sport'),(17,'marke','loic','312,route de paris','wimereux',62930,'21-87-87-71','2014-09-01',2,NULL,'M','1996-11-12','sport'),(18,'dewa','leon','121,allee des eglantines','dunkerque',59100,'28-30-87-90','2014-09-01',2,NULL,'M','1997-04-03','sport');
 /*!40000 ALTER TABLE `etudiants` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -244,4 +245,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-22 14:44:12
+-- Dump completed on 2020-10-22 17:31:29
