@@ -1,7 +1,24 @@
 #------------------------------------------------------------
 #        Script MySQL.
 #------------------------------------------------------------
+CREATE DATABASE IF NOT EXISTS `conventions` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `conventions`;
 
+
+
+DROP TABLE IF EXISTS `animation`;
+DROP TABLE IF EXISTS `comportementsprofessionnels`;
+DROP TABLE IF EXISTS `entreprises`;
+DROP TABLE IF EXISTS `evaluations`;
+DROP TABLE IF EXISTS `formateurs`;
+DROP TABLE IF EXISTS `formations`;
+DROP TABLE IF EXISTS `horaires`;
+DROP TABLE IF EXISTS `participation`;
+DROP TABLE IF EXISTS `sessionformation`;
+DROP TABLE IF EXISTS `stages`;
+DROP TABLE IF EXISTS `stagiaires`;
+DROP TABLE IF EXISTS `travauxdangereux`;
+DROP TABLE IF EXISTS `tuteurs`;
 
 #------------------------------------------------------------
 # Table: Stagiaires
@@ -125,21 +142,23 @@ CREATE TABLE Stages(
 )ENGINE=InnoDB, CHARSET = UTF8;
 
 #------------------------------------------------------------
-# Table: Fait_par
+# Table: Animation
 #------------------------------------------------------------
 
-CREATE TABLE Fait_par
-    idfait_par INT Auto_increment NOT NULL PRIMARY KEY,
+CREATE TABLE Animation
+(
+    idAnimation INT Auto_increment NOT NULL PRIMARY KEY,
     idFormateur INT NOT NULL,
     idFormation INT NOT NULL 
 )ENGINE=InnoDB, CHARSET = UTF8;  
 
 #------------------------------------------------------------
-# Table: Suivi_par
+# Table: Participation
 #------------------------------------------------------------
 
-CREATE TABLE Suivi_par
-    idsuivi_par INT Auto_increment NOT NULL PRIMARY KEY,
+CREATE TABLE Participation
+(
+    idParticipation INT Auto_increment NOT NULL PRIMARY KEY,
     dateDebut DATE NOT NULL, 
     dateFin DATE NOT NULL,
     idSessionFormation INT NOT NULL, 
@@ -187,7 +206,7 @@ CREATE TABLE horaires
 
 CREATE TABLE evaluations
 (
-        idStage              Int  Auto_increment  NOT NULL ,
+        idStage              Int    NOT NULL PRIMARY KEY,
         dateEvaluation       Date NOT NULL ,
         objectifAcquisition  Int NOT NULL ,
         comportementMt       Int NOT NULL ,
@@ -211,7 +230,21 @@ CREATE TABLE evaluations
         acquis7              Int NOT NULL ,
         acquis8              Int NOT NULL ,
         acquis9              Int NOT NULL ,
-        acquis10             Int NOT NULL ,
+        acquis10             Int NOT NULL 
+)ENGINE=InnoDB, CHARSET = UTF8;
+
+CREATE TABLE TravauxDangereux
+(
+    idStage   Int   NOT NULL PRIMARY KEY,
+    ordreTravaux INT NOT NULL , 
+    libelleTravaux VARCHAR(40) NOT NULL  
+)ENGINE=InnoDB, CHARSET = UTF8;
+
+CREATE TABLE ComportementsProfessionnels
+(
+    idStage   Int  Auto_increment  NOT NULL PRIMARY KEY,
+    ordreComportement INT NOT NULL , 
+    libelleComportement VARCHAR(40) NOT NULL  
 )ENGINE=InnoDB, CHARSET = UTF8;
 
 ALTER TABLE SessionFormation
@@ -234,22 +267,22 @@ ADD CONSTRAINT FK_Stages_Tuteurs
 FOREIGN KEY (idTuteur)
 REFERENCES Tuteurs(idTuteur);
 
-ALTER TABLE Suivi_par
-ADD CONSTRAINT FK_suivi_par_SessionFormation
+ALTER TABLE Participation
+ADD CONSTRAINT FK_Participation_SessionFormation
 FOREIGN KEY (idSessionFormation)
 REFERENCES SessionFormation(idSessionFormation);
 
-ALTER TABLE Suivi_par
-ADD CONSTRAINT FK_Suivi_par_Stagiaires
+ALTER TABLE Participation
+ADD CONSTRAINT FK_Participation_Stagiaires
 FOREIGN KEY (idStagiaire)
-REFERENCES Stagiaires(idStagiaire)
+REFERENCES Stagiaires(idStagiaire);
 
-ALTER TABLE Fait_par
-ADD CONSTRAINT FK_Fait_par_Formations
+ALTER TABLE Animation
+ADD CONSTRAINT FK_Animation_Formations
 FOREIGN KEY (idFormation)
 REFERENCES Formations(idFormation);
 
-ALTER TABLE Fait_par
-ADD CONSTRAINT FK_Fait_par_Formateurs
+ALTER TABLE Animation
+ADD CONSTRAINT FK_Animation_Formateurs
 FOREIGN KEY (idFormateur)
 REFERENCES Formateurs(idFormateur);
