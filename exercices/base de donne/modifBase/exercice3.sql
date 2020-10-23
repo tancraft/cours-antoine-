@@ -54,3 +54,8 @@ attribuant la moyenne des notes obtenues à cette épreuve par ses collègues*0.
 intégrer le nom de l''étudiant (et non chercher à repérer le numéro avant de la taper.)
 P)Insérez un nouvel étudiant dont vous ne connaissez que le numéro, le nom, le prénom, le hobby et
 l''année: 25, 'DARTE','REMY','SCULPTURE',1.
+
+creer des vues pour faire les liens sans inner JOIN
+
+CREATE VIEW "nom de la vue" AS SELECT nom des colonnes a afficher, mettre les clees primaire de chaque chaque table et les foreign keys de chaque tables separer par des ,
+FROM etudiants INNER JOIN avoir_note ON etudiants.idEtudiant = avoir_note.idEtudiant
