@@ -45,7 +45,8 @@ L) Détruisez l''épreuve 7 qui a été annulée pour cause de tricherie et les 
 DELETE FROM `avoir_note` WHERE `idEpreuve` = 7;
 DELETE FROM `epreuves` WHERE `idEpreuve` = 7;
 M)Réflexion : N'y aurait-il pas eu moyen de détruire les notes de l'épreuve automatiquement dès la destruction de l''épreuve ?
-ALTER TABLE `avoir_note` DROP CONSTRAINT `FK_AvoirNote_Epreuves`
+ALTER TABLE `avoir_note` DROP FOREIGN KEY `FK_AvoirNote_Epreuves`; 
+ALTER TABLE `avoir_note` ADD CONSTRAINT `FK_AvoirNote_Epreuves` FOREIGN KEY (`idEpreuve`) REFERENCES `epreuves`(`idEpreuve`) ON DELETE CASCADE ON UPDATE RESTRICT;
 N) Changez toutes les notes de MARKE dans la matière « BASES DE DONNEES ». Suite à un mauvais comportement, elles diminuent toutes de 3 points. Attention, la requête doit intégrer le nom de la matière.
 (et non chercher à repérer le numéro avant de la taper.)
 O) DEWA a manqué l''épreuve 4. Vu son niveau, on décide de lui créer une entrée dans AVOIR_NOTE en lui
