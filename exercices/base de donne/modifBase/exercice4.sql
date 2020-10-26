@@ -75,6 +75,7 @@ SELECT `dept`.`nodept`,`dept`.`nom`, `employe`.`nom` AS "employe" FROM `employe`
 SELECT `employe`.`nom` FROM `employe` INNER JOIN `dept` ON `employe`.`nodep` = `dept`.`nodept` WHERE `dept`.`nom` = "distribution"
 36.Rechercher le nom et le salaire des employés qui gagnent plus que leur patron, et le nom et le salaire de leur patron.
 SELECT `employe`.`nom`, `employe`.`salaire` 
+test
 
 
 
