@@ -53,9 +53,11 @@ SELECT `salaire`, `nom`, `tauxcom`, `titre` FROM `employe` WHERE `tauxcom` > 15
 26. Afficher le nom, le salaire, le taux de commission et la commission des employés dont le taux de commission n est pas nul.
 (la commission est calculée en multipliant le salaire par le taux de commission)
 SELECT `nom`,`salaire`, `tauxcom`, `titre`,(`tauxcom`/100 * `salaire`) AS 'comission' FROM `employe` WHERE `tauxcom` IS NOT NULL
+SELECT `nom`,`salaire`, `tauxcom`, `titre`,(`tauxcom` * `salaire`) AS 'comission' FROM `employe` WHERE `tauxcom` IS NOT NULL
 27. Afficher le nom, le salaire, le taux de commission,
 la commission des employés dont le taux de commission n est pas nul, classé par taux de commission croissant.
 SELECT `nom`,`salaire`, `tauxcom`, `titre`,(`tauxcom`/100 * `salaire`) AS 'comission' FROM `employe` WHERE `tauxcom` IS NOT NULL ORDER BY `tauxcom`
+SELECT `nom`,`salaire`, `tauxcom`, `titre`,(`tauxcom`* `salaire`) AS 'comission' FROM `employe` WHERE `tauxcom` IS NOT NULL ORDER BY `tauxcom`
 28. Afficher le nom et le prénom (concaténés) des employés. Renommer les colonnes
 SELECT CONCAT(`nom`, " ", `prenom`) AS "infos" FROM `employe`
 29. Afficher les 5 premières lettres du nom des employés.
@@ -66,16 +68,44 @@ SELECT LOCATE("r", `nom`) FROM `employe`
 SELECT LOWER(`nom`), UPPER(`nom`)  FROM `employe` WHERE `nom`= "vrante"
 32. Afficher le nom et le nombre de caractères du nom des employés.
 SELECT `nom`, LENGTH(`nom`)  FROM `employe`
-33.Rechercher le prénom des employés et le numéro de la région de leur département.
-SELECT `employe`.`nom`, `dept`.`nom` FROM `employe` INNER JOIN `dept` ON `employe`.`nodep` = `dept`.`nodept`
-34.Rechercher le numéro du département, le nom du département,
+fiche 2
+1.Rechercher le prénom des employés et le numéro de la région de leur département.
+SELECT `employe`.`nom`, `dept`.`nom`,`dept`.`noregion` FROM `employe` INNER JOIN `dept` ON `employe`.`nodep` = `dept`.`nodept`
+2.Rechercher le numéro du département, le nom du département,
 le nom des employés classés par numéro de département (renommer les tables utilisées).
 SELECT `dept`.`nodept`,`dept`.`nom`, `employe`.`nom` AS "employe" FROM `employe` INNER JOIN `dept` ON `employe`.`nodep` = `dept`.`nodept` ORDER BY `dept`.`nodept`
-35.Rechercher le nom des employés du département Distribution.
+3.Rechercher le nom des employés du département Distribution.
 SELECT `employe`.`nom` FROM `employe` INNER JOIN `dept` ON `employe`.`nodep` = `dept`.`nodept` WHERE `dept`.`nom` = "distribution"
-36.Rechercher le nom et le salaire des employés qui gagnent plus que leur patron, et le nom et le salaire de leur patron.
-SELECT `employe`.`nom`, `employe`.`salaire` 
-test
-
-
-
+4.Rechercher le nom et le salaire des employés qui gagnent plus que leur patron, et le nom et le salaire de leur patron. 
+SELECT `nom` AS "employé", `salaire` AS "salaire employé", (SELECT `nom` FROM `employe` WHERE `titre`="président")AS "nom du sup", (SELECT `salaire` FROM `employe` WHERE `titre`="président")AS "salaire du sup" FROM `employe` WHERE `salaire` >(SELECT `salaire` FROM `employe` WHERE `titre`="président") 
+5.Rechercher le nom et le titre des employés qui ont le même titre que Amartakaldire.
+SELECT `nom`, `titre` FROM `employe` WHERE `titre` = (SELECT `titre` FROM `employe` WHERE `nom`="Amartakaldire")
+6.Rechercher le nom, le salaire et le numéro de département des employés qui gagnent plus qu un seul employé du département 31, classés par numéro de département et salaire.
+SELECT `employe`.`nom`, `employe`.`salaire`, `employe`.`nodep` FROM `employe` WHERE `employe`.`salaire`> (SELECT `salaire` FROM `employe`) AND  `employe`.`nodep` = 31
+SELECT `employe`.`nom`, `employe`.`salaire`, `employe`.`nodep` FROM `employe` WHERE `employe`.`salaire`> ANY (SELECT `salaire` FROM `employe` WHERE `nodep`="31")
+7.Rechercher le nom, le salaire et le numéro de département des employés qui gagnent plus que tous les employés du département 31, classés par numéro de département et salaire.
+SELECT `employe`.`nom`, `employe`.`salaire`, `employe`.`nodep` FROM `employe` WHERE `employe`.`salaire`>(SELECT MAX(`salaire`) FROM `employe` WHERE `employe`.`nodep`=31) ORDER BY `employe`.`nodep`,`employe`.`salaire`
+8.Rechercher le nom et le titre des employés du service 31 qui ont un titre que l on trouve dans le département 32.
+SELECT `employe`.`nom`, `employe`.`titre` FROM `employe` WHERE `employe`.`nodep` = 31 AND `employe`.`titre` IN (SELECT `employe`.`titre` FROM `employe` WHERE `employe`.`nodep` = 32)
+9.Rechercher le nom et le titre des employés du service 31 qui ont un titre l on ne trouve pas dans le département 32.
+SELECT `employe`.`nom`, `employe`.`titre` FROM `employe`WHERE `employe`.`nodep` = 31 AND `employe`.`titre` NOT IN (SELECT `employe`.`titre` FROM `employe` WHERE `employe`.`nodep` = 32)
+10.Rechercher le nom, le titre et le salaire des employés qui ont le même titre et le même salaire que Fairant.
+SELECT `employe`.`nom`, `employe`.`titre` FROM `employe` WHERE `employe`.`titre` = (SELECT `employe`.`titre` FROM `employe` WHERE `employe`.`nom` = "fairent") AND `employe`.`salaire` = (SELECT `employe`.`salaire` FROM `employe` WHERE `employe`.`nom` = "fairent")
+11.Rechercher le numéro de département, le nom du département, le nom des employés, en affichant aussi les départements dans lesquels il n y a personne, classés par numéro de département.
+SELECT `employe`.`nodep`, `dept`.`nom`, `employe`.`nom`, `employe`.`titre` FROM `employe` RIGHT JOIN `dept` ON `employe`.`nodep` = `dept`.`nodept` ORDER BY `employe`.`nodep`
+12.Calculer le nombre d employés de chaque titre.
+SELECT `titre`, COUNT(*) FROM `employe` GROUP BY `titre` ORDER BY COUNT(*)
+13.Calculer la moyenne des salaires et leur somme, par région.
+SELECT `dept`.`noregion`, AVG(`employe`.`salaire`), SUM(`employe`.`salaire`) FROM `employe` INNER JOIN `dept` ON `employe`.`nodep` = `dept`.`nodept` GROUP BY `noregion`
+14.Afficher les numéros des départements ayant au moins 3 employés.
+SELECT `employe`.`nodep` FROM `employe` GROUP BY `employe`.`nodep` HAVING COUNT(*) >= 3
+SELECT `nodep`,Total FROM (SELECT `nodep`,COUNT(`noemp`)as Total FROM `employe` group by `nodep`) as e WHERE Total>=3
+15.Afficher les lettres qui sont l initiale d au moins trois employés.
+SELECT init FROM (SELECT init ,COUNT(*) as "somme" FROM (SELECT LEFT(`nom`,1) as init FROM `employe`) as i GROUP BY init) as e WHERE somme>=3
+SELECT LEFT(`nom`,1) AS Initial FROM `employe`GROUP BY Initial HAVING COUNT(LEFT(`nom`,1))>2
+16.Rechercher le salaire maximum et le salaire minimum parmi tous les salariés et l écart entre les deux.
+SELECT MAX(`employe`.`salaire`)-MIN(`employe`.`salaire`) FROM `employe`
+17.Rechercher le nombre de titres différents.
+SELECT COUNT(DISTINCT `employe`.`titre`) as "Nombre de titres différents" FROM `employe`
+18.Pour chaque titre, compter le nombre d employés possédant ce titre.
+SELECT `employe`.`titre`, COUNT(*) FROM `employe` GROUP BY `employe`.`titre`
