@@ -59,3 +59,8 @@ creer des vues pour faire les liens sans inner JOIN
 
 CREATE VIEW "nom de la vue" AS SELECT nom des colonnes a afficher, mettre les clees primaire de chaque chaque table et les foreign keys de chaque tables separer par des ,
 FROM etudiants INNER JOIN avoir_note ON etudiants.idEtudiant = avoir_note.idEtudiant
+
+CREATE VIEW `Vue_note_etudiant` 
+AS SELECT `avoir_Note`.`note`,`etudiants`.`prenomEtudiant`,`etudiants`.`nomEtudiant`,`avoir_Note`.`idAvoirNote`, `avoir_Note`.`idEtudiant`
+FROM `avoir_Note`
+INNER JOIN `etudiants` ON `avoir_note`.`idEtudiant`= `etudiants`.`idEtudiant`
