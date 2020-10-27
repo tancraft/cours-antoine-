@@ -1,8 +1,8 @@
-﻿Ecrivez des requêtes SELECT (A chaquefois ,vous stockerez la requete dans un fichier texte» pour
-a. Affichez la totalité de la table « client ». ok
-b. Affichez les noms de tous les clients. ok
-c. Affichez les différentes dates de commandes sans répétition.ok
-d. Affichez les clients qui se prénomment « sophie ».ok
+Ecrivez des requêtes SELECT (A chaquefois ,vous stockerez la requete dans un fichier texte» pour
+a. Affichez la totalité de la table « client ».
+b. Affichez les noms de tous les clients.
+c. Affichez les différentes dates de commandes sans répétition.
+d. Affichez les clients qui se prénomment « sophie ».
 e. Affichez les numéros des articles et leur quantité commandés par le client1.
 f. Affichez les noms des clients en majuscules-.
 g. Affichez les noms des clients avec la première lettre en majuscule.
