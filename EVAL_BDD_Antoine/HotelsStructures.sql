@@ -43,7 +43,7 @@ CREATE TABLE baseStation.clients(
         nomClient        Varchar (50) NOT NULL ,
         prenomClient     Varchar (50) NOT NULL ,
         adresseClient    Varchar (50) NOT NULL ,
-        villeClient      Varchar (5) NOT NULL
+        villeClient      Varchar (50) NOT NULL
 
 )ENGINE=InnoDB, CHARSET = UTF8;
 
@@ -66,8 +66,8 @@ CREATE TABLE baseStation.chambres(
 # Table: sejourne
 #------------------------------------------------------------
 
-CREATE TABLE baseStation.sejourne(
-        idSejourne      Int  Auto_increment  NOT NULL PRIMARY KEY ,
+CREATE TABLE baseStation.reservations(
+        idReservation      Int  Auto_increment  NOT NULL PRIMARY KEY ,
         dateReservation Date NOT NULL ,
         dateDebut       Date NOT NULL ,
         dateFin         Date NOT NULL ,
@@ -84,5 +84,5 @@ CREATE TABLE baseStation.sejourne(
 
 ALTER TABLE baseStation.hotels ADD CONSTRAINT FK_hotels_stations FOREIGN KEY (idStation) REFERENCES stations(idStation);
 ALTER TABLE baseStation.chambres ADD CONSTRAINT FK_chambres_hotels FOREIGN KEY (idHotel) REFERENCES hotels(idHotel);
-ALTER TABLE baseStation.sejourne ADD CONSTRAINT FK_sejourne_chambres FOREIGN KEY (idChambre) REFERENCES chambres(idChambre);
-ALTER TABLE baseStation.sejourne ADD CONSTRAINT FK_sejourne_clients FOREIGN KEY (idClient) REFERENCES clients(idClient);
+ALTER TABLE baseStation.reservations ADD CONSTRAINT FK_reservations_chambres FOREIGN KEY (idChambre) REFERENCES chambres(idChambre);
+ALTER TABLE baseStation.reservations ADD CONSTRAINT FK_reservations_clients FOREIGN KEY (idClient) REFERENCES clients(idClient);
