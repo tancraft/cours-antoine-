@@ -63,7 +63,7 @@ CREATE TABLE baseStation.chambres(
 
 
 #------------------------------------------------------------
-# Table: sejourne
+# Table: reservations
 #------------------------------------------------------------
 
 CREATE TABLE baseStation.reservations(
