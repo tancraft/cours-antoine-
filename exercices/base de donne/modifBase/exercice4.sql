@@ -112,4 +112,6 @@ SELECT `employe`.`titre`, COUNT(*) FROM `employe` GROUP BY `employe`.`titre`
 19.Pour chaque nom de département, afficher le nom du département et le nombre d employés.
 SELECT `dept`.`nom`, COUNT(`employe`.`noemp`) FROM `dept` INNER JOIN `employe` ON `dept`.`nodept` = `employe`.`nodep` GROUP BY `dept`.`nom`
 20.Rechercher les titres et la moyenne des salaires par titre dont la moyenne est supérieure à la moyenne des salaires des Représentants.
-SELECT `employe`.`titre`, `employe`.`salaire`
+SELECT `employe`.`titre`, AVG(`employe`.`salaire`) FROM `employe` GROUP BY `employe`.`titre` HAVING AVG(`employe`.`salaire`) > (SELECT AVG(`employe`.`salaire`) FROM `employe` WHERE `employe`.`titre` = "représentant")
+21.Rechercher le nombre de salaires renseignés et le nombre de taux de commission renseignés.
+SELECT (SELECT COUNT(*) FROM `employe` WHERE `employe`.`salaire` IS NOT NULL),(SELECT COUNT(*) FROM `employe` WHERE `employe`.`tauxcom` IS NOT NULL)
