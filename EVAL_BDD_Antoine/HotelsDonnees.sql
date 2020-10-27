@@ -1,0 +1,30 @@
+INSERT INTO `stations` (`idStation`, `nomStation`, `altitude`) VALUES (NULL,"La Montagne",2500);
+INSERT INTO `stations` (`idStation`, `nomStation`, `altitude`) VALUES (NULL,"Le Sud",200);
+INSERT INTO `stations` (`idStation`, `nomStation`, `altitude`) VALUES (NULL,"La Plage",10);
+INSERT INTO `stations` (`idStation`, `nomStation`, `altitude`) VALUES (NULL,"Alpe d Huez",1860);
+INSERT INTO `stations` (`idStation`, `nomStation`, `altitude`) VALUES (NULL,"Areches",1200);
+INSERT INTO `stations` (`idStation`, `nomStation`, `altitude`) VALUES (NULL,"Beaufort",1200);
+INSERT INTO `stations` (`idStation`, `nomStation`, `altitude`) VALUES (NULL,"Aussois",1500);
+INSERT INTO `stations` (`idStation`, `nomStation`, `altitude`) VALUES (NULL,"Avoriaz",1800);
+
+
+INSERT INTO ` Clients` (`idClient`, `nomClient`, `prenomClient`, `adresseClient`, `villeClient`) VALUES (NULL,"DOE", "John", "Rue Du General Leclerc", "Chatenay Malabry");
+INSERT INTO ` Clients` (`idClient`, `nomClient`, `prenomClient`, `adresseClient`, `villeClient`) VALUES (NULL,"HOMME", "Josh", "Rue Danton", "Palm Desert");
+INSERT INTO ` Clients` (`idClient`, `nomClient`, `prenomClient`, `adresseClient`, `villeClient`) VALUES (NULL,"PAUL", "Weller", "Rue Hoche", "Londres");
+INSERT INTO ` Clients` (`idClient`, `nomClient`, `prenomClient`, `adresseClient`, `villeClient`) VALUES (NULL,"WHITE", "Jack", "Allee Gustave Eiffel", "Detroit");
+INSERT INTO ` Clients` (`idClient`, `nomClient`, `prenomClient`, `adresseClient`, `villeClient`) VALUES (NULL,"CLAYPOOL", "Les", "Rue Jean Pierre Timbaud", "San Francisco");
+INSERT INTO ` Clients` (`idClient`, `nomClient`, `prenomClient`, `adresseClient`, `villeClient`) VALUES (NULL,"SQUIRE", "Chris", "Place Paul Vaillant Couturier", "Londres");
+INSERT INTO ` Clients` (`idClient`, `nomClient`, `prenomClient`, `adresseClient`, `villeClient`) VALUES (NULL,"WOOD", "Ronnie", "Rue Erevan", "Londres");
+INSERT INTO ` Clients` (`idClient`, `nomClient`, `prenomClient`, `adresseClient`, `villeClient`) VALUES (NULL,"THUNDERS", "Johnny", "Rue Du General Leclerc", "New York");
+INSERT INTO ` Clients` (`idClient`, `nomClient`, `prenomClient`, `adresseClient`, `villeClient`) VALUES (NULL,"JEUNEMAITRE", "Eric", "Rue Du General Leclerc", "Chaville");
+INSERT INTO ` Clients` (`idClient`, `nomClient`, `prenomClient`, `adresseClient`, `villeClient`) VALUES (NULL,"KARAM", "Patrick", "Rue Danton", "Courbevoie");
+INSERT INTO ` Clients` (`idClient`, `nomClient`, `prenomClient`, `adresseClient`, `villeClient`) VALUES (NULL,"RUFET", "Corinne", "Rue Hoche", "Le Plessis Robinson");
+INSERT INTO ` Clients` (`idClient`, `nomClient`, `prenomClient`, `adresseClient`, `villeClient`) VALUES (NULL,"SAINT JUST ", "Wallerand", "Allee Gustave Eiffel", "Marnes La Coquette");
+INSERT INTO ` Clients` (`idClient`, `nomClient`, `prenomClient`, `adresseClient`, `villeClient`) VALUES (NULL,"SANTINI", "Jean-Luc", "Rue Jean Pierre Timbaud", "Chatenay Malabry");
+INSERT INTO ` Clients` (`idClient`, `nomClient`, `prenomClient`, `adresseClient`, `villeClient`) VALUES (NULL,"AIT", "Eddie", "Place Paul Vaillant Couturier", "Le Plessis Robinson");
+INSERT INTO ` Clients` (`idClient`, `nomClient`, `prenomClient`, `adresseClient`, `villeClient`) VALUES (NULL,"BARBOTIN", "Eddie", "Rue Erevan", "Chatenay Malabry");
+INSERT INTO ` Clients` (`idClient`, `nomClient`, `prenomClient`, `adresseClient`, `villeClient`) VALUES (NULL,"BERESSI", "Isabelle", "Rue Du General Leclerc", "Londres");
+INSERT INTO ` Clients` (`idClient`, `nomClient`, `prenomClient`, `adresseClient`, `villeClient`) VALUES (NULL,"CAMARA", "Lamine", "Rue Ernest Renan", "Antony");
+INSERT INTO ` Clients` (`idClient`, `nomClient`, `prenomClient`, `adresseClient`, `villeClient`) VALUES (NULL,"CECCONI", "Frank", "Rue Georges Marie", "Chatenay Malabry");
+INSERT INTO ` Clients` (`idClient`, `nomClient`, `prenomClient`, `adresseClient`, `villeClient`) VALUES (NULL,"CHEVRON", "Eric", "Boulevard Gallieni", "Suresnes");
+INSERT INTO ` Clients` (`idClient`, `nomClient`, `prenomClient`, `adresseClient`, `villeClient`) VALUES (NULL,"CIUNTU", "Marie-Carole", "Esplanade Du Belvedere", "Meudon");
