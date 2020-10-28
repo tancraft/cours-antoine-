@@ -3,7 +3,7 @@ SELECT `nomHotel`,`villeHotel`FROM `hotels`
 2)	Afficher la ville de résidence de Mr White Le résultat doit faire apparaître le nom, le prénom, l adresse et la ville du client
 SELECT `nomClient`, `prenomClient`, `adresseClient`, `villeClient` FROM `clients` WHERE `nomClient`= "white"
 3)	Afficher la liste des stations dont l’altitude < 1000 Le résultat doit faire apparaître le nom de la station et l altitude
-SELECT `nomStation`, `altitudeStation` FROM `stations` WHERE `altitudeStation`>1000
+SELECT `nomStation`, `altitudeStation` FROM `stations` WHERE `altitudeStation`<1000
 4)	Afficher la liste des chambres ayant une capacité > 1 Le résultat doit faire apparaître le numéro de la chambre ainsi que la capacité
 SELECT `numChambre`,`capaciteChambre` FROM `chambres` WHERE `capaciteChambre`>1
 5)	Afficher les clients n’habitant pas à Londres Le résultat doit faire apparaître le nom du client et la ville
