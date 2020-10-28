@@ -17,6 +17,7 @@ img{
 article h1
 {
     color: beige;
+    cursor:url("../img.pointeur-souris-valorant-defaut-knife-skin.cur"),pointer;
 }
 /*tableau*/
 table 
