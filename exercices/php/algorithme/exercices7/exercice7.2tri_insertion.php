@@ -1,5 +1,6 @@
 <?php
 
+require "fonctions_tableaux.php";
 //algorithme qui trie un tableau dans l’ordre décroissant.
 
 // le fichier est requis, le programme s'arrête si le fichier n'est pas dispo

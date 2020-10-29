@@ -12,4 +12,3 @@
 
 // apres toute les variables on la valeur 2
 
-?>

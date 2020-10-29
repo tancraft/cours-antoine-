@@ -1,0 +1,17 @@
+body
+{
+	width: 100%;
+	background-image: url("../img/manhattan-336708_1920.jpg");
+}
+
+.logo
+{
+	
+	background-image: url("../img/296396.png");
+	
+}
+
+a:hover
+{
+	cursor: url("../img/296396.png"),pointer;
+}

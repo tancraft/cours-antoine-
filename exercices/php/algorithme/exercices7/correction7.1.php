@@ -1,9 +1,9 @@
 <?php
-include "fonctions_tableaux.php";
+require "fonctions_tableaux.php";
 $tab = creerTab(5);// on cree le tableau avec 5 valeurs
 $consec = true; // variable consecutive sur vraie
 $i = 0;// initialize $i car pas encore fait du coup risque d erreur si n'apparait pas 
-if ($tab[0] < $tab[$i + 1])// on verifie que la premier valeur du tableau soit inferieur de 1 par rapport a la seconde valeur
+if ($tab[0] < $tab[$i + 1])// on verifie que la premiere valeur du tableau soit inferieur de 1 par rapport a la seconde valeur
 { //Sens croissant
     $sens = 1;
 }
