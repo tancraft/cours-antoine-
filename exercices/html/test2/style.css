@@ -1,6 +1,9 @@
+
+
 body
 {
     background-color: pink;
+
 }
 
 header
@@ -10,7 +13,15 @@ header
 
 section
 {
+
     background-color: blue;
+}
+aside
+{
+    width:20%;
+    float:right;
+    clear: inline-end;
+
 }
 
 footer
