@@ -1,0 +1,48 @@
+body
+{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    background-color: blue;
+    height: 600px;
+    margin: 5px;
+}
+
+.row
+{
+    flex-direction: row;
+}
+
+.colonne
+{
+    flex-direction: column;
+}
+header
+{
+    height: 50px;
+    background-color: red;
+}
+
+section
+{
+    background-color: pink;
+}
+aside
+{
+    height: 50px;
+    background-color: grey;  
+}
+
+article
+{
+    height: 50px;
+    background-color: lightblue;
+}
+
+footer
+{
+    height: 50px;
+    background-color: green;
+}
+
+
