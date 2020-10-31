@@ -1,54 +1,81 @@
-body
-{
-    display: flex;
-    flex: 1;
-    flex-direction: column;
+/*general*/
+body{
+    padding: 0;
+    margin: auto;
+    width: 80%;
+    height: 100vh;
     background-color: blue;
-}
-/*trucs pour test*/
-header, footer, article
-{
-    height: 25px;
-    margin: 5px;
-}
-aside
-{
-    height: 50px;
-    width: 50px;
-}
-
-
-/*la ou sa beug*/
-.reset
-{
     display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
-header
-{
+header, footer{
+    width: 100%;
+    height: 10%;
+    
+}
+
+/*le header*/
+header{
+
     background-color: red;
 }
 
-section
-{
-    background-color: pink;
-}
-aside
-{
-    background-color: grey;  
+/* le contenu principal*/
+section{
+    width: 100%;
+    height: 60%;
 }
 
-article
-{
-    background-color: lightblue;
+.row{
+
+    display: flex;
 }
 
-footer
-{
+.boucleart{
+    width: 30%;
+    height: 100%;
+    margin-left: 10%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 2;
+    justify-content: space-between;
+}
+
+article{
+
+    width: 100%;
+    height: 20%;
+}
+
+.yellow{
+
+    background-color: yellow;
+}
+
+.blue{
+
+    background-color: lightskyblue;
+}
+
+.lightgreen{
+
+    background-color: lightgreen;
+}
+
+aside{
+
+    width: 30%;
+    height: 100%;
+    background-color: lightgrey;
+}
+
+/*le footer*/
+footer{
+
     background-color: green;
 }
 
-.yellow
-{
-    background-color: yellow;
-}
+
