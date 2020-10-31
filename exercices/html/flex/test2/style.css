@@ -4,22 +4,28 @@ body
     flex: 1;
     flex-direction: column;
     background-color: blue;
-    height: 600px;
+}
+/*trucs pour test*/
+header, footer, article
+{
+    height: 25px;
     margin: 5px;
 }
-
-.row
-{
-    flex-direction: row;
-}
-
-.colonne
-{
-    flex-direction: column;
-}
-header
+aside
 {
     height: 50px;
+    width: 50px;
+}
+
+
+/*la ou sa beug*/
+.reset
+{
+    display: flex;
+}
+
+header
+{
     background-color: red;
 }
 
@@ -29,20 +35,20 @@ section
 }
 aside
 {
-    height: 50px;
     background-color: grey;  
 }
 
 article
 {
-    height: 50px;
     background-color: lightblue;
 }
 
 footer
 {
-    height: 50px;
     background-color: green;
 }
 
-
+.yellow
+{
+    background-color: yellow;
+}
