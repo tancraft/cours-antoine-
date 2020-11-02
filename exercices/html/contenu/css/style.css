@@ -1,0 +1,61 @@
+body{
+    width: 80%;
+    padding: 0;
+    margin: auto;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+div{
+    border: 1px solid black;
+    margin: 10px;
+}
+/*header*/
+.logo{
+
+    flex: 1;
+}
+
+header img{
+    width: 100%;
+}
+
+a{
+    text-decoration: none;
+}
+
+.row{
+    display: flex;
+}
+
+header{
+    font-size: 1.2em;
+    background-image: url("../img/rural.png");
+    align-items: flex-end;
+}
+/*contenu principal*/
+.center{
+    display: flex;
+    justify-content: space-between;
+}
+
+.bouclart{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.menucoter{
+width: 20%;
+}
+
+.menucoter ul li{
+    list-style-type: none;
+}
+
+footer{
+    justify-content: space-around;
+    align-items: center;
+    background-color: pink;
+}

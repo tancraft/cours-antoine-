@@ -12,25 +12,26 @@ body{
 .row{
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 
-.grow2{
-    flex-grow: 2;
-}
 
 
 .container{
     width: 100%;
-    height: 20%;
+    height: 25%;
     background-color: pink;
-    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
 
 }
 
 .center{
 
     width: 100%;
-    height: 20%;
+    height: 25%;
     background-color: orange;
     align-items: center;
     justify-content: space-around;
@@ -38,10 +39,14 @@ body{
 
 .items{
 
-    width: 10%;
-    height: 20%;
+    width: 100px;
+    height: 50px;
 }
 
+.long{
+    width: 90%;
+    margin: auto;
+}
 .red{
     background-color: red;
 }
