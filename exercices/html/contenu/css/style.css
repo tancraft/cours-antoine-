@@ -1,61 +1,102 @@
+@font-face {
+	font-family: "BaksoSapi";
+	src: url('../fonts/BaksoSapi.otf');
+}
+
 body{
-    width: 80%;
-    padding: 0;
+    display: flex;
+    justify-content: center;
+    font-family: "BaksoSapi";
+    color: #ffffff;
+    background: rgb(2,0,36);
+    background: linear-gradient(220deg, rgba(2,0,36,1) 0%,
+     rgba(39,39,73,1) 41%, rgba(0,212,255,1) 100%);
+}
+
+.container{
+    width: 80vw;
     margin: auto;
     display: flex;
     flex: 1;
     flex-direction: column;
-}
+    justify-content: center;
 
-div{
-    border: 1px solid black;
-    margin: 10px;
-}
-/*header*/
-.logo{
-
-    flex: 1;
-}
-
-header img{
-    width: 100%;
-}
-
-a{
-    text-decoration: none;
 }
 
 .row{
     display: flex;
 }
 
+/*header*/
+.logo{
+
+display: flex;
+}
+
+header .logo img{
+    width: 50%;
+}
+
+header h1{
+    flex: 2;
+}
+
+nav{
+    margin: 1%;
+}
+
+a{
+    text-decoration: none;
+    color: #fff;
+}
+
+
 header{
     font-size: 1.2em;
     background-image: url("../img/rural.png");
+    background-position: 25% 75%;
     align-items: flex-end;
+    height: 5%;
+    border: 5px solid black;
+    border-radius: 10px;
 }
+
 /*contenu principal*/
 .center{
     display: flex;
     justify-content: space-between;
+    border: 5px solid black;
+    border-radius: 10px;
 }
 
 .bouclart{
     display: flex;
     flex-direction: column;
     width: 70%;
+    margin: 2%;
+    padding: 2%;
 }
 
+article{
+    margin: 1%;
+    padding: 1%;
+    border: 5px solid black;
+    border-radius: 10px;
+}
 .menucoter{
 width: 20%;
+
 }
 
 .menucoter ul li{
-    list-style-type: none;
+    list-style-image: url(../img/puce.png);
+    margin-bottom: 1%;
 }
 
 footer{
     justify-content: space-around;
     align-items: center;
     background-color: pink;
+    border: 5px solid black;
+    border-radius: 10px;
 }
