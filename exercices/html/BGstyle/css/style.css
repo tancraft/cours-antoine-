@@ -78,6 +78,10 @@ header nav div a{
     color: #ffffff;
 }
 
+.btn{
+    justify-content: center;
+}
+
 /*corps principal*/
 section{
     flex-wrap: wrap;
